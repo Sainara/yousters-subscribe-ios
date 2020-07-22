@@ -1,0 +1,827 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		345D150B24978ECB00228CF4 /* YoustersNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D150A24978ECB00228CF4 /* YoustersNavigationController.swift */; };
+		345D150E249795CF00228CF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D150D249795CF00228CF4 /* ProfileViewController.swift */; };
+		345D151224979D5600228CF4 /* MainDocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D151124979D5600228CF4 /* MainDocsViewController.swift */; };
+		345D15142497D68A00228CF4 /* Agreement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D15132497D68A00228CF4 /* Agreement.swift */; };
+		345D15172497D75600228CF4 /* AgreementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D15162497D75600228CF4 /* AgreementCell.swift */; };
+		3463D09724AA43E20052DB93 /* AddCloseItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3463D09624AA43E10052DB93 /* AddCloseItemProtocol.swift */; };
+		3465CF1C248D70AD00374739 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465CF1B248D70AD00374739 /* AppDelegate.swift */; };
+		3465CF1E248D70AD00374739 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465CF1D248D70AD00374739 /* SceneDelegate.swift */; };
+		3465CF20248D70AD00374739 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465CF1F248D70AD00374739 /* ViewController.swift */; };
+		3465CF25248D70C400374739 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3465CF24248D70C400374739 /* Assets.xcassets */; };
+		3465CF28248D70C400374739 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3465CF26248D70C400374739 /* LaunchScreen.storyboard */; };
+		3465CF35248D7A9900374739 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465CF34248D7A9900374739 /* MainTabBarViewController.swift */; };
+		3465CF39248D83A000374739 /* EnterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465CF38248D83A000374739 /* EnterPhoneViewController.swift */; };
+		3465CF3C248D83CF00374739 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465CF3B248D83CF00374739 /* AuthService.swift */; };
+		3465CF3F248D860100374739 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465CF3E248D860100374739 /* Colors.swift */; };
+		3465CF41248D8CC100374739 /* EnterCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465CF40248D8CC100374739 /* EnterCodeViewController.swift */; };
+		3465CFFD24938B8700374739 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465CFFC24938B8700374739 /* URLs.swift */; };
+		3465D00224938D8E00374739 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3465CFFF24938D8E00374739 /* Gilroy-SemiBold.ttf */; };
+		3465D00324938D8E00374739 /* Gilroy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3465D00024938D8E00374739 /* Gilroy-Regular.ttf */; };
+		3465D00424938D8E00374739 /* Gilroy-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3465D00124938D8E00374739 /* Gilroy-Medium.ttf */; };
+		3465D00624938F2600374739 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D00524938F2600374739 /* Fonts.swift */; };
+		3465D0092493983300374739 /* YoustersTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D0082493983300374739 /* YoustersTextField.swift */; };
+		3465D00B24939F3400374739 /* YoustersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D00A24939F3300374739 /* YoustersButton.swift */; };
+		3465D00D2493A0F700374739 /* YoustersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D00C2493A0F700374739 /* YoustersViewController.swift */; };
+		3465D00F2493AECF00374739 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D00E2493AECF00374739 /* Extensions.swift */; };
+		3465D0122494112C00374739 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D0112494112B00374739 /* App.swift */; };
+		3465D01A2494247D00374739 /* YoustersAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D0192494247D00374739 /* YoustersAlert.swift */; };
+		3465D01E2494D94400374739 /* AbstractUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D01D2494D94300374739 /* AbstractUser.swift */; };
+		3465D0202494DBFC00374739 /* EnterValidateDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D01F2494DBFC00374739 /* EnterValidateDataViewController.swift */; };
+		3465D0222494DE6200374739 /* SaveRestoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D0212494DE6200374739 /* SaveRestoreProvider.swift */; };
+		346C1FB524A4CBFA0097772A /* DeepLinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346C1FB424A4CBFA0097772A /* DeepLinkType.swift */; };
+		346C1FB724A4CC380097772A /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346C1FB624A4CC380097772A /* DeepLinkManager.swift */; };
+		346C1FB924A4CC8E0097772A /* DeeplinkNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346C1FB824A4CC8E0097772A /* DeeplinkNavigator.swift */; };
+		346C1FBB24A4CD6A0097772A /* DeeplinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346C1FBA24A4CD6A0097772A /* DeeplinkParser.swift */; };
+		34789D4F24991FCA0020FAD5 /* YoustersPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D4E24991FCA0020FAD5 /* YoustersPhoneNumberTextField.swift */; };
+		34789D51249A20170020FAD5 /* CreateAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D50249A20170020FAD5 /* CreateAgreementViewController.swift */; };
+		34789D53249A20590020FAD5 /* AgreementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D52249A20590020FAD5 /* AgreementService.swift */; };
+		34789D56249A377C0020FAD5 /* AgreementPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D55249A377C0020FAD5 /* AgreementPageViewController.swift */; };
+		34789D58249A4E820020FAD5 /* YoustersButtonLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D57249A4E820020FAD5 /* YoustersButtonLink.swift */; };
+		34789D5B249A9D570020FAD5 /* HashEmoji.txt in Resources */ = {isa = PBXBuildFile; fileRef = 34789D5A249A9D560020FAD5 /* HashEmoji.txt */; };
+		34789D5D249AC3A50020FAD5 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D5C249AC3A50020FAD5 /* Subscriber.swift */; };
+		34789D5F249BA3350020FAD5 /* EnterDocsCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D5E249BA3350020FAD5 /* EnterDocsCodeViewController.swift */; };
+		34789D62249C2EFF0020FAD5 /* ReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D61249C2EFF0020FAD5 /* ReloadProtocol.swift */; };
+		34864CFD24A34A44008277B6 /* AgreementPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34864CFC24A34A43008277B6 /* AgreementPaymentViewController.swift */; };
+		348982922494E22F00BB55E8 /* RouteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348982912494E22F00BB55E8 /* RouteProvider.swift */; };
+		348982942494EF7900BB55E8 /* YoustersStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348982932494EF7900BB55E8 /* YoustersStackViewController.swift */; };
+		348982982495831E00BB55E8 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348982972495831E00BB55E8 /* Validations.swift */; };
+		3489829A24966C1000BB55E8 /* ValidateDocsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489829924966C1000BB55E8 /* ValidateDocsService.swift */; };
+		349028BD24C7690A0044D6B2 /* SberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028BC24C7690A0044D6B2 /* SberService.swift */; };
+		349028C024C874DE0044D6B2 /* SubscriptionServive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */; };
+		349028C224C876B40044D6B2 /* YoustersNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028C124C876B40044D6B2 /* YoustersNetwork.swift */; };
+		34C06D9D24BB96C80003157E /* SelectOrgTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */; };
+		34C06DA024BB9D5B0003157E /* SberIDAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */; };
+		34C06DA224BB9D8B0003157E /* SelectPhizAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */; };
+		34C06DA524BB9E600003157E /* SberbankSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C06DA324BB9DD40003157E /* SberbankSDK.framework */; };
+		34C06DA624BB9E600003157E /* SberbankSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 34C06DA324BB9DD40003157E /* SberbankSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		34C06DAA24BBA5020003157E /* SberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06DA924BBA5020003157E /* SberButton.swift */; };
+		34C06DAE24BBB4390003157E /* NonPhizValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06DAD24BBB4390003157E /* NonPhizValidationViewController.swift */; };
+		34F2D97224BD05CB0008DC2A /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F2D97124BD05CB0008DC2A /* CheckoutViewController.swift */; };
+		34F2D97424BDCD8B0008DC2A /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F2D97324BDCD8B0008DC2A /* PaymentService.swift */; };
+		BEE4BC7730BFBD8DDCA5A326 /* Pods_yousters_subs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36BA74A37CB70B7AA0FA0189 /* Pods_yousters_subs.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		34C06DA724BB9E600003157E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				34C06DA624BB9E600003157E /* SberbankSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		345D150A24978ECB00228CF4 /* YoustersNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersNavigationController.swift; sourceTree = "<group>"; };
+		345D150D249795CF00228CF4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		345D151124979D5600228CF4 /* MainDocsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDocsViewController.swift; sourceTree = "<group>"; };
+		345D15132497D68A00228CF4 /* Agreement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agreement.swift; sourceTree = "<group>"; };
+		345D15162497D75600228CF4 /* AgreementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementCell.swift; sourceTree = "<group>"; };
+		3463D09624AA43E10052DB93 /* AddCloseItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCloseItemProtocol.swift; sourceTree = "<group>"; };
+		3465CF18248D70AD00374739 /* Scribe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scribe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3465CF1B248D70AD00374739 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3465CF1D248D70AD00374739 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3465CF1F248D70AD00374739 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3465CF24248D70C400374739 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3465CF27248D70C400374739 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3465CF29248D70C400374739 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3465CF34248D7A9900374739 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		3465CF36248D7D8B00374739 /* yousters-subs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "yousters-subs.entitlements"; sourceTree = "<group>"; };
+		3465CF38248D83A000374739 /* EnterPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneViewController.swift; sourceTree = "<group>"; };
+		3465CF3B248D83CF00374739 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		3465CF3E248D860100374739 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		3465CF40248D8CC100374739 /* EnterCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeViewController.swift; sourceTree = "<group>"; };
+		3465CFFC24938B8700374739 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
+		3465CFFF24938D8E00374739 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
+		3465D00024938D8E00374739 /* Gilroy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Regular.ttf"; sourceTree = "<group>"; };
+		3465D00124938D8E00374739 /* Gilroy-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.ttf"; sourceTree = "<group>"; };
+		3465D00524938F2600374739 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		3465D0082493983300374739 /* YoustersTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersTextField.swift; sourceTree = "<group>"; };
+		3465D00A24939F3300374739 /* YoustersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersButton.swift; sourceTree = "<group>"; };
+		3465D00C2493A0F700374739 /* YoustersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersViewController.swift; sourceTree = "<group>"; };
+		3465D00E2493AECF00374739 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3465D0112494112B00374739 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		3465D0192494247D00374739 /* YoustersAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersAlert.swift; sourceTree = "<group>"; };
+		3465D01D2494D94300374739 /* AbstractUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractUser.swift; sourceTree = "<group>"; };
+		3465D01F2494DBFC00374739 /* EnterValidateDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterValidateDataViewController.swift; sourceTree = "<group>"; };
+		3465D0212494DE6200374739 /* SaveRestoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRestoreProvider.swift; sourceTree = "<group>"; };
+		346C1FB424A4CBFA0097772A /* DeepLinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkType.swift; sourceTree = "<group>"; };
+		346C1FB624A4CC380097772A /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
+		346C1FB824A4CC8E0097772A /* DeeplinkNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkNavigator.swift; sourceTree = "<group>"; };
+		346C1FBA24A4CD6A0097772A /* DeeplinkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkParser.swift; sourceTree = "<group>"; };
+		34789D4E24991FCA0020FAD5 /* YoustersPhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersPhoneNumberTextField.swift; sourceTree = "<group>"; };
+		34789D50249A20170020FAD5 /* CreateAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAgreementViewController.swift; sourceTree = "<group>"; };
+		34789D52249A20590020FAD5 /* AgreementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementService.swift; sourceTree = "<group>"; };
+		34789D55249A377C0020FAD5 /* AgreementPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementPageViewController.swift; sourceTree = "<group>"; };
+		34789D57249A4E820020FAD5 /* YoustersButtonLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersButtonLink.swift; sourceTree = "<group>"; };
+		34789D5A249A9D560020FAD5 /* HashEmoji.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HashEmoji.txt; sourceTree = "<group>"; };
+		34789D5C249AC3A50020FAD5 /* Subscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
+		34789D5E249BA3350020FAD5 /* EnterDocsCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterDocsCodeViewController.swift; sourceTree = "<group>"; };
+		34789D61249C2EFF0020FAD5 /* ReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadProtocol.swift; sourceTree = "<group>"; };
+		34864CFC24A34A43008277B6 /* AgreementPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementPaymentViewController.swift; sourceTree = "<group>"; };
+		348982912494E22F00BB55E8 /* RouteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteProvider.swift; sourceTree = "<group>"; };
+		348982932494EF7900BB55E8 /* YoustersStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersStackViewController.swift; sourceTree = "<group>"; };
+		348982972495831E00BB55E8 /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
+		3489829924966C1000BB55E8 /* ValidateDocsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateDocsService.swift; sourceTree = "<group>"; };
+		349028BC24C7690A0044D6B2 /* SberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberService.swift; sourceTree = "<group>"; };
+		349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionServive.swift; sourceTree = "<group>"; };
+		349028C124C876B40044D6B2 /* YoustersNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersNetwork.swift; sourceTree = "<group>"; };
+		34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgTypeViewController.swift; sourceTree = "<group>"; };
+		34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberIDAuthViewController.swift; sourceTree = "<group>"; };
+		34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhizAuthViewController.swift; sourceTree = "<group>"; };
+		34C06DA324BB9DD40003157E /* SberbankSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SberbankSDK.framework; sourceTree = "<group>"; };
+		34C06DA924BBA5020003157E /* SberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberButton.swift; sourceTree = "<group>"; };
+		34C06DAD24BBB4390003157E /* NonPhizValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonPhizValidationViewController.swift; sourceTree = "<group>"; };
+		34F2D97124BD05CB0008DC2A /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		34F2D97324BDCD8B0008DC2A /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
+		36BA74A37CB70B7AA0FA0189 /* Pods_yousters_subs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yousters_subs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C525EF5976F000920EC9D99 /* Pods-yousters-subs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yousters-subs.debug.xcconfig"; path = "Target Support Files/Pods-yousters-subs/Pods-yousters-subs.debug.xcconfig"; sourceTree = "<group>"; };
+		F117CE8E0376F3562EC12806 /* Pods-yousters-subs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yousters-subs.release.xcconfig"; path = "Target Support Files/Pods-yousters-subs/Pods-yousters-subs.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3465CF15248D70AD00374739 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEE4BC7730BFBD8DDCA5A326 /* Pods_yousters_subs.framework in Frameworks */,
+				34C06DA524BB9E600003157E /* SberbankSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12913685B9524886931D1FF7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C525EF5976F000920EC9D99 /* Pods-yousters-subs.debug.xcconfig */,
+				F117CE8E0376F3562EC12806 /* Pods-yousters-subs.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		345D150C2497959100228CF4 /* ProfileGroup */ = {
+			isa = PBXGroup;
+			children = (
+				345D150D249795CF00228CF4 /* ProfileViewController.swift */,
+			);
+			path = ProfileGroup;
+			sourceTree = "<group>";
+		};
+		345D151024979D2900228CF4 /* DocsGroup */ = {
+			isa = PBXGroup;
+			children = (
+				34789D54249A37410020FAD5 /* AgreementsSubViewControllers */,
+				345D15152497D70B00228CF4 /* DocsSubViewsGroup */,
+				345D151124979D5600228CF4 /* MainDocsViewController.swift */,
+			);
+			path = DocsGroup;
+			sourceTree = "<group>";
+		};
+		345D15152497D70B00228CF4 /* DocsSubViewsGroup */ = {
+			isa = PBXGroup;
+			children = (
+				345D15162497D75600228CF4 /* AgreementCell.swift */,
+			);
+			path = DocsSubViewsGroup;
+			sourceTree = "<group>";
+		};
+		3465CF0F248D70AC00374739 = {
+			isa = PBXGroup;
+			children = (
+				34C06DA324BB9DD40003157E /* SberbankSDK.framework */,
+				3465CF1A248D70AD00374739 /* yousters-subs */,
+				3465CF19248D70AD00374739 /* Products */,
+				12913685B9524886931D1FF7 /* Pods */,
+				61C63E653943CDE48486D64E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3465CF19248D70AD00374739 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3465CF18248D70AD00374739 /* Scribe.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3465CF1A248D70AD00374739 /* yousters-subs */ = {
+			isa = PBXGroup;
+			children = (
+				346C1FB324A4CAF40097772A /* DeepLinking */,
+				34789D60249C2EEA0020FAD5 /* Protocols */,
+				34789D5A249A9D560020FAD5 /* HashEmoji.txt */,
+				3465CF36248D7D8B00374739 /* yousters-subs.entitlements */,
+				3465D01C2494D8FE00374739 /* Structs */,
+				3465D0102494111600374739 /* App */,
+				3465D0072493980600374739 /* CustomElements */,
+				3465CF3D248D85F500374739 /* Helpers */,
+				3465CFFE24938D7700374739 /* Fonts */,
+				3465CF3A248D83B600374739 /* Network */,
+				3465CF37248D835800374739 /* AuthGroup */,
+				3465D01B2494D8B400374739 /* ValidateGroup */,
+				3465CF33248D7A6100374739 /* MainTaBarViewController */,
+				3465CF1B248D70AD00374739 /* AppDelegate.swift */,
+				3465CF1D248D70AD00374739 /* SceneDelegate.swift */,
+				3465CF1F248D70AD00374739 /* ViewController.swift */,
+				3465CF24248D70C400374739 /* Assets.xcassets */,
+				3465CF26248D70C400374739 /* LaunchScreen.storyboard */,
+				3465CF29248D70C400374739 /* Info.plist */,
+			);
+			path = "yousters-subs";
+			sourceTree = "<group>";
+		};
+		3465CF33248D7A6100374739 /* MainTaBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				345D151024979D2900228CF4 /* DocsGroup */,
+				345D150C2497959100228CF4 /* ProfileGroup */,
+				3465CF34248D7A9900374739 /* MainTabBarViewController.swift */,
+			);
+			path = MainTaBarViewController;
+			sourceTree = "<group>";
+		};
+		3465CF37248D835800374739 /* AuthGroup */ = {
+			isa = PBXGroup;
+			children = (
+				3465CF38248D83A000374739 /* EnterPhoneViewController.swift */,
+				3465CF40248D8CC100374739 /* EnterCodeViewController.swift */,
+			);
+			path = AuthGroup;
+			sourceTree = "<group>";
+		};
+		3465CF3A248D83B600374739 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				349028C124C876B40044D6B2 /* YoustersNetwork.swift */,
+				349028BE24C874A90044D6B2 /* AgreementGroup */,
+				349028BB24C768E20044D6B2 /* AuthGroup */,
+				3489829924966C1000BB55E8 /* ValidateDocsService.swift */,
+				34F2D97324BDCD8B0008DC2A /* PaymentService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3465CF3D248D85F500374739 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3465CFFC24938B8700374739 /* URLs.swift */,
+				3465CF3E248D860100374739 /* Colors.swift */,
+				3465D00524938F2600374739 /* Fonts.swift */,
+				3465D00E2493AECF00374739 /* Extensions.swift */,
+				348982972495831E00BB55E8 /* Validations.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3465CFFE24938D7700374739 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3465D00124938D8E00374739 /* Gilroy-Medium.ttf */,
+				3465D00024938D8E00374739 /* Gilroy-Regular.ttf */,
+				3465CFFF24938D8E00374739 /* Gilroy-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3465D0072493980600374739 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				34C06DA824BBA4E40003157E /* Addons */,
+				34789D4E24991FCA0020FAD5 /* YoustersPhoneNumberTextField.swift */,
+				3465D0082493983300374739 /* YoustersTextField.swift */,
+				3465D00A24939F3300374739 /* YoustersButton.swift */,
+				34789D57249A4E820020FAD5 /* YoustersButtonLink.swift */,
+				3465D00C2493A0F700374739 /* YoustersViewController.swift */,
+				348982932494EF7900BB55E8 /* YoustersStackViewController.swift */,
+				3465D0192494247D00374739 /* YoustersAlert.swift */,
+				345D150A24978ECB00228CF4 /* YoustersNavigationController.swift */,
+			);
+			path = CustomElements;
+			sourceTree = "<group>";
+		};
+		3465D0102494111600374739 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3465D0112494112B00374739 /* App.swift */,
+				3465D0212494DE6200374739 /* SaveRestoreProvider.swift */,
+				348982912494E22F00BB55E8 /* RouteProvider.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3465D01B2494D8B400374739 /* ValidateGroup */ = {
+			isa = PBXGroup;
+			children = (
+				34C06DAC24BBB3CA0003157E /* NonPhizValidationGroup */,
+				34C06D9E24BB9D1F0003157E /* PhizValidationGroup */,
+				34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */,
+			);
+			path = ValidateGroup;
+			sourceTree = "<group>";
+		};
+		3465D01C2494D8FE00374739 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				3465D01D2494D94300374739 /* AbstractUser.swift */,
+				345D15132497D68A00228CF4 /* Agreement.swift */,
+				34789D5C249AC3A50020FAD5 /* Subscriber.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		346C1FB324A4CAF40097772A /* DeepLinking */ = {
+			isa = PBXGroup;
+			children = (
+				346C1FB424A4CBFA0097772A /* DeepLinkType.swift */,
+				346C1FB624A4CC380097772A /* DeepLinkManager.swift */,
+				346C1FB824A4CC8E0097772A /* DeeplinkNavigator.swift */,
+				346C1FBA24A4CD6A0097772A /* DeeplinkParser.swift */,
+			);
+			path = DeepLinking;
+			sourceTree = "<group>";
+		};
+		34789D54249A37410020FAD5 /* AgreementsSubViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				34F2D97024BD03A60008DC2A /* AgreementPaymentGroup */,
+				34789D50249A20170020FAD5 /* CreateAgreementViewController.swift */,
+				34789D55249A377C0020FAD5 /* AgreementPageViewController.swift */,
+				34789D5E249BA3350020FAD5 /* EnterDocsCodeViewController.swift */,
+			);
+			path = AgreementsSubViewControllers;
+			sourceTree = "<group>";
+		};
+		34789D60249C2EEA0020FAD5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				34789D61249C2EFF0020FAD5 /* ReloadProtocol.swift */,
+				3463D09624AA43E10052DB93 /* AddCloseItemProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		349028BB24C768E20044D6B2 /* AuthGroup */ = {
+			isa = PBXGroup;
+			children = (
+				3465CF3B248D83CF00374739 /* AuthService.swift */,
+				349028BC24C7690A0044D6B2 /* SberService.swift */,
+			);
+			path = AuthGroup;
+			sourceTree = "<group>";
+		};
+		349028BE24C874A90044D6B2 /* AgreementGroup */ = {
+			isa = PBXGroup;
+			children = (
+				34789D52249A20590020FAD5 /* AgreementService.swift */,
+				349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */,
+			);
+			path = AgreementGroup;
+			sourceTree = "<group>";
+		};
+		34C06D9E24BB9D1F0003157E /* PhizValidationGroup */ = {
+			isa = PBXGroup;
+			children = (
+				34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */,
+				34C06DAB24BBB3A00003157E /* PhizValidationSubGroup */,
+			);
+			path = PhizValidationGroup;
+			sourceTree = "<group>";
+		};
+		34C06DA824BBA4E40003157E /* Addons */ = {
+			isa = PBXGroup;
+			children = (
+				34C06DA924BBA5020003157E /* SberButton.swift */,
+			);
+			path = Addons;
+			sourceTree = "<group>";
+		};
+		34C06DAB24BBB3A00003157E /* PhizValidationSubGroup */ = {
+			isa = PBXGroup;
+			children = (
+				3465D01F2494DBFC00374739 /* EnterValidateDataViewController.swift */,
+				34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */,
+			);
+			path = PhizValidationSubGroup;
+			sourceTree = "<group>";
+		};
+		34C06DAC24BBB3CA0003157E /* NonPhizValidationGroup */ = {
+			isa = PBXGroup;
+			children = (
+				34C06DAD24BBB4390003157E /* NonPhizValidationViewController.swift */,
+			);
+			path = NonPhizValidationGroup;
+			sourceTree = "<group>";
+		};
+		34F2D97024BD03A60008DC2A /* AgreementPaymentGroup */ = {
+			isa = PBXGroup;
+			children = (
+				34864CFC24A34A43008277B6 /* AgreementPaymentViewController.swift */,
+				34F2D97124BD05CB0008DC2A /* CheckoutViewController.swift */,
+			);
+			path = AgreementPaymentGroup;
+			sourceTree = "<group>";
+		};
+		61C63E653943CDE48486D64E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36BA74A37CB70B7AA0FA0189 /* Pods_yousters_subs.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3465CF17248D70AD00374739 /* yousters-subs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3465CF2C248D70C400374739 /* Build configuration list for PBXNativeTarget "yousters-subs" */;
+			buildPhases = (
+				1B6EB56A68D473625C0FB145 /* [CP] Check Pods Manifest.lock */,
+				3465CF14248D70AD00374739 /* Sources */,
+				3465CF15248D70AD00374739 /* Frameworks */,
+				3465CF16248D70AD00374739 /* Resources */,
+				E8743D9DD763568CE948AB0B /* [CP] Embed Pods Frameworks */,
+				34C06DA724BB9E600003157E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "yousters-subs";
+			productName = "yousters-subs";
+			productReference = 3465CF18248D70AD00374739 /* Scribe.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3465CF10248D70AC00374739 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = molidl;
+				TargetAttributes = {
+					3465CF17248D70AD00374739 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 3465CF13248D70AC00374739 /* Build configuration list for PBXProject "yousters-subs" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3465CF0F248D70AC00374739;
+			productRefGroup = 3465CF19248D70AD00374739 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3465CF17248D70AD00374739 /* yousters-subs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3465CF16248D70AD00374739 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3465D00324938D8E00374739 /* Gilroy-Regular.ttf in Resources */,
+				3465D00424938D8E00374739 /* Gilroy-Medium.ttf in Resources */,
+				3465CF28248D70C400374739 /* LaunchScreen.storyboard in Resources */,
+				3465D00224938D8E00374739 /* Gilroy-SemiBold.ttf in Resources */,
+				34789D5B249A9D570020FAD5 /* HashEmoji.txt in Resources */,
+				3465CF25248D70C400374739 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B6EB56A68D473625C0FB145 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-yousters-subs-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8743D9DD763568CE948AB0B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-yousters-subs/Pods-yousters-subs-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-yousters-subs/Pods-yousters-subs-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yousters-subs/Pods-yousters-subs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3465CF14248D70AD00374739 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				348982942494EF7900BB55E8 /* YoustersStackViewController.swift in Sources */,
+				34789D4F24991FCA0020FAD5 /* YoustersPhoneNumberTextField.swift in Sources */,
+				348982922494E22F00BB55E8 /* RouteProvider.swift in Sources */,
+				345D151224979D5600228CF4 /* MainDocsViewController.swift in Sources */,
+				3465D01E2494D94400374739 /* AbstractUser.swift in Sources */,
+				34864CFD24A34A44008277B6 /* AgreementPaymentViewController.swift in Sources */,
+				34789D51249A20170020FAD5 /* CreateAgreementViewController.swift in Sources */,
+				3465D0202494DBFC00374739 /* EnterValidateDataViewController.swift in Sources */,
+				3465D0222494DE6200374739 /* SaveRestoreProvider.swift in Sources */,
+				3465CF41248D8CC100374739 /* EnterCodeViewController.swift in Sources */,
+				34789D5F249BA3350020FAD5 /* EnterDocsCodeViewController.swift in Sources */,
+				3465CFFD24938B8700374739 /* URLs.swift in Sources */,
+				34F2D97424BDCD8B0008DC2A /* PaymentService.swift in Sources */,
+				34C06DAE24BBB4390003157E /* NonPhizValidationViewController.swift in Sources */,
+				34C06D9D24BB96C80003157E /* SelectOrgTypeViewController.swift in Sources */,
+				346C1FBB24A4CD6A0097772A /* DeeplinkParser.swift in Sources */,
+				34789D58249A4E820020FAD5 /* YoustersButtonLink.swift in Sources */,
+				34789D5D249AC3A50020FAD5 /* Subscriber.swift in Sources */,
+				3465CF20248D70AD00374739 /* ViewController.swift in Sources */,
+				3489829A24966C1000BB55E8 /* ValidateDocsService.swift in Sources */,
+				349028C224C876B40044D6B2 /* YoustersNetwork.swift in Sources */,
+				3465D0122494112C00374739 /* App.swift in Sources */,
+				34C06DA024BB9D5B0003157E /* SberIDAuthViewController.swift in Sources */,
+				34789D62249C2EFF0020FAD5 /* ReloadProtocol.swift in Sources */,
+				3465D01A2494247D00374739 /* YoustersAlert.swift in Sources */,
+				3465CF39248D83A000374739 /* EnterPhoneViewController.swift in Sources */,
+				3465CF35248D7A9900374739 /* MainTabBarViewController.swift in Sources */,
+				34789D56249A377C0020FAD5 /* AgreementPageViewController.swift in Sources */,
+				3465D00B24939F3400374739 /* YoustersButton.swift in Sources */,
+				3465D0092493983300374739 /* YoustersTextField.swift in Sources */,
+				34F2D97224BD05CB0008DC2A /* CheckoutViewController.swift in Sources */,
+				3465D00D2493A0F700374739 /* YoustersViewController.swift in Sources */,
+				346C1FB924A4CC8E0097772A /* DeeplinkNavigator.swift in Sources */,
+				3465CF3F248D860100374739 /* Colors.swift in Sources */,
+				345D15172497D75600228CF4 /* AgreementCell.swift in Sources */,
+				349028C024C874DE0044D6B2 /* SubscriptionServive.swift in Sources */,
+				34C06DA224BB9D8B0003157E /* SelectPhizAuthViewController.swift in Sources */,
+				3465D00624938F2600374739 /* Fonts.swift in Sources */,
+				3465CF3C248D83CF00374739 /* AuthService.swift in Sources */,
+				34789D53249A20590020FAD5 /* AgreementService.swift in Sources */,
+				345D150B24978ECB00228CF4 /* YoustersNavigationController.swift in Sources */,
+				346C1FB524A4CBFA0097772A /* DeepLinkType.swift in Sources */,
+				346C1FB724A4CC380097772A /* DeepLinkManager.swift in Sources */,
+				3465CF1C248D70AD00374739 /* AppDelegate.swift in Sources */,
+				3465CF1E248D70AD00374739 /* SceneDelegate.swift in Sources */,
+				3463D09724AA43E20052DB93 /* AddCloseItemProtocol.swift in Sources */,
+				34C06DAA24BBA5020003157E /* SberButton.swift in Sources */,
+				349028BD24C7690A0044D6B2 /* SberService.swift in Sources */,
+				345D150E249795CF00228CF4 /* ProfileViewController.swift in Sources */,
+				345D15142497D68A00228CF4 /* Agreement.swift in Sources */,
+				348982982495831E00BB55E8 /* Validations.swift in Sources */,
+				3465D00F2493AECF00374739 /* Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3465CF26248D70C400374739 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3465CF27248D70C400374739 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3465CF2A248D70C400374739 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3465CF2B248D70C400374739 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3465CF2D248D70C400374739 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C525EF5976F000920EC9D99 /* Pods-yousters-subs.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "yousters-subs/yousters-subs.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = A7FRCYXJJN;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yousters-subs",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "yousters-subs/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommysirenko.yousterssubsapp;
+				PRODUCT_NAME = Scribe;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		3465CF2E248D70C400374739 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F117CE8E0376F3562EC12806 /* Pods-yousters-subs.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "yousters-subs/yousters-subs.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = A7FRCYXJJN;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yousters-subs",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "yousters-subs/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommysirenko.yousterssubsapp;
+				PRODUCT_NAME = Scribe;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3465CF13248D70AC00374739 /* Build configuration list for PBXProject "yousters-subs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3465CF2A248D70C400374739 /* Debug */,
+				3465CF2B248D70C400374739 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3465CF2C248D70C400374739 /* Build configuration list for PBXNativeTarget "yousters-subs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3465CF2D248D70C400374739 /* Debug */,
+				3465CF2E248D70C400374739 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3465CF10248D70AC00374739 /* Project object */;
+}
