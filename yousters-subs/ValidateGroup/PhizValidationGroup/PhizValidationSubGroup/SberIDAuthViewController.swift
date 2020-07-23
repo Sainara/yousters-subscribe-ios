@@ -77,23 +77,32 @@ class SberIDAuthViewController: YoustersStackViewController {
     }
     
     @objc private func loginSber(){
-        // Параметры для поддержки PKCE
-        let verifier = SBKUtils.createVerifier()
-        let challenge = SBKUtils.createChallenge(verifier)
-         
-        let state = UUID()
         
-        let request = SBKAuthRequest()
-        request.clientId = "f9945844-1acb-4225-94ce-4f7e7ba08b2e"
-        request.nonce = "n-0S6_WzA2Mj"
-        request.scope = "openid name" //Перечесление scope через пробел
-        request.state = state.uuidString
-        request.redirectUri = "you-scribe://sberidauth"
-        request.codeChallenge = challenge //Необязательный параметр
-        request.codeChallengeMethod = SBKUtilsCodeChallengeMethod //Необязательный параметр
-         
-        // Запуск аутентификации
-        SBKAuthManager.auth(withSberId: request)
+        let alert = UIAlertController(style: .loading)
+        self.present(alert, animated: true, completion: nil)
+        
+        SberService.main.initAuth { (requestData) in
+            alert.dismiss(animated: false) {
+                if let requestData = requestData {
+                    // Параметры для поддержки PKCE
+                    let verifier = SBKUtils.createVerifier()
+                    let challenge = SBKUtils.createChallenge(verifier)
+                    
+                    let request = SBKAuthRequest()
+                    request.clientId = requestData.clientID
+                    request.nonce = requestData.nonce
+                    request.scope = requestData.scope //Перечесление scope через пробел
+                    request.state = requestData.state
+                    request.redirectUri = "you-scribe://sberidauth"
+                    request.codeChallenge = challenge //Необязательный параметр
+                    request.codeChallengeMethod = SBKUtilsCodeChallengeMethod //Необязательный параметр
+                     
+                    // Запуск аутентификации
+                    SBKAuthManager.auth(withSberId: request)
+                }
+            }
+        }
+        
     }
     
     private func checkAllData() {

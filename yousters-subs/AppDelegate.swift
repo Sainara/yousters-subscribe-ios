@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(url)
         if url.scheme == "you-scribe" && url.host == "sberidauth" {
             SBKAuthManager.getResponseFrom(url) { response in
-                
+                print(response)
             }
         }
         DeepLinkManager.standart.handleDeeplink(url: url)

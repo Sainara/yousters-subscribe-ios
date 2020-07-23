@@ -43,12 +43,13 @@ class SberService: YoustersNetwork {
     override private init() {}
     
     struct AuthRequestData {
-        var nonce:String, state:String, scope:String
+        var nonce:String, state:String, scope:String, clientID:String
         
         fileprivate init(data:JSON) {
             nonce = data["nonce"].stringValue
             state = data["state"].stringValue
             scope = data["scope"].stringValue
+            clientID = data["clientID"].stringValue
         }
     }
 }
