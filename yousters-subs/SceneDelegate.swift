@@ -83,13 +83,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url {
             // Handle URL
-            DeepLinkManager.standart.handleDeeplink(url: url)
+            
             
             if url.scheme == "you-scribe" && url.host == "sberidauth" {
                 SBKAuthManager.getResponseFrom(url) { response in
-                    // MARK: Make auth
+                    print(response.error)
+                    print(response.isSuccess)
+                    print(response.nonce)
                 }
+                return
             }
+            
+            DeepLinkManager.standart.handleDeeplink(url: url)
         }
     }
     

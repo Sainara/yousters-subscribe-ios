@@ -59,7 +59,7 @@ class YoustersViewController: UIViewController, AddCloseItemProtocol {
         view.addSubview(close)
         close.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-15)
+            make.trailing.equalToSuperview().offset(-20)
             make.width.equalTo(100)
             make.height.equalTo(30)
         }

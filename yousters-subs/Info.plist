@@ -89,5 +89,9 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+    <string>sberbankidexternallogin</string>
+    </array>
 </dict>
 </plist>

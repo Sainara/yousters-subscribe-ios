@@ -25,6 +25,7 @@ class SberService: YoustersNetwork {
                 print(json)
                 if json["success"].boolValue {
                     let data = AuthRequestData(data: json["data"])
+                    print(data)
                     complition(data)
                 } else {
                     
