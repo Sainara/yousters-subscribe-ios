@@ -14,6 +14,7 @@ class NonPhizValidationViewController: YoustersStackViewController {
     let mailField = YoustersTextField(placehldr: "Email", fontSize: 20)
     
     let sendButton = YoustersButton(text: "Оплатил", fontSize: 18)
+    let linkToPDF = YoustersButtonLink(link: "", title: "Мы тут", isUnderLined: true)
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -59,8 +60,10 @@ class NonPhizValidationViewController: YoustersStackViewController {
         
         addWidthArrangedSubView(view: info, spacing: 5)
         
-        let linkToPDF = YoustersButtonLink(link: URLs.requisites, title: "Мы тут", isUnderLined: true)
         linkToPDF.contentHorizontalAlignment = .leading
+        
+        linkToPDF.isEnabled = false
+        linkToPDF.layer.opacity = 0.5
         addWidthArrangedSubView(view: linkToPDF)
         
         view.addSubview(sendButton)
@@ -88,9 +91,18 @@ class NonPhizValidationViewController: YoustersStackViewController {
         if Validations.checkEmail(email: mailField.text!),
             Validations.checkINN(inn: innField.text!)
         {
+            linkToPDF.layer.opacity = 1
+            linkToPDF.isEnabled = true
             sendButton.isEnabled = true
+            
+            guard let token = App.shared.token else {return}
+            linkToPDF.link = URLs.requisites(inn: innField.text!, email: mailField.text!, token: token)
+            print(linkToPDF.link)
+            
         } else {
             sendButton.isEnabled = false
+            linkToPDF.layer.opacity = 0.5
+            linkToPDF.isEnabled = false
         }
     }
     

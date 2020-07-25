@@ -39,11 +39,16 @@ class DeeplinkNavigator {
         
         switch type {
         case .agreement(uid: let uid):
-            viewController?.presentedViewController?.dismiss(animated: false, completion: {
+            guard let vc = viewController,
+                let agrPage = vc.presentedViewController as? AgreementPageViewController else {
+                    present(uid: uid, viewController: viewController)
+                    return
+            }
+            agrPage.dismiss(animated: false, completion: {
                 present(uid: uid, viewController: viewController)
                 return
             })
-            present(uid: uid, viewController: viewController)
+            
         }
     }
 }

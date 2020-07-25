@@ -4,6 +4,8 @@
 target 'yousters-subs' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+#  enable_bitcode_for_prebuilt_frameworks!
+#  all_binary!
 
   # Pods for yousters-subs
 
@@ -15,5 +17,7 @@ target 'yousters-subs' do
   pod 'SnapKit'
   pod 'PhoneNumberKit'
   pod 'SwiftDate'
+  pod "Haptica"
+  pod 'Siren'
   
 end

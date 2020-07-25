@@ -58,6 +58,7 @@ class AgreementPageViewController: YoustersStackViewController {
     
     private func setup() {
         
+        addInfo(title: agreemant.status.getTitle(), sub: "Статус")
         addInfo(title: agreemant.getFormatedTime(), sub: "Время создания")
         addInfo(title: agreemant.location, sub: "Ссылка на файл", isLink: true)
         addInfo(title: agreemant.serverHash.emojiHash(), sub: "Хэш (SHA256) файла")
@@ -175,7 +176,7 @@ class AgreementPageViewController: YoustersStackViewController {
     }
     
     @objc private func toPay() {
-        navigationController?.pushViewController(AgreementPaymentViewController(uid: agreemant.uid), animated: true)
+        navigationController?.pushViewController(AgreementPaymentViewController(uid: agreemant.uid, page: self), animated: true)
     }
     
     enum InitType {
@@ -188,6 +189,7 @@ extension AgreementPageViewController: ReloadProtocol {
     func reload() {
         stackView.arrangedSubviews.forEach({$0.removeFromSuperview()})
         setup()
+        App.shared.isNeedUpdateDocs = true
     }
 }
 

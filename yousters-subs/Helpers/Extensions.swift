@@ -56,3 +56,13 @@ extension String {
         return str
     }
 }
+
+extension URL {
+    func absoluteStringByTrimmingQuery() -> String? {
+        if var urlcomponents = URLComponents(url: self, resolvingAgainstBaseURL: false) {
+            urlcomponents.query = nil
+            return urlcomponents.string
+        }
+        return nil
+    }
+}

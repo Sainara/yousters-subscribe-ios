@@ -37,6 +37,10 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>sberbankidexternallogin</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -89,9 +93,5 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-    <string>sberbankidexternallogin</string>
-    </array>
 </dict>
 </plist>

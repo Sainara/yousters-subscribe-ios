@@ -14,14 +14,16 @@ class AgreementPaymentViewController: YoustersStackViewController {
     let payButton = YoustersButton(text: "Оплатить")
     
     let agr_uid:String
+    let agr_page:AgreementPageViewController
     
     let promoField = YoustersTextField(placehldr: "Промокод", fontSize: 19)
     let resultOfPromo = UILabel(text: "", font: Fonts.standart.gilroyRegular(ofSize: 15), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
     
     let summaryView = UIView()
 
-    init(uid:String) {
+    init(uid:String, page:AgreementPageViewController) {
         agr_uid = uid
+        agr_page = page
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .white
@@ -138,7 +140,7 @@ class AgreementPaymentViewController: YoustersStackViewController {
                 guard let uid = result else {
                     return
                 }
-                let checkout = CheckoutViewController(url: URLs.getCheckout(uid: uid))
+                let checkout = CheckoutViewController(url: URLs.getCheckout(uid: uid), parentVC: self)
                 checkout.modalPresentationStyle = .popover
                 self.present(checkout, animated: true, completion: nil)
             }
@@ -202,7 +204,7 @@ class AgreementPaymentViewController: YoustersStackViewController {
         
         text.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10)
-            make.leading.equalToSuperview().offset(10)
+            make.leading.equalToSuperview()
             make.bottom.equalToSuperview().offset(-10)
         }
         checkmark.snp.makeConstraints { (make) in

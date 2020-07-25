@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343E2C6F24CB953300B1B15B /* SberbankSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343E2C6D24CB951600B1B15B /* SberbankSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		343E2C7024CB953300B1B15B /* SberbankSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 343E2C6D24CB951600B1B15B /* SberbankSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		345D150B24978ECB00228CF4 /* YoustersNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D150A24978ECB00228CF4 /* YoustersNavigationController.swift */; };
 		345D150E249795CF00228CF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D150D249795CF00228CF4 /* ProfileViewController.swift */; };
 		345D151224979D5600228CF4 /* MainDocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D151124979D5600228CF4 /* MainDocsViewController.swift */; };
@@ -61,8 +63,6 @@
 		34C06D9D24BB96C80003157E /* SelectOrgTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */; };
 		34C06DA024BB9D5B0003157E /* SberIDAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */; };
 		34C06DA224BB9D8B0003157E /* SelectPhizAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */; };
-		34C06DA524BB9E600003157E /* SberbankSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C06DA324BB9DD40003157E /* SberbankSDK.framework */; };
-		34C06DA624BB9E600003157E /* SberbankSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 34C06DA324BB9DD40003157E /* SberbankSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		34C06DAA24BBA5020003157E /* SberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06DA924BBA5020003157E /* SberButton.swift */; };
 		34C06DAE24BBB4390003157E /* NonPhizValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06DAD24BBB4390003157E /* NonPhizValidationViewController.swift */; };
 		34F2D97224BD05CB0008DC2A /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F2D97124BD05CB0008DC2A /* CheckoutViewController.swift */; };
@@ -71,13 +71,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		34C06DA724BB9E600003157E /* Embed Frameworks */ = {
+		3487522024CB9304002D5889 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				34C06DA624BB9E600003157E /* SberbankSDK.framework in Embed Frameworks */,
+				343E2C7024CB953300B1B15B /* SberbankSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +85,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		343E2C6D24CB951600B1B15B /* SberbankSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SberbankSDK.framework; sourceTree = "<group>"; };
 		345D150A24978ECB00228CF4 /* YoustersNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersNavigationController.swift; sourceTree = "<group>"; };
 		345D150D249795CF00228CF4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		345D151124979D5600228CF4 /* MainDocsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDocsViewController.swift; sourceTree = "<group>"; };
@@ -142,7 +143,6 @@
 		34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgTypeViewController.swift; sourceTree = "<group>"; };
 		34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberIDAuthViewController.swift; sourceTree = "<group>"; };
 		34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhizAuthViewController.swift; sourceTree = "<group>"; };
-		34C06DA324BB9DD40003157E /* SberbankSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SberbankSDK.framework; sourceTree = "<group>"; };
 		34C06DA924BBA5020003157E /* SberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberButton.swift; sourceTree = "<group>"; };
 		34C06DAD24BBB4390003157E /* NonPhizValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonPhizValidationViewController.swift; sourceTree = "<group>"; };
 		34F2D97124BD05CB0008DC2A /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEE4BC7730BFBD8DDCA5A326 /* Pods_yousters_subs.framework in Frameworks */,
-				34C06DA524BB9E600003157E /* SberbankSDK.framework in Frameworks */,
+				343E2C6F24CB953300B1B15B /* SberbankSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +203,7 @@
 		3465CF0F248D70AC00374739 = {
 			isa = PBXGroup;
 			children = (
-				34C06DA324BB9DD40003157E /* SberbankSDK.framework */,
+				343E2C6D24CB951600B1B15B /* SberbankSDK.framework */,
 				3465CF1A248D70AD00374739 /* yousters-subs */,
 				3465CF19248D70AD00374739 /* Products */,
 				12913685B9524886931D1FF7 /* Pods */,
@@ -456,7 +456,7 @@
 				3465CF15248D70AD00374739 /* Frameworks */,
 				3465CF16248D70AD00374739 /* Resources */,
 				E8743D9DD763568CE948AB0B /* [CP] Embed Pods Frameworks */,
-				34C06DA724BB9E600003157E /* Embed Frameworks */,
+				3487522024CB9304002D5889 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -753,7 +753,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "yousters-subs/yousters-subs.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = A7FRCYXJJN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -780,7 +780,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "yousters-subs/yousters-subs.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = A7FRCYXJJN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

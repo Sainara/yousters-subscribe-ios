@@ -47,5 +47,7 @@ struct URLs {
         return "\(baseAPI)getagreement/\(uid)"
     }
     
-    static let requisites = "\(base)bill.pdf"
+    static func requisites(inn:String, email:String, token:String) -> String {
+        "\(baseAPI)bill?inn=\(inn)&email=\(email)&token=\(token)"
+    }
 }
