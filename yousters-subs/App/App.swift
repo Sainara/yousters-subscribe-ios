@@ -40,4 +40,5 @@ class App {
     }
     
     var isNeedUpdateDocs = false
+    var isNeedUpdateProfile = false
 }

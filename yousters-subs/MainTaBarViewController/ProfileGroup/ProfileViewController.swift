@@ -7,22 +7,35 @@
 //
 
 import UIKit
+import Haptica
 
 class ProfileViewController: YoustersStackViewController {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if App.shared.isNeedUpdateProfile {
+            reload()
+            App.shared.isNeedUpdateProfile = false
+        }
+    }
 
     init() {
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .white
-        scrollView.contentInset = .init(top: 20, left: 0, bottom: 100, right: 0)
         stackView.layoutMargins = .init(top: 0, left: 20, bottom: 0, right: 20)
         stackView.isLayoutMarginsRelativeArrangement = true
         
         navigationItem.title = "Профиль"
         navigationItem.largeTitleDisplayMode = .always
         
+        initView()
+        
+    }
+    
+    func initView() {
         guard let user = App.shared.currentUser else {
-            addLogOut()
+            addLogOut(state: .onValidation)
             return
         }
         if user.isOnValidation {
@@ -31,7 +44,6 @@ class ProfileViewController: YoustersStackViewController {
         if user.isValid {
             setupViewWithState(state: .active)
         }
-        
     }
     
     required init?(coder: NSCoder) {
@@ -42,12 +54,28 @@ class ProfileViewController: YoustersStackViewController {
         switch state {
         case .onValidation:
             setupOnValidation()
+            scrollView.contentInset = .init(top: 20, left: 0, bottom: 100, right: 0)
         case .active:
             setupValidated()
+            addPakets()
+            scrollView.contentInset = .init(top: 20, left: 0, bottom: 40, right: 0)
         }
         addFAQ()
         addLinks()
-        addLogOut()
+        addLogOut(state: state)
+    }
+    
+    private func addPakets() {
+        
+        let collectionView = PaketsCollectionView(pakets: [])
+        collectionView.parentVC = self
+        addWidthArrangedSubView(view: collectionView, spacing: 20, offsets: 0)
+        
+        UserPaketService.main.getPakets { (pakets) in
+            collectionView.pakets = pakets
+            collectionView.reloadData()
+        }
+        
     }
     
     private func addFAQ() {
@@ -58,12 +86,12 @@ class ProfileViewController: YoustersStackViewController {
     }
     
     private func addLinks() {
-        let userAgre = YoustersButtonLink(link: "https://you-scribe.ru/legal/user-agreement", fontSize: 17, title: "Лицензионное соглашение")
+        let userAgre = YoustersButtonLink(link: "https://you-scribe.ru/legal/user-agreement", fontSize: 17, title: "Лицензионное соглашение", vc: self)
         addWidthArrangedSubView(view: userAgre)
-        let terms = YoustersButtonLink(link: "https://you-scribe.ru/legal/termsofuse", fontSize: 17, title: "Условия использования")
+        let terms = YoustersButtonLink(link: "https://you-scribe.ru/legal/termsofuse", fontSize: 17, title: "Условия использования", vc: self)
         addWidthArrangedSubView(view: terms)
-        let policy = YoustersButtonLink(link: "https://you-scribe.ru/legal/confidential", fontSize: 17, title: "Политика конфиденциальности")
-        addWidthArrangedSubView(view: policy)
+        let policy = YoustersButtonLink(link: "https://you-scribe.ru/legal/confidential", fontSize: 17, title: "Политика конфиденциальности", vc: self)
+        addWidthArrangedSubView(view: policy, spacing: 40)
     }
     
     private func setupValidated() {
@@ -75,7 +103,8 @@ class ProfileViewController: YoustersStackViewController {
         addTitle(title: user.inn, subTitle: "ИНН")
         addTitle(title: user.email, subTitle: "Email")
         
-        addTitle(title: "Отсутсвует", subTitle: "Пакет")
+        setUpUserPaketInfo()
+        //addTitle(title: "Отсутсвует", subTitle: "Пакет")
         
     }
     
@@ -87,15 +116,28 @@ class ProfileViewController: YoustersStackViewController {
         
         let infoLabel = UILabel(text: "Ваш профиль находится на верификации. Вам придёт оповещение, когда мы закончим", font: Fonts.standart.gilroyRegular(ofSize: 17), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
         stackView.addArrangedSubview(infoLabel)
+        
+        
+        guard let inn = user.inn, let email = user.email, let isPhiz = user.isPhiz, !isPhiz,
+            let token = App.shared.token else {return}
+        let billUrl = URLs.requisites(inn: inn, email: email, token: token)
+        let toBill = YoustersButtonLink(link: billUrl, title: "Счет на оплату, если еще не оплатили", isUnderLined: true)
+        addWidthArrangedSubView(view: toBill)
     }
     
-    private func addLogOut() {
+    private func addLogOut(state:ProfileState) {
         let but = YoustersButton(text: "Выйти")
-        view.addSubview(but)
-        but.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+        
+        switch state {
+        case .active:
+            addWidthArrangedSubView(view: but)
+        case .onValidation:
+            view.addSubview(but)
+            but.snp.makeConstraints { (make) in
+                make.leading.equalToSuperview().offset(20)
+                make.trailing.equalToSuperview().offset(-20)
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            }
         }
         but.addTarget(self, action: #selector(logOut), for: .touchUpInside)
     }
@@ -115,8 +157,60 @@ class ProfileViewController: YoustersStackViewController {
         App.shared.logOut(topController: self)
     }
     
+    private func setUpUserPaketInfo() {
+        let wrap = UIView()
+        wrap.backgroundColor = .secondaryButtonColor
+        wrap.layer.cornerRadius = 8
+        wrap.clipsToBounds = true
+        addWidthArrangedSubView(view: wrap)
+        
+        let note = UILabel(text: "Расход пакетов:", font: Fonts.standart.gilroyMedium(ofSize: 18), textColor: .bgColor, textAlignment: .left, numberOfLines: 1)
+        wrap.addSubview(note)
+        note.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().offset(15)
+            make.top.equalToSuperview().offset(20)
+            make.bottom.equalToSuperview().offset(-20)
+        }
+        
+        let data = UILabel(text: "-/-", font: Fonts.standart.gilroySemiBoldName(ofSize: 17), textColor: .bgColor, textAlignment: .right, numberOfLines: 1)
+        wrap.addSubview(data)
+        data.snp.makeConstraints { (make) in
+            make.trailing.equalToSuperview().offset(-15)
+            make.centerY.equalToSuperview()
+        }
+        
+        UserPaketService.main.getMyPaketsAndUsage { (result) in
+            if let result = result {
+                if result.pakets.isEmpty {
+                    data.text = "Пусто"
+                } else {
+                    data.font = Fonts.standart.gilroyMedium(ofSize: 23)
+                    data.text = "\(result.usage)/\(result.totalPaket())"
+                }
+            } else {
+                data.text = "Неизвестно"
+            }
+        }
+    }
+    
     enum ProfileState {
         case onValidation, active
     }
 }
 
+extension ProfileViewController: ReloadProtocol {
+    func reload() {
+        stackView.arrangedSubviews.forEach({$0.removeFromSuperview()})
+        initView()
+        Haptic.play([.wait(0.1), .haptic(.notification(.success))])
+    }
+}
+
+extension ProfileViewController: ParentViewControllerProtocol {
+    func workWithData(data: Any) {
+        if let paket = data as? Paket {
+            let paymentVC = PaketPaymentViewController(uid: String(paket.id), page: self, paket: paket)
+            navigationController?.pushViewController(paymentVC, animated: true)
+        }
+    }
+}

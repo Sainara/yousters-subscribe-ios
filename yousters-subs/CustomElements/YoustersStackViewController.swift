@@ -66,11 +66,11 @@ class YoustersStackViewController: YoustersViewController {
         view.endEditing(true)
     }
     
-    func addWidthArrangedSubView(view:UIView, spacing:CGFloat? = nil) {
+    func addWidthArrangedSubView(view:UIView, spacing:CGFloat? = nil, offsets:CGFloat = 20) {
         stackView.addArrangedSubview(view)
         view.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.leading.equalToSuperview().offset(offsets)
+            make.trailing.equalToSuperview().offset(-offsets)
         }
         if let space = spacing {
             stackView.setCustomSpacing(space, after: view)

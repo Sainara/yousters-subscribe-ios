@@ -18,6 +18,7 @@ class SaveRestoreProvider {
     private static let userNameKey = "\(baseUserKey)Name"
     private static let userINNKey = "\(baseUserKey)INN"
     private static let userEmailKey = "\(baseUserKey)Email"
+    private static let userIzPhizKey = "\(baseUserKey)IsPhiz"
     
     private init() {}
     
@@ -40,7 +41,7 @@ class SaveRestoreProvider {
         UserDefaults.standard.set(user?.name, forKey: Self.userNameKey)
         UserDefaults.standard.set(user?.inn, forKey: Self.userINNKey)
         UserDefaults.standard.set(user?.email, forKey: Self.userEmailKey)
-
+        UserDefaults.standard.set(user?.isPhiz, forKey: Self.userIzPhizKey)
     }
     
     func restoreUser() -> AbstractUser? {
@@ -50,6 +51,8 @@ class SaveRestoreProvider {
         let name = UserDefaults.standard.string(forKey: Self.userNameKey)
         let email = UserDefaults.standard.string(forKey: Self.userEmailKey)
         let inn = UserDefaults.standard.string(forKey: Self.userINNKey)
-        return AbstractUser(phone: phone, isValid: isValid, isOnValidation: isOnValidation, name: name, inn: inn, email: email)
+        let isPhiz = UserDefaults.standard.bool(forKey: Self.userIzPhizKey)
+        
+        return AbstractUser(phone: phone, isValid: isValid, isOnValidation: isOnValidation, name: name, inn: inn, email: email, isPhiz: isPhiz)
     }
 }

@@ -12,9 +12,9 @@ import WebKit
 class CheckoutViewController: YoustersViewController {
     
     let webView = WKWebView()
-    let parentVC:AgreementPaymentViewController
+    let parentVC:PaymentController
 
-    init(url:String, parentVC:AgreementPaymentViewController) {
+    init(url:String, parentVC:PaymentController) {
         self.parentVC = parentVC
         super.init(nibName: nil, bundle: nil)
         setupView()
@@ -44,8 +44,7 @@ extension CheckoutViewController: WKNavigationDelegate {
         if let url = navigationAction.request.url, url.absoluteStringByTrimmingQuery() == "https://you-scribe.ru/api/v1/checkout/success" {
             self.dismiss(animated: true) {
                 self.parentVC.navigationController?.popViewController(animated: true)
-                self.parentVC.agr_page.agreemant.status = .paid
-                self.parentVC.agr_page.reload()
+                self.parentVC.reload()
             }
         }
         decisionHandler(.allow)

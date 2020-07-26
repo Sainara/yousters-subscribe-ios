@@ -8,8 +8,8 @@
 
 import SwiftyJSON
 
-struct AbstractUser {
-    var phone:String, isValid:Bool, isOnValidation:Bool, name:String?, inn:String?, email:String?
+class AbstractUser {
+    var phone:String, isValid:Bool, isOnValidation:Bool, name:String?, inn:String?, email:String?, isPhiz:Bool?
     
     init(data:JSON) {
         self.phone = data["phone"].stringValue
@@ -18,19 +18,21 @@ struct AbstractUser {
         self.name = data["user_name"].string
         self.inn = data["inn"].string
         self.email = data["email"].string
+        self.isPhiz = data["isPhiz"].bool
     }
     
-    init(phone:String, isValid:Bool, isOnValidation:Bool, name:String?, inn:String?, email:String?) {
+    init(phone:String, isValid:Bool, isOnValidation:Bool, name:String?, inn:String?, email:String?, isPhiz:Bool?) {
         self.phone = phone
         self.isValid = isValid
         self.isOnValidation = isOnValidation
         self.name = name
         self.inn = inn
         self.email = email
+        self.isPhiz = isPhiz
     }
     
     func isSimilar(a:AbstractUser) -> Bool {
-        if a.phone == phone, a.isValid == isValid, a.isOnValidation == isOnValidation, a.email == email, a.inn == inn, a.name == name {
+        if a.phone == phone, a.isValid == isValid, a.isOnValidation == isOnValidation, a.email == email, a.inn == inn, a.name == name, a.isPhiz == isPhiz {
             return true
         }
         return false

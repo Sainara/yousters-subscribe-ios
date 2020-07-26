@@ -16,6 +16,8 @@ class YoustersButtonLink: UIButton {
     var link:String
     var title:String
     
+    var parent:UIViewController?
+    
     init(link:String, fontSize:CGFloat = 17, title:String? = nil, isUnderLined:Bool = false) {
         self.link = link
         self.title = link
@@ -26,11 +28,22 @@ class YoustersButtonLink: UIButton {
         setup(fontSize: fontSize, isUnderLined: isUnderLined)
     }
     
+    init(link:String, fontSize:CGFloat = 17, title:String? = nil, isUnderLined:Bool = false, vc:UIViewController) {
+        self.link = link
+        self.title = link
+        if let title = title {
+            self.title = title
+        }
+        super.init(frame: .zero)
+        parent = vc
+        setup(fontSize: fontSize, isUnderLined: isUnderLined, isInternal: true)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup(fontSize:CGFloat, isUnderLined:Bool) {
+    private func setup(fontSize:CGFloat, isUnderLined:Bool, isInternal:Bool = false) {
         isUserInteractionEnabled = true
         let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
         longPressGR.minimumPressDuration = 0.4 // how long before menu pops up
@@ -47,7 +60,13 @@ class YoustersButtonLink: UIButton {
         setTitleColor(.blackTransp, for: .highlighted)
         contentHorizontalAlignment = .center
         titleLabel?.font = Fonts.standart.gilroyMedium(ofSize: fontSize)
-        addTarget(self, action: #selector(openDoc), for: .touchUpInside)
+        
+        if isInternal {
+            addTarget(self, action: #selector(openInternal), for: .touchUpInside)
+        } else {
+            addTarget(self, action: #selector(openExternal), for: .touchUpInside)
+        }
+        
         
         snp.makeConstraints { (make) in
             make.height.equalTo(20)
@@ -83,7 +102,7 @@ class YoustersButtonLink: UIButton {
         resignFirstResponder()
     }
     
-    @objc func openDoc() {
+    @objc private func openExternal() {
         guard var url = URL(string: link) else {return}
         
         if !(["http", "https"].contains(url.scheme?.lowercased())) {
@@ -93,5 +112,11 @@ class YoustersButtonLink: UIButton {
         }
 
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    @objc private func openInternal() {
+        let webVC = YoustersWKWebViewController(url: link)
+        webVC.modalPresentationStyle = .popover
+        parent?.present(webVC, animated: true, completion: nil)
     }
 }

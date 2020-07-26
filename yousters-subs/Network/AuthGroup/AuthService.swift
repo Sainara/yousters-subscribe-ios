@@ -13,7 +13,7 @@ class AuthService: YoustersNetwork {
     
     private var sessionID:String?
     
-    func sendPhone(phoneNumber:String, complition: @escaping (Bool)->Void) {
+    func sendPhone(phoneNumber:String, complition: @escaping (Bool, String?)->Void) {
         let parameters = ["number" : phoneNumber]
         AF.request(URLs.auth, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
             //print(response.request?.url)
@@ -24,13 +24,13 @@ class AuthService: YoustersNetwork {
                     let sessionID = json["sessionid"].stringValue
                     self.sessionID = sessionID
                     print(sessionID)
-                    complition(true)
+                    complition(true, nil)
                 } else {
-                    complition(false)
+                    complition(false, json["message"].stringValue)
                 }
             case .failure(let error):
                 debugPrint(error)
-                complition(false)
+                complition(false, "noConnection")
             }
             
         }

@@ -42,7 +42,14 @@ class CreateAgreementViewController: YoustersStackViewController {
     
     private func setup() {
         addWidthArrangedSubView(view: nameField)
-        addWidthArrangedSubView(view: fileButton, spacing: 50)
+        nameField.delegate = self
+        
+        addWidthArrangedSubView(view: fileButton, spacing: 8)
+        fileButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        
+        let note = UILabel(text: "Подходят файлы в формате PDF весом не более 50Мб", font: Fonts.standart.gilroyRegular(ofSize: 13), textColor: .blackTransp, textAlignment: .center, numberOfLines: 0)
+        addWidthArrangedSubView(view: note)
+        
         fileButton.addTarget(self, action: #selector(fromFilesButTap), for: .touchUpInside)
         sendButton.isEnabled = false
         view.addSubview(sendButton)
@@ -102,5 +109,13 @@ extension CreateAgreementViewController: UIDocumentPickerDelegate, UINavigationC
         controller.dismiss(animated: true) {
             //self.fromFilesBut.setTitle("Выбрать из файлов", for: .normal)
         }
+    }
+}
+
+extension CreateAgreementViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+        return newLength <= 200
     }
 }

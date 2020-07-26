@@ -1,29 +1,33 @@
 //
-//  AgreementPaymentViewController.swift
+//  PaymentController.swift
 //  yousters-subs
 //
-//  Created by Ян Мелоян on 24.06.2020.
+//  Created by Ян Мелоян on 26.07.2020.
 //  Copyright © 2020 molidl. All rights reserved.
 //
 
 import UIKit
-import PassKit
 
-class AgreementPaymentViewController: YoustersStackViewController {
+class PaymentController: YoustersStackViewController, ReloadProtocol {
     
     let payButton = YoustersButton(text: "Оплатить")
     
-    let agr_uid:String
-    let agr_page:AgreementPageViewController
+    let uid:String
+    let reload_page:ReloadProtocol
     
+    var items:[Item] = []
+    var type:PaymentService.PaymentType
+        
     let promoField = YoustersTextField(placehldr: "Промокод", fontSize: 19)
     let resultOfPromo = UILabel(text: "", font: Fonts.standart.gilroyRegular(ofSize: 15), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
     
     let summaryView = UIView()
 
-    init(uid:String, page:AgreementPageViewController) {
-        agr_uid = uid
-        agr_page = page
+    init(uid:String, page:ReloadProtocol, items:[Item], type:PaymentService.PaymentType) {
+        self.uid = uid
+        reload_page = page
+        self.items = items
+        self.type = type
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .white
@@ -39,18 +43,13 @@ class AgreementPaymentViewController: YoustersStackViewController {
         
         navigationItem.title = "Оплата"
         navigationItem.largeTitleDisplayMode = .always
-//        let barItem = UIBarButtonItem(image: .init(imageLiteralResourceName: "share_doc"), style: .plain, target: self, action: #selector(shareTapped))
-//        barItem.imageInsets = .init(top: 4, left: 0, bottom: -4, right: 0)
-//        barItem.tintColor = .bgColor
-//        
-//        navigationItem.rightBarButtonItem = barItem
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setup() {
+    internal func setup() {
         
         addItems()
         //addPromoCode()
@@ -60,17 +59,18 @@ class AgreementPaymentViewController: YoustersStackViewController {
     
     }
     
-    private func addItems() {
-        addItem(title: "Разовое подписание", price: "39.00₽")
+    internal func addItems() {
+        items.forEach({addItem(item: $0)})
     }
     
-    private func addItem(title:String, price:String) {
+    internal func addItem(item:Item) {
         let container = UIView()
         addWidthArrangedSubView(view: container, spacing: 30)
         
-        let priceLabel = UILabel(text: title, font: Fonts.standart.gilroyMedium(ofSize: 19), textColor: .bgColor, textAlignment: .left, numberOfLines: 1)
+        let priceLabel = UILabel(text: item.title, font: Fonts.standart.gilroyMedium(ofSize: 19), textColor: .bgColor, textAlignment: .left, numberOfLines: 1)
         
-        let price = UILabel(text: price, font: Fonts.standart.gilroyMedium(ofSize: 22), textColor: .bgColor, textAlignment: .right, numberOfLines: 1)
+        let priceText = "\(item.amount) x \(item.price).00₽"
+        let price = UILabel(text: priceText, font: Fonts.standart.gilroyMedium(ofSize: 22), textColor: .bgColor, textAlignment: .right, numberOfLines: 1)
         
         container.addSubview(priceLabel)
         container.addSubview(price)
@@ -90,12 +90,20 @@ class AgreementPaymentViewController: YoustersStackViewController {
         }
     }
     
-    private func makeSummary() {
+    internal func makeSummaryString() -> Int {
+        var price = 0
+        items.forEach { (item) in
+            price += item.amount * item.price
+        }
+        return price
+    }
+    
+    internal func makeSummary() {
         view.addSubview(summaryView)
         
         let priceLabel = UILabel(text: "Итого:", font: Fonts.standart.gilroyMedium(ofSize: 23), textColor: .bgColor, textAlignment: .left, numberOfLines: 1)
         
-        let price = UILabel(text: "39.00₽", font: Fonts.standart.gilroySemiBoldName(ofSize: 26), textColor: .bgColor, textAlignment: .right, numberOfLines: 1)
+        let price = UILabel(text: "\(makeSummaryString()).00₽", font: Fonts.standart.gilroySemiBoldName(ofSize: 26), textColor: .bgColor, textAlignment: .right, numberOfLines: 1)
         
         summaryView.addSubview(priceLabel)
         summaryView.addSubview(price)
@@ -132,10 +140,10 @@ class AgreementPaymentViewController: YoustersStackViewController {
         payButton.addTarget(self, action: #selector(pay), for: .touchUpInside)
     }
     
-    @objc private func pay() {
+    @objc internal func pay() {
         let loading = UIAlertController(style: .loading)
         self.present(loading, animated: true, completion: nil)
-        PaymentService.main.initPayment(uid: agr_uid) { (result) in
+        PaymentService.main.initPayment(type: type, uid: uid) { (result) in
             loading.dismiss(animated: false) {
                 guard let uid = result else {
                     return
@@ -147,7 +155,7 @@ class AgreementPaymentViewController: YoustersStackViewController {
         }
     }
     
-    private func addPromoCode() {
+    internal func addPromoCode() {
         let container = UIView()
         
         container.backgroundColor = .backgroundColor
@@ -183,12 +191,12 @@ class AgreementPaymentViewController: YoustersStackViewController {
         apply.addTarget(self, action: #selector(checkPromo), for: .touchUpInside)
     }
     
-    private func addApplePay() {
+    internal func addApplePay() {
         view.addSubview(payButton)
         
     }
     
-    private func setupAgreement() {
+    internal func setupAgreement() {
         let container = UIView()
         
         let text = UILabel(text: "Я согласен с условиями пользования", font: Fonts.standart.gilroyMedium(ofSize: 15), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
@@ -236,29 +244,12 @@ class AgreementPaymentViewController: YoustersStackViewController {
         resultOfPromo.textColor = .green
     }
     
+    func reload() {
+        
+    }
     
-//    private var paymentRequest: PKPaymentRequest = {
-//        let request = PKPaymentRequest()
-//        request.merchantIdentifier = "merchant.com.tommysirenko.yousterssubsapp"
-//        request.supportedNetworks = [.visa, .masterCard]
-//        //request.supportedCountries = ["UA"]
-//        request.merchantCapabilities = .capability3DS
-//        request.countryCode = "RU"
-//        request.currencyCode = "RUB"
-//        request.paymentSummaryItems = [PKPaymentSummaryItem(label: "Подписание", amount: 39.99)]
-//        return request
-//    }()
-
+    struct Item {
+        var title:String, price:Int, amount:Int
+    }
 }
 
-//extension AgreementPaymentViewController: PKPaymentAuthorizationViewControllerDelegate {
-//
-//    func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
-//        completion(PKPaymentAuthorizationResult(status: .success, errors: nil))
-//    }
-//
-//    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-//        controller.dismiss(animated: true, completion: nil)
-//    }
-//
-//}

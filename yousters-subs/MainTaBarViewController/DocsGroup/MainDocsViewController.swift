@@ -80,7 +80,13 @@ class MainDocsViewController: YoustersViewController {
     }
     
     @objc private func add() {
-        navigationController?.pushViewController(CreateAgreementViewController(), animated: true)
+        
+        if agreements.filter({$0.status == .initial}).count >= 5 {
+            let alert = UIAlertController(style: .message, title: nil, message: "Вы не можете имить более 5 неоплаченных договоров")
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            navigationController?.pushViewController(CreateAgreementViewController(), animated: true)
+        }
     }
 }
 

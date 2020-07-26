@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PassKit
+import Haptica
 
 class AgreementPageViewController: YoustersStackViewController {
     
@@ -32,6 +32,7 @@ class AgreementPageViewController: YoustersStackViewController {
             addCloseItem()
             setupTitle()
             App.shared.isNeedUpdateDocs = true
+            Haptic.notification(.success).generate()
         }
         
         setup()
@@ -68,17 +69,18 @@ class AgreementPageViewController: YoustersStackViewController {
         
         switch agreemant.status {
         case .initial:
-            let payButton = YoustersButton(text: "Оплатить и подписать")
-            view.addSubview(payButton)
-            payButton.snp.makeConstraints { (make) in
-                make.leading.equalToSuperview().offset(20)
-                make.trailing.equalToSuperview().offset(-20)
-                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            
+            UserPaketService.main.getMyPaketsAndUsage { (paketAndUsage) in
+                if let paketAndUsage = paketAndUsage, paketAndUsage.canUse() {
+                    self.addPayOrPaketButton(havePaket: true)
+                } else {
+                    self.addPayOrPaketButton(havePaket: false)
+                    if !user.isValid {
+                        self.addInfo(title: "Вы можете оплатить договор, но сможете подписать только после верификации вашего профиля", sub: "Примечание")
+                    }
+                }
             }
-            payButton.addTarget(self, action: #selector(toPay), for: .touchUpInside)
-            if !user.isValid {
-                addInfo(title: "Вы можете оплатить договор, но сможете подписать только после верификации вашего профиля", sub: "Примечание")
-            }
+            
         case .paid, .waitKontrAgent, .active:
             addSubTitle(title: "Подписали")
             AgreementService.main.getAgreementSubs(uid: agreemant.uid) { (result) in
@@ -101,6 +103,24 @@ class AgreementPageViewController: YoustersStackViewController {
             }
         default:
             break
+        }
+    }
+    
+    private func addPayOrPaketButton(havePaket:Bool) {
+        let payButton = YoustersButton(text: "")
+        if havePaket {
+            payButton.setTitle("Использовать пакет", for: .normal)
+            payButton.addTarget(self, action: #selector(usePaket), for: .touchUpInside)
+        } else {
+            payButton.setTitle("Оплатить и подписать", for: .normal)
+            payButton.addTarget(self, action: #selector(toPay), for: .touchUpInside)
+        }
+        
+        view.addSubview(payButton)
+        payButton.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
     }
     
@@ -179,16 +199,34 @@ class AgreementPageViewController: YoustersStackViewController {
         navigationController?.pushViewController(AgreementPaymentViewController(uid: agreemant.uid, page: self), animated: true)
     }
     
-    enum InitType {
-        case internal_, deepLink
+    @objc private func usePaket() {
+        let alert = UIAlertController(style: .loading)
+        self.present(alert, animated: true, completion: nil)
+        
+        AgreementPaketService.main.usePaket(uid: agreemant.uid) { (result, error) in
+            alert.dismiss(animated: true) {
+                if result {
+                    self.agreemant.status = .paid
+                    self.reload()
+                    App.shared.isNeedUpdateProfile = true
+                } else {
+                    print(error)
+                    PrimaryError.showAlertWithError(vc: self, error: error)
+                }
+            }
+        }
     }
     
+    enum InitType {
+        case internal_, deepLink
+    }    
 }
 
 extension AgreementPageViewController: ReloadProtocol {
     func reload() {
         stackView.arrangedSubviews.forEach({$0.removeFromSuperview()})
         setup()
+        Haptic.play([.wait(0.3), .haptic(.notification(.success))])
         App.shared.isNeedUpdateDocs = true
     }
 }

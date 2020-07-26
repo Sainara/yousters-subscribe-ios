@@ -85,16 +85,15 @@ class EnterPhoneViewController: YoustersViewController {
         let alert = UIAlertController(style: .loading)
         self.present(alert, animated: true, completion: nil)
         
-        AuthService.main.sendPhone(phoneNumber: phoneField.text!) { (result) in
+        AuthService.main.sendPhone(phoneNumber: phoneField.text!) { (result, error) in
             alert.dismiss(animated: false) {
                 if result {
                     let vc = EnterCodeViewController(phone: self.phoneField.text!)
                     vc.modalPresentationStyle = .popover
                     self.present(vc, animated: true, completion: nil)
                 } else {
-                    print("error")
-                    let alert = UIAlertController(style: .errorMessage)
-                    self.present(alert, animated: true, completion: nil)
+                    print(error)
+                    PrimaryError.showAlertWithError(vc: self, error: error)
                 }
             }
         }

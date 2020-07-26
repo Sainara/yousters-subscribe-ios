@@ -34,6 +34,7 @@ class MainTabBarViewController: UITabBarController {
             return
         }
         AuthService.main.me { (user) in
+            print("in me from tab")
             guard let user = user else {return}
             if !cuser.isSimilar(a: user) {
                 self.buildTabs()

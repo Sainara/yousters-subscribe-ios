@@ -19,10 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //FirebaseApp.configure()
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let homeViewController = RouteProvider.shared.initViewController()
-        window!.rootViewController = homeViewController
-        window!.makeKeyAndVisible()
+        if #available(iOS 13.0, *) {} else {
+            window = UIWindow(frame: UIScreen.main.bounds)
+            let homeViewController = RouteProvider.shared.initViewController()
+            window!.rootViewController = homeViewController
+            window!.makeKeyAndVisible()
+        }
         
         return true
     }

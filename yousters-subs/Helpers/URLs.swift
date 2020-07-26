@@ -35,6 +35,10 @@ struct URLs {
         return "\(baseAPI)checkout/\(uid)"
     }
     
+    static let getPakets = "\(baseAPI)pakets"
+    static let getMyPaketsAndUsage = "\(getPakets)/my"
+    static let usePaket = "\(getPakets)/use"
+    
     static func getShare(uid:String) -> URL {
         let shareURL = "\(base)case/\(uid)"
         guard let url = URL(string: shareURL) else {

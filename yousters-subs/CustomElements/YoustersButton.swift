@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Haptica
 
 class YoustersButton: UIButton {
 
@@ -34,13 +35,14 @@ class YoustersButton: UIButton {
             setBackgroundColor(color: .buttonDisabled, forState: .disabled)
             setBackgroundColor(color: .buttonHighlited, forState: .highlighted)
             titleLabel?.textColor = .white
+            isHaptic = true
+            hapticType = .impact(.light)
         case .secondary:
             setBackgroundColor(color: .secondaryButtonColor, forState: .normal)
             setBackgroundColor(color: .secondaryButtonDisabled, forState: .disabled)
             setBackgroundColor(color: .secondaryButtonHighlited, forState: .highlighted)
             setTitleColor(.bgColor, for: .normal)
         }
-        
         
         snp.makeConstraints { (make) in
             make.height.equalTo(height)

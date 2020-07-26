@@ -39,6 +39,17 @@
 		3465D01E2494D94400374739 /* AbstractUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D01D2494D94300374739 /* AbstractUser.swift */; };
 		3465D0202494DBFC00374739 /* EnterValidateDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D01F2494DBFC00374739 /* EnterValidateDataViewController.swift */; };
 		3465D0222494DE6200374739 /* SaveRestoreProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3465D0212494DE6200374739 /* SaveRestoreProvider.swift */; };
+		346BCF8D24CCBDC40047C24B /* YoustersWKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCF8C24CCBDC40047C24B /* YoustersWKWebViewController.swift */; };
+		346BCF8F24CCC0E50047C24B /* Paket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCF8E24CCC0E50047C24B /* Paket.swift */; };
+		346BCF9224CCC89A0047C24B /* PaketsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCF9124CCC89A0047C24B /* PaketsCollectionView.swift */; };
+		346BCF9524CCC9C30047C24B /* PaketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCF9424CCC9C30047C24B /* PaketCell.swift */; };
+		346BCF9824CCEC7C0047C24B /* UserPaketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCF9724CCEC7C0047C24B /* UserPaketService.swift */; };
+		346BCF9B24CD9BCA0047C24B /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCF9A24CD9BCA0047C24B /* PaymentController.swift */; };
+		346BCF9E24CDA0200047C24B /* PaketPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCF9D24CDA0200047C24B /* PaketPaymentViewController.swift */; };
+		346BCFA024CDA12E0047C24B /* CellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCF9F24CDA12E0047C24B /* CellDelegate.swift */; };
+		346BCFA224CDA2740047C24B /* ParentViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCFA124CDA2740047C24B /* ParentViewControllerProtocol.swift */; };
+		346BCFA524CDD14E0047C24B /* PrimaryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCFA424CDD14E0047C24B /* PrimaryError.swift */; };
+		346BCFA724CDFE2A0047C24B /* AgreementPaketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346BCFA624CDFE2A0047C24B /* AgreementPaketService.swift */; };
 		346C1FB524A4CBFA0097772A /* DeepLinkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346C1FB424A4CBFA0097772A /* DeepLinkType.swift */; };
 		346C1FB724A4CC380097772A /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346C1FB624A4CC380097772A /* DeepLinkManager.swift */; };
 		346C1FB924A4CC8E0097772A /* DeeplinkNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346C1FB824A4CC8E0097772A /* DeeplinkNavigator.swift */; };
@@ -119,6 +130,17 @@
 		3465D01D2494D94300374739 /* AbstractUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractUser.swift; sourceTree = "<group>"; };
 		3465D01F2494DBFC00374739 /* EnterValidateDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterValidateDataViewController.swift; sourceTree = "<group>"; };
 		3465D0212494DE6200374739 /* SaveRestoreProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRestoreProvider.swift; sourceTree = "<group>"; };
+		346BCF8C24CCBDC40047C24B /* YoustersWKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersWKWebViewController.swift; sourceTree = "<group>"; };
+		346BCF8E24CCC0E50047C24B /* Paket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paket.swift; sourceTree = "<group>"; };
+		346BCF9124CCC89A0047C24B /* PaketsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaketsCollectionView.swift; sourceTree = "<group>"; };
+		346BCF9424CCC9C30047C24B /* PaketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaketCell.swift; sourceTree = "<group>"; };
+		346BCF9724CCEC7C0047C24B /* UserPaketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPaketService.swift; sourceTree = "<group>"; };
+		346BCF9A24CD9BCA0047C24B /* PaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentController.swift; sourceTree = "<group>"; };
+		346BCF9D24CDA0200047C24B /* PaketPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaketPaymentViewController.swift; sourceTree = "<group>"; };
+		346BCF9F24CDA12E0047C24B /* CellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDelegate.swift; sourceTree = "<group>"; };
+		346BCFA124CDA2740047C24B /* ParentViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewControllerProtocol.swift; sourceTree = "<group>"; };
+		346BCFA424CDD14E0047C24B /* PrimaryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryError.swift; sourceTree = "<group>"; };
+		346BCFA624CDFE2A0047C24B /* AgreementPaketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementPaketService.swift; sourceTree = "<group>"; };
 		346C1FB424A4CBFA0097772A /* DeepLinkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkType.swift; sourceTree = "<group>"; };
 		346C1FB624A4CC380097772A /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 		346C1FB824A4CC8E0097772A /* DeeplinkNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkNavigator.swift; sourceTree = "<group>"; };
@@ -177,6 +199,7 @@
 		345D150C2497959100228CF4 /* ProfileGroup */ = {
 			isa = PBXGroup;
 			children = (
+				346BCF9024CCC84B0047C24B /* ProfileSubViewGroup */,
 				345D150D249795CF00228CF4 /* ProfileViewController.swift */,
 			);
 			path = ProfileGroup;
@@ -222,6 +245,8 @@
 		3465CF1A248D70AD00374739 /* yousters-subs */ = {
 			isa = PBXGroup;
 			children = (
+				346BCFA324CDD12C0047C24B /* ErrorGroup */,
+				346BCF9924CD99490047C24B /* PaymentGroup */,
 				346C1FB324A4CAF40097772A /* DeepLinking */,
 				34789D60249C2EEA0020FAD5 /* Protocols */,
 				34789D5A249A9D560020FAD5 /* HashEmoji.txt */,
@@ -267,6 +292,7 @@
 		3465CF3A248D83B600374739 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				346BCF9624CCEC300047C24B /* PaketGroup */,
 				349028C124C876B40044D6B2 /* YoustersNetwork.swift */,
 				349028BE24C874A90044D6B2 /* AgreementGroup */,
 				349028BB24C768E20044D6B2 /* AuthGroup */,
@@ -310,6 +336,7 @@
 				348982932494EF7900BB55E8 /* YoustersStackViewController.swift */,
 				3465D0192494247D00374739 /* YoustersAlert.swift */,
 				345D150A24978ECB00228CF4 /* YoustersNavigationController.swift */,
+				346BCF8C24CCBDC40047C24B /* YoustersWKWebViewController.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -340,8 +367,62 @@
 				3465D01D2494D94300374739 /* AbstractUser.swift */,
 				345D15132497D68A00228CF4 /* Agreement.swift */,
 				34789D5C249AC3A50020FAD5 /* Subscriber.swift */,
+				346BCF8E24CCC0E50047C24B /* Paket.swift */,
 			);
 			path = Structs;
+			sourceTree = "<group>";
+		};
+		346BCF9024CCC84B0047C24B /* ProfileSubViewGroup */ = {
+			isa = PBXGroup;
+			children = (
+				346BCF9324CCC9900047C24B /* CollectionCell */,
+				346BCF9124CCC89A0047C24B /* PaketsCollectionView.swift */,
+			);
+			path = ProfileSubViewGroup;
+			sourceTree = "<group>";
+		};
+		346BCF9324CCC9900047C24B /* CollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				346BCF9424CCC9C30047C24B /* PaketCell.swift */,
+			);
+			path = CollectionCell;
+			sourceTree = "<group>";
+		};
+		346BCF9624CCEC300047C24B /* PaketGroup */ = {
+			isa = PBXGroup;
+			children = (
+				346BCF9724CCEC7C0047C24B /* UserPaketService.swift */,
+				346BCFA624CDFE2A0047C24B /* AgreementPaketService.swift */,
+			);
+			path = PaketGroup;
+			sourceTree = "<group>";
+		};
+		346BCF9924CD99490047C24B /* PaymentGroup */ = {
+			isa = PBXGroup;
+			children = (
+				346BCF9C24CD9BD20047C24B /* SubPaymentsGroup */,
+				34F2D97124BD05CB0008DC2A /* CheckoutViewController.swift */,
+				346BCF9A24CD9BCA0047C24B /* PaymentController.swift */,
+			);
+			path = PaymentGroup;
+			sourceTree = "<group>";
+		};
+		346BCF9C24CD9BD20047C24B /* SubPaymentsGroup */ = {
+			isa = PBXGroup;
+			children = (
+				34864CFC24A34A43008277B6 /* AgreementPaymentViewController.swift */,
+				346BCF9D24CDA0200047C24B /* PaketPaymentViewController.swift */,
+			);
+			path = SubPaymentsGroup;
+			sourceTree = "<group>";
+		};
+		346BCFA324CDD12C0047C24B /* ErrorGroup */ = {
+			isa = PBXGroup;
+			children = (
+				346BCFA424CDD14E0047C24B /* PrimaryError.swift */,
+			);
+			path = ErrorGroup;
 			sourceTree = "<group>";
 		};
 		346C1FB324A4CAF40097772A /* DeepLinking */ = {
@@ -358,10 +439,8 @@
 		34789D54249A37410020FAD5 /* AgreementsSubViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				34F2D97024BD03A60008DC2A /* AgreementPaymentGroup */,
-				34789D50249A20170020FAD5 /* CreateAgreementViewController.swift */,
+				34F2D97024BD03A60008DC2A /* AgreementSubGroup */,
 				34789D55249A377C0020FAD5 /* AgreementPageViewController.swift */,
-				34789D5E249BA3350020FAD5 /* EnterDocsCodeViewController.swift */,
 			);
 			path = AgreementsSubViewControllers;
 			sourceTree = "<group>";
@@ -371,6 +450,8 @@
 			children = (
 				34789D61249C2EFF0020FAD5 /* ReloadProtocol.swift */,
 				3463D09624AA43E10052DB93 /* AddCloseItemProtocol.swift */,
+				346BCF9F24CDA12E0047C24B /* CellDelegate.swift */,
+				346BCFA124CDA2740047C24B /* ParentViewControllerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -427,13 +508,13 @@
 			path = NonPhizValidationGroup;
 			sourceTree = "<group>";
 		};
-		34F2D97024BD03A60008DC2A /* AgreementPaymentGroup */ = {
+		34F2D97024BD03A60008DC2A /* AgreementSubGroup */ = {
 			isa = PBXGroup;
 			children = (
-				34864CFC24A34A43008277B6 /* AgreementPaymentViewController.swift */,
-				34F2D97124BD05CB0008DC2A /* CheckoutViewController.swift */,
+				34789D50249A20170020FAD5 /* CreateAgreementViewController.swift */,
+				34789D5E249BA3350020FAD5 /* EnterDocsCodeViewController.swift */,
 			);
-			path = AgreementPaymentGroup;
+			path = AgreementSubGroup;
 			sourceTree = "<group>";
 		};
 		61C63E653943CDE48486D64E /* Frameworks */ = {
@@ -564,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				348982942494EF7900BB55E8 /* YoustersStackViewController.swift in Sources */,
+				346BCFA724CDFE2A0047C24B /* AgreementPaketService.swift in Sources */,
 				34789D4F24991FCA0020FAD5 /* YoustersPhoneNumberTextField.swift in Sources */,
 				348982922494E22F00BB55E8 /* RouteProvider.swift in Sources */,
 				345D151224979D5600228CF4 /* MainDocsViewController.swift in Sources */,
@@ -572,6 +654,7 @@
 				34789D51249A20170020FAD5 /* CreateAgreementViewController.swift in Sources */,
 				3465D0202494DBFC00374739 /* EnterValidateDataViewController.swift in Sources */,
 				3465D0222494DE6200374739 /* SaveRestoreProvider.swift in Sources */,
+				346BCF9E24CDA0200047C24B /* PaketPaymentViewController.swift in Sources */,
 				3465CF41248D8CC100374739 /* EnterCodeViewController.swift in Sources */,
 				34789D5F249BA3350020FAD5 /* EnterDocsCodeViewController.swift in Sources */,
 				3465CFFD24938B8700374739 /* URLs.swift in Sources */,
@@ -582,13 +665,17 @@
 				34789D58249A4E820020FAD5 /* YoustersButtonLink.swift in Sources */,
 				34789D5D249AC3A50020FAD5 /* Subscriber.swift in Sources */,
 				3465CF20248D70AD00374739 /* ViewController.swift in Sources */,
+				346BCFA224CDA2740047C24B /* ParentViewControllerProtocol.swift in Sources */,
+				346BCFA024CDA12E0047C24B /* CellDelegate.swift in Sources */,
 				3489829A24966C1000BB55E8 /* ValidateDocsService.swift in Sources */,
 				349028C224C876B40044D6B2 /* YoustersNetwork.swift in Sources */,
 				3465D0122494112C00374739 /* App.swift in Sources */,
 				34C06DA024BB9D5B0003157E /* SberIDAuthViewController.swift in Sources */,
 				34789D62249C2EFF0020FAD5 /* ReloadProtocol.swift in Sources */,
+				346BCFA524CDD14E0047C24B /* PrimaryError.swift in Sources */,
 				3465D01A2494247D00374739 /* YoustersAlert.swift in Sources */,
 				3465CF39248D83A000374739 /* EnterPhoneViewController.swift in Sources */,
+				346BCF8D24CCBDC40047C24B /* YoustersWKWebViewController.swift in Sources */,
 				3465CF35248D7A9900374739 /* MainTabBarViewController.swift in Sources */,
 				34789D56249A377C0020FAD5 /* AgreementPageViewController.swift in Sources */,
 				3465D00B24939F3400374739 /* YoustersButton.swift in Sources */,
@@ -600,10 +687,14 @@
 				345D15172497D75600228CF4 /* AgreementCell.swift in Sources */,
 				349028C024C874DE0044D6B2 /* SubscriptionServive.swift in Sources */,
 				34C06DA224BB9D8B0003157E /* SelectPhizAuthViewController.swift in Sources */,
+				346BCF9B24CD9BCA0047C24B /* PaymentController.swift in Sources */,
 				3465D00624938F2600374739 /* Fonts.swift in Sources */,
+				346BCF9524CCC9C30047C24B /* PaketCell.swift in Sources */,
 				3465CF3C248D83CF00374739 /* AuthService.swift in Sources */,
 				34789D53249A20590020FAD5 /* AgreementService.swift in Sources */,
 				345D150B24978ECB00228CF4 /* YoustersNavigationController.swift in Sources */,
+				346BCF9824CCEC7C0047C24B /* UserPaketService.swift in Sources */,
+				346BCF9224CCC89A0047C24B /* PaketsCollectionView.swift in Sources */,
 				346C1FB524A4CBFA0097772A /* DeepLinkType.swift in Sources */,
 				346C1FB724A4CC380097772A /* DeepLinkManager.swift in Sources */,
 				3465CF1C248D70AD00374739 /* AppDelegate.swift in Sources */,
@@ -611,6 +702,7 @@
 				3463D09724AA43E20052DB93 /* AddCloseItemProtocol.swift in Sources */,
 				34C06DAA24BBA5020003157E /* SberButton.swift in Sources */,
 				349028BD24C7690A0044D6B2 /* SberService.swift in Sources */,
+				346BCF8F24CCC0E50047C24B /* Paket.swift in Sources */,
 				345D150E249795CF00228CF4 /* ProfileViewController.swift in Sources */,
 				345D15142497D68A00228CF4 /* Agreement.swift in Sources */,
 				348982982495831E00BB55E8 /* Validations.swift in Sources */,
