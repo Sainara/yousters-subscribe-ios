@@ -8,20 +8,22 @@
 
 import UIKit
 import Haptica
+import StoreKit
 
 class PaketsCollectionView: UICollectionView {
 
-    var pakets:[Paket] = []
+    var pakets:[SKProduct] = []
     var parentVC:ParentViewControllerProtocol?
     
     let cellID = "paketCell"
     
-    init(pakets:[Paket]) {
+    init(pakets:[SKProduct]) {
         self.pakets = pakets
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
-        layout.itemSize = CGSize(width: 250, height: 260)
+        let width = 250
+        layout.itemSize = CGSize(width: width, height: 260)
         layout.minimumInteritemSpacing = 25
         layout.scrollDirection = .horizontal
         
@@ -64,7 +66,8 @@ extension PaketsCollectionView: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        let proportionalOffset = self.contentOffset.x / 260.0
+        let pageWidth = CGFloat(260.0)
+        let proportionalOffset = self.contentOffset.x / pageWidth
         indexOfCellBeforeDragging = Int(round(proportionalOffset))
     }
     
@@ -73,9 +76,9 @@ extension PaketsCollectionView: UICollectionViewDataSource, UICollectionViewDele
         targetContentOffset.pointee = scrollView.contentOffset
 
         // Calculate conditions
-        let pageWidth = 260.0// The width your page should have (plus a possible margin)
+        let pageWidth = CGFloat(260.0)// The width your page should have (plus a possible margin)
         let collectionViewItemCount = pakets.count// The number of items in this section
-        let proportionalOffset = self.contentOffset.x / 260.0
+        let proportionalOffset = self.contentOffset.x / pageWidth
         let indexOfMajorCell = Int(round(proportionalOffset))
         let swipeVelocityThreshold: CGFloat = 0.5
         let hasEnoughVelocityToSlideToTheNextCell = indexOfCellBeforeDragging + 1 < collectionViewItemCount && velocity.x > swipeVelocityThreshold
@@ -86,7 +89,7 @@ extension PaketsCollectionView: UICollectionViewDataSource, UICollectionViewDele
         if didUseSwipeToSkipCell {
             // Animate so that swipe is just continued
             let snapToIndex = indexOfCellBeforeDragging + (hasEnoughVelocityToSlideToTheNextCell ? 1 : -1)
-            let toValue = 260.0 * CGFloat(snapToIndex)
+            let toValue = pageWidth * CGFloat(snapToIndex)
             UIView.animate(
                 withDuration: 0.3,
                 delay: 0,

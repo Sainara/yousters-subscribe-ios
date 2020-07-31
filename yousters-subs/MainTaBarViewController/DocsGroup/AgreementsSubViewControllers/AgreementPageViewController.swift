@@ -8,10 +8,13 @@
 
 import UIKit
 import Haptica
+import StoreKit
 
 class AgreementPageViewController: YoustersStackViewController {
     
     var agreemant:Agreement
+    
+    let loading = UIAlertController(style: .loading)
 
     init(agreemant:Agreement, type:InitType = .internal_) {
         self.agreemant = agreemant
@@ -196,7 +199,19 @@ class AgreementPageViewController: YoustersStackViewController {
     }
     
     @objc private func toPay() {
-        navigationController?.pushViewController(AgreementPaymentViewController(uid: agreemant.uid, page: self), animated: true)
+        
+        let singlePayID = "com.tommysirenko.yousterssubsapp.single"
+        self.present(loading, animated: false, completion: nil)
+        fetchProducts(matchingIdentifiers: [singlePayID])
+    }
+    
+    fileprivate func fetchProducts(matchingIdentifiers identifiers: [String]) {
+        // Create a set for the product identifiers.
+        let productIdentifiers = Set(identifiers)
+        
+        let productRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
+        productRequest.delegate = self
+        productRequest.start()
     }
     
     @objc private func usePaket() {
@@ -210,7 +225,7 @@ class AgreementPageViewController: YoustersStackViewController {
                     self.reload()
                     App.shared.isNeedUpdateProfile = true
                 } else {
-                    print(error)
+                    print(error!)
                     PrimaryError.showAlertWithError(vc: self, error: error)
                 }
             }
@@ -235,5 +250,24 @@ extension MainDocsViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         let mainViewController = self.presentingViewController as? MainDocsViewController
         mainViewController?.getData()
+    }
+}
+
+extension AgreementPageViewController: SKProductsRequestDelegate {
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        DispatchQueue.main.async {
+            self.loading.dismiss(animated: false) {
+                if !response.products.isEmpty {
+                    if let product = response.products.first {
+                        print(product.productIdentifier)
+                        self.navigationController?.pushViewController(AgreementPaymentViewController(uid: self.agreemant.uid, page: self, product: product), animated: true)
+                    }
+                }
+            }
+        }
+        
+        for invalidIdentifier in response.invalidProductIdentifiers {
+            print("!!???! \(invalidIdentifier)")
+        }
     }
 }

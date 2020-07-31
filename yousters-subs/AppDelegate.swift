@@ -7,7 +7,9 @@
 //
 
 import UIKit
-import SberbankSDK
+import Siren
+import StoreKit
+//import SberbankSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,12 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         //FirebaseApp.configure()
-        
+                
         if #available(iOS 13.0, *) {} else {
             window = UIWindow(frame: UIScreen.main.bounds)
             let homeViewController = RouteProvider.shared.initViewController()
             window!.rootViewController = homeViewController
             window!.makeKeyAndVisible()
+            
+            
+            //Siren.shared.wail()
         }
         
         return true
@@ -57,14 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         print(url)
-        if url.scheme == "you-scribe" && url.host == "sberidauth" {
-            SBKAuthManager.getResponseFrom(url) { response in
-                print(response.error)
-                print(response.isSuccess)
-                print(response.nonce)
-            }
-            return true
-        }
+//        if url.scheme == "you-scribe" && url.host == "sberidauth" {
+//            SBKAuthManager.getResponseFrom(url) { response in
+//                print(response.error)
+//                print(response.isSuccess)
+//                print(response.nonce)
+//            }
+//            return true
+//        }
         DeepLinkManager.standart.handleDeeplink(url: url)
         return true
     }

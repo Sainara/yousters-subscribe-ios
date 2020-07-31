@@ -54,6 +54,7 @@ class YoustersViewController: UIViewController, AddCloseItemProtocol {
     
     func addCloseItem(addFromSuper:Bool = false) {
         let close = UIButton(title: "Закрыть", titleColor: .bgColor)
+        close.titleLabel?.font = Fonts.standart.gilroyMedium(ofSize: 15)
         close.contentHorizontalAlignment = .trailing
         close.addTarget(self, action: #selector(closeMe), for: .touchUpInside)
         view.addSubview(close)

@@ -31,6 +31,7 @@ struct URLs {
     static let addAgreementToAdded = "\(baseAPI)addagreement"
     
     static let initPayment = "\(baseAPI)payment"
+    static let checkPayment = "\(baseAPI)payment/iap"
     static func getCheckout(uid:String) -> String {
         return "\(baseAPI)checkout/\(uid)"
     }
@@ -48,10 +49,14 @@ struct URLs {
     }
     
     static func getAgreement(uid:String) -> String {
-        return "\(baseAPI)getagreement/\(uid)"
+        "\(baseAPI)getagreement/\(uid)"
     }
     
     static func requisites(inn:String, email:String, token:String) -> String {
         "\(baseAPI)bill?inn=\(inn)&email=\(email)&token=\(token)"
+    }
+    
+    static func getLegal(page:String) -> String {
+        "https://you-scribe.ru/legal/\(page)?inapp=true"
     }
 }

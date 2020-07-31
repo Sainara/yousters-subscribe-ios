@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import StoreKit
 
 class PaymentController: YoustersStackViewController, ReloadProtocol {
     
     let payButton = YoustersButton(text: "Оплатить")
     
-    let uid:String
+    let product:SKProduct
     let reload_page:ReloadProtocol
+    
+    var paymentID:String!
+    var agreementID:String?
     
     var items:[Item] = []
     var type:PaymentService.PaymentType
@@ -22,12 +26,13 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
     let resultOfPromo = UILabel(text: "", font: Fonts.standart.gilroyRegular(ofSize: 15), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
     
     let summaryView = UIView()
+    let loading = UIAlertController(style: .loading)
 
-    init(uid:String, page:ReloadProtocol, items:[Item], type:PaymentService.PaymentType) {
-        self.uid = uid
+    init(product:SKProduct, page:ReloadProtocol, items:[Item], type:PaymentService.PaymentType) {
         reload_page = page
         self.items = items
         self.type = type
+        self.product = product
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .white
@@ -141,17 +146,41 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
     }
     
     @objc internal func pay() {
-        let loading = UIAlertController(style: .loading)
+    
+        SKPaymentQueue.default().add(self)
+        print(product.productIdentifier)
+        
+        let payment = SKMutablePayment(product: product)
+        payment.quantity = 1
+        
         self.present(loading, animated: true, completion: nil)
-        PaymentService.main.initPayment(type: type, uid: uid) { (result) in
-            loading.dismiss(animated: false) {
-                guard let uid = result else {
-                    return
-                }
-                let checkout = CheckoutViewController(url: URLs.getCheckout(uid: uid), parentVC: self)
-                checkout.modalPresentationStyle = .popover
-                self.present(checkout, animated: true, completion: nil)
+        
+        var someID = ""
+        
+        switch type {
+        case .agreement:
+            someID = agreementID ?? ""
+        case .paket:
+            someID = product.productIdentifier
+        }
+        
+        PaymentService.main.initPayment(type: type, uid: someID) { (result) in
+            
+            guard let uid = result else {
+                self.loading.dismiss(animated: false, completion: nil)
+                let error = UIAlertController(style: .errorMessage)
+                self.present(error, animated: false, completion: nil)
+                return
             }
+            
+            self.paymentID = uid
+            print(uid)
+//            let checkout = CheckoutViewController(url: URLs.getCheckout(uid: uid), parentVC: self)
+//            checkout.modalPresentationStyle = .popover
+//            self.present(checkout, animated: true, completion: nil)
+            
+            SKPaymentQueue.default().add(payment)
+            
         }
     }
     
@@ -250,6 +279,12 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
     
     struct Item {
         var title:String, price:Int, amount:Int
+        
+        init(product:SKProduct, amount:Int) {
+            title = product.localizedTitle
+            price = Int(product.price.description(withLocale: Locale(identifier: "ru_RU"))) ?? 0
+            self.amount = amount
+        }
     }
 }
 

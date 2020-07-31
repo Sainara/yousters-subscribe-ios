@@ -44,6 +44,28 @@ class PaymentService: YoustersNetwork {
         }
     }
     
+    func checkPayment(receipt:String, uid:String, complition: @escaping (Bool)->Void) {
+        
+        guard let headers = getHTTPHeaders(rawHeaders: basicHeaders) else {
+            complition(false)
+            return
+        }
+        
+        let parameters = ["receiptID": receipt, "orderID": uid]
+        
+        AF.request(URLs.checkPayment, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            //print(response.request?.url)
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                complition(json["success"].boolValue)
+            case .failure(let error):
+                debugPrint(error)
+                complition(false)
+            }
+        }
+    }
+    
     static let main = PaymentService()
     
     override private init() {}

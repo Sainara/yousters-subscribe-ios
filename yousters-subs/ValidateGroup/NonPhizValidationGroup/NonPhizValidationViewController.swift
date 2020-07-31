@@ -14,7 +14,7 @@ class NonPhizValidationViewController: YoustersStackViewController {
     let mailField = YoustersTextField(placehldr: "Email", fontSize: 20)
     
     let sendButton = YoustersButton(text: "Оплатил", fontSize: 18)
-    let linkToPDF = YoustersButtonLink(link: "", title: "Мы тут", isUnderLined: true)
+    let linkToPDF = YoustersButton(text: "Счет на оплату", fontSize: 18, style: .secondary)
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -39,6 +39,8 @@ class NonPhizValidationViewController: YoustersStackViewController {
     private func setupView() {
         
         let label = UILabel(text: "Yousters Subscribe", font: Fonts.standart.gilroySemiBoldName(ofSize: 35), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         addWidthArrangedSubView(view: label, spacing: 5)
         let desc = UILabel(text: "Последний шаг", font: Fonts.standart.gilroyMedium(ofSize: 20), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
         addWidthArrangedSubView(view: desc, spacing: 40)
@@ -56,14 +58,12 @@ class NonPhizValidationViewController: YoustersStackViewController {
         mailField.textContentType = .emailAddress
         mailField.autocapitalizationType = .none
         
-        let info = UILabel(text: "Для идентификации необходимо перевести 1₽ с вашего расчетного счета в банке по этим реквизитам", font: Fonts.standart.gilroyRegular(ofSize: 15), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
+        let info = UILabel(text: "Для идентификации необходимо перевести 1₽ с вашего расчетного счета, ссылка на счет на оплату появится, после ввода ИНН и Email, так же ссылка будет доступна на экране профиля после нажатия кнопки \"Оплатил\"", font: Fonts.standart.gilroyRegular(ofSize: 15), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
         
-        addWidthArrangedSubView(view: info, spacing: 5)
-        
-        linkToPDF.contentHorizontalAlignment = .leading
-        
+        addWidthArrangedSubView(view: info)
+                
         linkToPDF.isEnabled = false
-        linkToPDF.layer.opacity = 0.5
+        linkToPDF.layer.opacity = 0.6
         addWidthArrangedSubView(view: linkToPDF)
         
         view.addSubview(sendButton)
@@ -95,15 +95,25 @@ class NonPhizValidationViewController: YoustersStackViewController {
             linkToPDF.isEnabled = true
             sendButton.isEnabled = true
             
-            guard let token = App.shared.token else {return}
-            linkToPDF.link = URLs.requisites(inn: innField.text!, email: mailField.text!, token: token)
-            print(linkToPDF.link)
-            
         } else {
             sendButton.isEnabled = false
-            linkToPDF.layer.opacity = 0.5
+            linkToPDF.layer.opacity = 0.6
             linkToPDF.isEnabled = false
         }
+    }
+    
+    @objc private func openPDF() {
+        guard let token = App.shared.token else {return}
+        let link = URLs.requisites(inn: innField.text!, email: mailField.text!, token: token)
+        guard var url = URL(string: link) else {return}
+        
+        if !(["http", "https"].contains(url.scheme?.lowercased())) {
+            let appendedLink = "http://".appending(link)
+
+            url = URL(string: appendedLink)!
+        }
+
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @objc private func send() {

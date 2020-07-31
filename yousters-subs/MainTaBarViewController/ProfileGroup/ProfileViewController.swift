@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import StoreKit
 import Haptica
 
 class ProfileViewController: YoustersStackViewController {
+    
+    let collectionView = PaketsCollectionView(pakets: [])
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -66,31 +69,46 @@ class ProfileViewController: YoustersStackViewController {
     }
     
     private func addPakets() {
-        
-        let collectionView = PaketsCollectionView(pakets: [])
+    
         collectionView.parentVC = self
         addWidthArrangedSubView(view: collectionView, spacing: 20, offsets: 0)
         
         UserPaketService.main.getPakets { (pakets) in
-            collectionView.pakets = pakets
-            collectionView.reloadData()
+            var ids = [String]()
+            pakets.forEach({
+                if let id = $0.iapID {
+                    ids.append(id)
+                }
+            })
+            print(ids)
+            self.fetchProducts(matchingIdentifiers: ids)
         }
+    }
+    
+    fileprivate func fetchProducts(matchingIdentifiers identifiers: [String]) {
+        // Create a set for the product identifiers.
+        let productIdentifiers = Set(identifiers)
         
+        let productRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
+        productRequest.delegate = self
+        productRequest.start()
     }
     
     private func addFAQ() {
         let faq = YoustersButton(text: "FAQ", style: .secondary)
         addWidthArrangedSubView(view: faq)
+        faq.addTarget(self, action: #selector(openFAQ), for: .touchUpInside)
         let support = YoustersButton(text: "Служба поддержки", style: .secondary)
         addWidthArrangedSubView(view: support, spacing: 60)
+        support.addTarget(self, action: #selector(openSupport), for: .touchUpInside)
     }
     
     private func addLinks() {
-        let userAgre = YoustersButtonLink(link: "https://you-scribe.ru/legal/user-agreement", fontSize: 17, title: "Лицензионное соглашение", vc: self)
+        let userAgre = YoustersButtonLink(link: URLs.getLegal(page: "user-agreement"), fontSize: 17, title: "Лицензионное соглашение", vc: self)
         addWidthArrangedSubView(view: userAgre)
-        let terms = YoustersButtonLink(link: "https://you-scribe.ru/legal/termsofuse", fontSize: 17, title: "Условия использования", vc: self)
+        let terms = YoustersButtonLink(link: URLs.getLegal(page: "termsofuse"), fontSize: 17, title: "Условия использования", vc: self)
         addWidthArrangedSubView(view: terms)
-        let policy = YoustersButtonLink(link: "https://you-scribe.ru/legal/confidential", fontSize: 17, title: "Политика конфиденциальности", vc: self)
+        let policy = YoustersButtonLink(link: URLs.getLegal(page: "confidential"), fontSize: 17, title: "Политика конфиденциальности", vc: self)
         addWidthArrangedSubView(view: policy, spacing: 40)
     }
     
@@ -98,7 +116,7 @@ class ProfileViewController: YoustersStackViewController {
         guard let user = App.shared.currentUser else {return}
         
         let nameLabel = UILabel(text: user.name, font: Fonts.standart.gilroySemiBoldName(ofSize: 35), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
-        stackView.addArrangedSubview(nameLabel)
+        addWidthArrangedSubView(view: nameLabel)
         
         addTitle(title: user.inn, subTitle: "ИНН")
         addTitle(title: user.email, subTitle: "Email")
@@ -157,6 +175,21 @@ class ProfileViewController: YoustersStackViewController {
         App.shared.logOut(topController: self)
     }
     
+    @objc private func openFAQ() {
+        let link = URLs.getLegal(page: "faq")
+        
+        let webVC = YoustersWKWebViewController(url: link)
+        webVC.modalPresentationStyle = .popover
+        parent?.present(webVC, animated: true, completion: nil)
+    }
+    
+    @objc private func openSupport() {
+        let email = "support@you-scribe.ru"
+        if let url = URL(string: "mailto:\(email)") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
     private func setUpUserPaketInfo() {
         let wrap = UIView()
         wrap.backgroundColor = .secondaryButtonColor
@@ -208,9 +241,29 @@ extension ProfileViewController: ReloadProtocol {
 
 extension ProfileViewController: ParentViewControllerProtocol {
     func workWithData(data: Any) {
-        if let paket = data as? Paket {
-            let paymentVC = PaketPaymentViewController(uid: String(paket.id), page: self, paket: paket)
+        if let paket = data as? SKProduct {
+            let paymentVC = PaketPaymentViewController(product:paket, page: self)
             navigationController?.pushViewController(paymentVC, animated: true)
+        }
+    }
+}
+
+extension ProfileViewController: SKProductsRequestDelegate {
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+         print("products")
+        if !response.products.isEmpty {
+            let products = response.products
+            print(products)
+            DispatchQueue.main.async {
+                self.collectionView.pakets = products.sorted(by: { (l, r) -> Bool in
+                    l.price.doubleValue < r.price.doubleValue
+                })
+                self.collectionView.reloadData()
+            }
+        }
+        
+        for invalidIdentifier in response.invalidProductIdentifiers {
+            print("!!???! \(invalidIdentifier)")
         }
     }
 }

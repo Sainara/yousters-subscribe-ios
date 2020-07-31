@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import StoreKit
 
 class PaketCell: UICollectionViewCell {
     
     var delegate:CellDelegate?
-    var paket:Paket?
+    var paket:SKProduct?
         
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -21,14 +22,17 @@ class PaketCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(paket:Paket) {
+    func setup(paket:SKProduct) {
         self.paket = paket
         subviews.forEach({$0.removeFromSuperview()})
         backgroundColor = .secondaryButtonColor
         layer.cornerRadius = 8
         clipsToBounds = true
-        let title = addTitleAndPrice(title: paket.getShortTitle(), price: paket.getPrice())
-        let description = addDescription(description: paket.getDesc(), top: title)
+        
+        let localPaket = Paket(product: paket)
+        
+        let title = addTitleAndPrice(title: localPaket.getShortTitle(), price: localPaket.getPrice())
+        let description = addDescription(description: localPaket.getDesc(), top: title)
         addBuyButton(top: description)
 
     }

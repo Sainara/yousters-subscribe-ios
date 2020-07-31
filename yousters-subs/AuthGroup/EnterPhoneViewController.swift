@@ -33,7 +33,8 @@ class EnterPhoneViewController: YoustersViewController {
     private func setupView() {
         
         let label = UILabel(text: "Yousters Subscribe", font: Fonts.standart.gilroySemiBoldName(ofSize: 35), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
-        
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         view.addSubview(label)
         
         label.snp.makeConstraints { (make) in
@@ -92,7 +93,7 @@ class EnterPhoneViewController: YoustersViewController {
                     vc.modalPresentationStyle = .popover
                     self.present(vc, animated: true, completion: nil)
                 } else {
-                    print(error)
+                    print(error!)
                     PrimaryError.showAlertWithError(vc: self, error: error)
                 }
             }

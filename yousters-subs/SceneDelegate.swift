@@ -7,7 +7,9 @@
 //
 
 import UIKit
-import SberbankSDK
+import Siren
+import StoreKit
+//import SberbankSDK
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -25,6 +27,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
+        
+        //let iapObserver = StoreObserver()
+        //SKPaymentQueue.default().add(iapObserver)
+        //Siren.shared.wail()
         
         if let userActivity = connectionOptions.userActivities.first {
             if let url = userActivity.webpageURL {
@@ -71,11 +77,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let url = userActivity.webpageURL {
                 DeepLinkManager.standart.handleDeeplink(url: url)
                 
-                if url.scheme == "you-scribe" && url.host == "sberidauth" {
-                    SBKAuthManager.getResponseFrom(url) { response in
-                        // MARK: Make auth
-                    }
-                }
+//                if url.scheme == "you-scribe" && url.host == "sberidauth" {
+//                    SBKAuthManager.getResponseFrom(url) { response in
+//                        // MARK: Make auth
+//                    }
+//                }
             }
         }
     }
@@ -85,14 +91,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // Handle URL
             
             
-            if url.scheme == "you-scribe" && url.host == "sberidauth" {
-                SBKAuthManager.getResponseFrom(url) { response in
-                    print(response.error)
-                    print(response.isSuccess)
-                    print(response.nonce)
-                }
-                return
-            }
+//            if url.scheme == "you-scribe" && url.host == "sberidauth" {
+//                SBKAuthManager.getResponseFrom(url) { response in
+//                    print(response.error)
+//                    print(response.isSuccess)
+//                    print(response.nonce)
+//                }
+//                return
+//            }
             
             DeepLinkManager.standart.handleDeeplink(url: url)
         }

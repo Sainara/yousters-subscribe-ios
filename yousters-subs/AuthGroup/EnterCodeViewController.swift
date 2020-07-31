@@ -34,7 +34,8 @@ class EnterCodeViewController: YoustersViewController {
     private func setupView() {
         
         let label = UILabel(text: "Yousters Subscribe", font: Fonts.standart.gilroySemiBoldName(ofSize: 35), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
-        
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         view.addSubview(label)
         
         label.snp.makeConstraints { (make) in

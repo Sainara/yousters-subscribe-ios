@@ -64,6 +64,9 @@ class EnterValidateDataViewController: YoustersStackViewController {
         
         let label = UILabel(text: "Yousters Subscribe", font: Fonts.standart.gilroySemiBoldName(ofSize: 35), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
         addWidthArrangedSubView(view: label, spacing: 5)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        
         let desc = UILabel(text: "Последний шаг", font: Fonts.standart.gilroyMedium(ofSize: 20), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
         addWidthArrangedSubView(view: desc, spacing: 40)
 

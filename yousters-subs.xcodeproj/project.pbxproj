@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		343E2C6F24CB953300B1B15B /* SberbankSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343E2C6D24CB951600B1B15B /* SberbankSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		343E2C7024CB953300B1B15B /* SberbankSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 343E2C6D24CB951600B1B15B /* SberbankSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		345D150B24978ECB00228CF4 /* YoustersNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D150A24978ECB00228CF4 /* YoustersNavigationController.swift */; };
 		345D150E249795CF00228CF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D150D249795CF00228CF4 /* ProfileViewController.swift */; };
 		345D151224979D5600228CF4 /* MainDocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D151124979D5600228CF4 /* MainDocsViewController.swift */; };
@@ -63,6 +61,8 @@
 		34789D5D249AC3A50020FAD5 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D5C249AC3A50020FAD5 /* Subscriber.swift */; };
 		34789D5F249BA3350020FAD5 /* EnterDocsCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D5E249BA3350020FAD5 /* EnterDocsCodeViewController.swift */; };
 		34789D62249C2EFF0020FAD5 /* ReloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34789D61249C2EFF0020FAD5 /* ReloadProtocol.swift */; };
+		3481322B24D18CA000349DA0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3481322A24D18CA000349DA0 /* StoreKit.framework */; };
+		3481322D24D2F12D00349DA0 /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3481322C24D2F12D00349DA0 /* StoreObserver.swift */; };
 		34864CFD24A34A44008277B6 /* AgreementPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34864CFC24A34A43008277B6 /* AgreementPaymentViewController.swift */; };
 		348982922494E22F00BB55E8 /* RouteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348982912494E22F00BB55E8 /* RouteProvider.swift */; };
 		348982942494EF7900BB55E8 /* YoustersStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348982932494EF7900BB55E8 /* YoustersStackViewController.swift */; };
@@ -71,6 +71,8 @@
 		349028BD24C7690A0044D6B2 /* SberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028BC24C7690A0044D6B2 /* SberService.swift */; };
 		349028C024C874DE0044D6B2 /* SubscriptionServive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */; };
 		349028C224C876B40044D6B2 /* YoustersNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028C124C876B40044D6B2 /* YoustersNetwork.swift */; };
+		34AFC0D124D46E5200B8D761 /* SberbankSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AFC0CF24D46CF000B8D761 /* SberbankSDK.framework */; };
+		34AFC0D224D46E5200B8D761 /* SberbankSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 34AFC0CF24D46CF000B8D761 /* SberbankSDK.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		34C06D9D24BB96C80003157E /* SelectOrgTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */; };
 		34C06DA024BB9D5B0003157E /* SberIDAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */; };
 		34C06DA224BB9D8B0003157E /* SelectPhizAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */; };
@@ -88,7 +90,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				343E2C7024CB953300B1B15B /* SberbankSDK.framework in Embed Frameworks */,
+				34AFC0D224D46E5200B8D761 /* SberbankSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,7 +98,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		343E2C6D24CB951600B1B15B /* SberbankSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SberbankSDK.framework; sourceTree = "<group>"; };
 		345D150A24978ECB00228CF4 /* YoustersNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersNavigationController.swift; sourceTree = "<group>"; };
 		345D150D249795CF00228CF4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		345D151124979D5600228CF4 /* MainDocsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDocsViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +155,8 @@
 		34789D5C249AC3A50020FAD5 /* Subscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		34789D5E249BA3350020FAD5 /* EnterDocsCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterDocsCodeViewController.swift; sourceTree = "<group>"; };
 		34789D61249C2EFF0020FAD5 /* ReloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadProtocol.swift; sourceTree = "<group>"; };
+		3481322A24D18CA000349DA0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3481322C24D2F12D00349DA0 /* StoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObserver.swift; sourceTree = "<group>"; };
 		34864CFC24A34A43008277B6 /* AgreementPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementPaymentViewController.swift; sourceTree = "<group>"; };
 		348982912494E22F00BB55E8 /* RouteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteProvider.swift; sourceTree = "<group>"; };
 		348982932494EF7900BB55E8 /* YoustersStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersStackViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +165,7 @@
 		349028BC24C7690A0044D6B2 /* SberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberService.swift; sourceTree = "<group>"; };
 		349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionServive.swift; sourceTree = "<group>"; };
 		349028C124C876B40044D6B2 /* YoustersNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersNetwork.swift; sourceTree = "<group>"; };
+		34AFC0CF24D46CF000B8D761 /* SberbankSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SberbankSDK.framework; sourceTree = "<group>"; };
 		34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgTypeViewController.swift; sourceTree = "<group>"; };
 		34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberIDAuthViewController.swift; sourceTree = "<group>"; };
 		34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhizAuthViewController.swift; sourceTree = "<group>"; };
@@ -180,7 +184,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEE4BC7730BFBD8DDCA5A326 /* Pods_yousters_subs.framework in Frameworks */,
-				343E2C6F24CB953300B1B15B /* SberbankSDK.framework in Frameworks */,
+				34AFC0D124D46E5200B8D761 /* SberbankSDK.framework in Frameworks */,
+				3481322B24D18CA000349DA0 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +231,7 @@
 		3465CF0F248D70AC00374739 = {
 			isa = PBXGroup;
 			children = (
-				343E2C6D24CB951600B1B15B /* SberbankSDK.framework */,
+				34AFC0CF24D46CF000B8D761 /* SberbankSDK.framework */,
 				3465CF1A248D70AD00374739 /* yousters-subs */,
 				3465CF19248D70AD00374739 /* Products */,
 				12913685B9524886931D1FF7 /* Pods */,
@@ -404,6 +409,7 @@
 				346BCF9C24CD9BD20047C24B /* SubPaymentsGroup */,
 				34F2D97124BD05CB0008DC2A /* CheckoutViewController.swift */,
 				346BCF9A24CD9BCA0047C24B /* PaymentController.swift */,
+				3481322C24D2F12D00349DA0 /* StoreObserver.swift */,
 			);
 			path = PaymentGroup;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 		61C63E653943CDE48486D64E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3481322A24D18CA000349DA0 /* StoreKit.framework */,
 				36BA74A37CB70B7AA0FA0189 /* Pods_yousters_subs.framework */,
 			);
 			name = Frameworks;
@@ -647,6 +654,7 @@
 				348982942494EF7900BB55E8 /* YoustersStackViewController.swift in Sources */,
 				346BCFA724CDFE2A0047C24B /* AgreementPaketService.swift in Sources */,
 				34789D4F24991FCA0020FAD5 /* YoustersPhoneNumberTextField.swift in Sources */,
+				3481322D24D2F12D00349DA0 /* StoreObserver.swift in Sources */,
 				348982922494E22F00BB55E8 /* RouteProvider.swift in Sources */,
 				345D151224979D5600228CF4 /* MainDocsViewController.swift in Sources */,
 				3465D01E2494D94400374739 /* AbstractUser.swift in Sources */,
@@ -845,7 +853,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "yousters-subs/yousters-subs.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A7FRCYXJJN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -858,6 +866,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommysirenko.yousterssubsapp;
 				PRODUCT_NAME = Scribe;
 				SWIFT_VERSION = 5.0;
@@ -872,7 +881,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "yousters-subs/yousters-subs.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A7FRCYXJJN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -885,6 +894,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommysirenko.yousterssubsapp;
 				PRODUCT_NAME = Scribe;
 				SWIFT_VERSION = 5.0;

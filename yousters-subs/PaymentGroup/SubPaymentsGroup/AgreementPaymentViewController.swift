@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import StoreKit
 
 class AgreementPaymentViewController: PaymentController {
     
     let agr_page:AgreementPageViewController
     
-    init(uid:String, page:AgreementPageViewController) {
+    init(uid:String, page:AgreementPageViewController, product: SKProduct) {
         self.agr_page = page
-        super.init(uid:uid, page:page, items: [.init(title: "Разовое подписание", price: 49, amount: 1)], type: .agreement)
+        super.init(product: product, page:page, items: [.init(product: product, amount: 1)], type: .agreement)
+        self.agreementID = uid
     }
     
     required init?(coder: NSCoder) {
@@ -22,6 +24,7 @@ class AgreementPaymentViewController: PaymentController {
     }
     
     override func reload() {
+        navigationController?.popViewController(animated: true)
         agr_page.agreemant.status = .paid
         agr_page.reload()
     }

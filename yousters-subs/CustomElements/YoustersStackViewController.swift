@@ -82,6 +82,7 @@ class YoustersStackViewController: YoustersViewController {
             super.addCloseItem()
         } else {
             let close = UIButton(title: "Закрыть", titleColor: .bgColor)
+            close.titleLabel?.font = Fonts.standart.gilroyMedium(ofSize: 15)
             close.contentHorizontalAlignment = .trailing
             close.addTarget(self, action: #selector(closeMe), for: .touchUpInside)
             addWidthArrangedSubView(view: close)

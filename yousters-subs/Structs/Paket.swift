@@ -7,16 +7,34 @@
 //
 
 import SwiftyJSON
+import StoreKit
 
 struct Paket {
-    var id:Int, title:String, description:String, price:String, howMuch:Int
+    var id:String, title:String, description:String, price:String, howMuch:Int, iapID:String?
     
     init(data:JSON) {
-        id = data["id"].intValue
+        id = data["id"].stringValue
         title = data["title"].stringValue
         description = data["description"].stringValue
         price = data["price"].stringValue
         howMuch = data["howmuch"].intValue
+        iapID = data["iap_id"].stringValue
+    }
+    
+    init(id:String, title:String, description:String, price:String, howMuch:Int) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.price = price
+        self.howMuch = howMuch
+    }
+    
+    init(product:SKProduct) {
+        self.id = product.productIdentifier
+        self.title = product.localizedTitle
+        self.description = product.localizedDescription + ",Каждый последующий документ тарифицируется как разовый ,Входящие документы бесплатно"
+        self.price = product.price.description(withLocale: Locale(identifier: "ru_RU"))
+        self.howMuch = 10
     }
     
     func getShortTitle() -> String {

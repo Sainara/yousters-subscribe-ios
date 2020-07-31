@@ -7,14 +7,12 @@
 //
 
 import UIKit
+import StoreKit
 
 class PaketPaymentViewController: PaymentController {
-    
-    let paket:Paket
-        
-    init(uid:String, page:ReloadProtocol, paket:Paket) {
-        self.paket = paket
-        super.init(uid:uid, page:page, items: [.init(title: paket.title, price: Int(paket.getPrice())!, amount: 1)], type: .paket)
+            
+    init(product:SKProduct, page:ReloadProtocol) {
+        super.init(product:product, page:page, items: [Item(product:product, amount:1)], type: .paket)
     }
     
     required init?(coder: NSCoder) {
@@ -22,6 +20,7 @@ class PaketPaymentViewController: PaymentController {
     }
 
     override func reload() {
+        navigationController?.popViewController(animated: true)
         reload_page.reload()
     }
 }

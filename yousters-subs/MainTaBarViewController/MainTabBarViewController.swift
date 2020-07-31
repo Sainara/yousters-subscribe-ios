@@ -25,7 +25,7 @@ class MainTabBarViewController: UITabBarController {
         } else {
             // below ios 13.0
             tabBar.shadowImage = UIImage()
-            tabBar.backgroundImage = UIImage()
+            //tabBar.backgroundImage = UIImage()
         }
         tabBar.tintColor = .bgColor
         
