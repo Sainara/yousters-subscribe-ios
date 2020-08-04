@@ -30,12 +30,13 @@ class App {
     }
     
     func logOut(topController:UIViewController? = nil) {
+        PushService.main.removeToken()
+        
         token = nil
         currentUser = nil
         
         let vc = RouteProvider.shared.firstEnterView()
-        topController?.present(vc, animated: true) {
-        }
+        RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
         
     }
     

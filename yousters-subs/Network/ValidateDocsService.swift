@@ -24,7 +24,6 @@ class ValidateDocsService: YoustersNetwork {
             multi.append(data.second, withName: "secondary")
             multi.append(data.video, withName: "video")
 
-            multi.append(data.inn.data(using: .utf8, allowLossyConversion: false)!, withName: "inn")
             multi.append(data.email.data(using: .utf8, allowLossyConversion: false)!, withName: "email")
 
         }, to: URLs.uploadDocsToValid, headers: headers).responseJSON { response in
@@ -71,5 +70,5 @@ struct NonPhizData {
 }
 
 struct DocsToValidateData {
-    var inn:String, email:String, main:URL, second:URL, video:URL
+    var email:String, main:URL, second:URL, video:URL
 }

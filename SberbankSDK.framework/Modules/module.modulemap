@@ -1,6 +1,0 @@
-framework module SberbankSDK {
-  umbrella header "SberbankSDK.h"
-
-  export *
-  module * { export * }
-}

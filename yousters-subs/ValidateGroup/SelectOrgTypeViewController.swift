@@ -56,8 +56,8 @@ class SelectOrgTypeViewController: YoustersStackViewController {
     }
     
     @objc private func phizClick() {
-        //let phizNext = EnterValidateDataViewController()
-        let phizNext = SelectPhizAuthViewController()
+        let phizNext = EnterValidateDataViewController()
+        //let phizNext = SelectPhizAuthViewController()
         phizNext.modalPresentationStyle = .popover
         self.present(phizNext, animated: true, completion: nil)
     }

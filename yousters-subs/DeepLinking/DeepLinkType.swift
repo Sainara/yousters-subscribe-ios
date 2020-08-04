@@ -10,6 +10,7 @@ import Foundation
 
 enum DeeplinkType {
     case agreement(uid:String)
+    case profileActivation
 //    enum Messages {
 //        case root
 //        case details(id: String)

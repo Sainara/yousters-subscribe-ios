@@ -125,8 +125,7 @@ class NonPhizValidationViewController: YoustersStackViewController {
                 if result {
                     print(result)
                     let vc = MainTabBarViewController()
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true, completion: nil)
+                    RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
                 } else {
                     print("error")
                     let alert = UIAlertController(style: .errorMessage)

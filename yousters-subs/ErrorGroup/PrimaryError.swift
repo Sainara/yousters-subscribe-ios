@@ -20,8 +20,18 @@ class PrimaryError {
         switch error {
         case .tooManyRequests:
             return "Слишком много запросов"
+        case .wrongCode:
+            return "Неверный код"
+        case .numberBlocked:
+            return "Номер заблокирован"
+        case .tooManyTries:
+            return "Слишком много попыток"
+        case .inValidName:
+            return "Некоректное имя"
         case .unknown:
             return "Неизвестная ошибка"
+        default:
+            return error.rawValue
         }
     }
     
@@ -32,7 +42,15 @@ class PrimaryError {
     }
     
     enum ErrorType: String {
-        case tooManyRequests = "tooManyRequests", unknown
+        case tooManyRequests = "tooManyRequests",
+        numberBlocked = "numberBlocked",
+        invalidPhoneNumber = "invalidPhoneNumber",
+        invalidSessionID = "invalidSessionID",
+        tooManyTries = "tooManyTries",
+        sessionExpired = "sessionExpired",
+        wrongCode = "wrongCode",
+        inValidName = "inValidName",
+        unknown
     }
     
 }

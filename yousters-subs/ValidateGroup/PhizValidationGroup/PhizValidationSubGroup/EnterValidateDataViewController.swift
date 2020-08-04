@@ -11,7 +11,6 @@ import MobileCoreServices
 
 class EnterValidateDataViewController: YoustersStackViewController {
     
-    let innField = YoustersTextField(placehldr: "ИНН", fontSize: 20)
     let mailField = YoustersTextField(placehldr: "Email", fontSize: 20)
     
     let picker = UIImagePickerController()
@@ -69,12 +68,6 @@ class EnterValidateDataViewController: YoustersStackViewController {
         
         let desc = UILabel(text: "Последний шаг", font: Fonts.standart.gilroyMedium(ofSize: 20), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
         addWidthArrangedSubView(view: desc, spacing: 40)
-
-        addWidthArrangedSubView(view: innField)
-        innField.delegate = self
-        innField.addTarget(self, action: #selector(innFieldDidChange(textField:)), for: .editingChanged)
-        innField.textAlignment = .left
-        innField.keyboardType = .numberPad
         
         addWidthArrangedSubView(view: mailField)
         mailField.addTarget(self, action: #selector(emailFieldDidChange(textField:)), for: .editingChanged)
@@ -123,8 +116,7 @@ class EnterValidateDataViewController: YoustersStackViewController {
     
     @objc private func send() {
         
-        let data = DocsToValidateData(inn: innField.text!,
-                                      email: mailField.text!,
+        let data = DocsToValidateData(email: mailField.text!,
                                       main: mainPassportPageURL!,
                                       second: secondPassportPageURL!,
                                       video: videoURL!)
@@ -135,8 +127,7 @@ class EnterValidateDataViewController: YoustersStackViewController {
                 if result {
                     print(result)
                     let vc = MainTabBarViewController()
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true, completion: nil)
+                    RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
                 } else {
                     print("error")
                     let alert = UIAlertController(style: .errorMessage)
@@ -191,7 +182,6 @@ class EnterValidateDataViewController: YoustersStackViewController {
     
     private func checkAllData() {
         if Validations.checkEmail(email: mailField.text!),
-            Validations.checkINN(inn: innField.text!),
             mainPassportPageURL != nil,
             secondPassportPageURL != nil,
             videoURL != nil

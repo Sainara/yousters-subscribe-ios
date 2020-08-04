@@ -29,6 +29,8 @@ class DeeplinkParser {
             if let agreementUID = pathComponents.last {
                 return DeeplinkType.agreement(uid: agreementUID)
             }
+        case "profileactivation":
+            return DeeplinkType.profileActivation
         default:
             break
         }

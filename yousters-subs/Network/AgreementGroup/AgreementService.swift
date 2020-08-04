@@ -112,28 +112,28 @@ class AgreementService: YoustersNetwork {
     }
     
     func uploadAgreement(title:String, location:URL, complition: @escaping (Bool)->Void) {
-           
-           guard let headers = getHTTPHeaders(rawHeaders: basicHeaders) else {
-               complition(false)
-               return
-           }
-           
-           AF.upload(multipartFormData: { (multi) in
-               
-               multi.append(location, withName: "doc")
-               multi.append(title.data(using: .utf8, allowLossyConversion: false)!, withName: "title")
-
-           }, to: URLs.uploadAgreement, headers: headers).responseJSON { response in
-               switch response.result {
-               case .success(let value):
-                   let json = JSON(value)
-                   complition(json["success"].boolValue)
-               case .failure(let error):
-                   debugPrint(error)
-                   complition(false)
-               }
-           }
-       }
+        
+        guard let headers = getHTTPHeaders(rawHeaders: basicHeaders) else {
+            complition(false)
+            return
+        }
+        
+        AF.upload(multipartFormData: { (multi) in
+            
+            multi.append(location, withName: "doc")
+            multi.append(title.data(using: .utf8, allowLossyConversion: false)!, withName: "title")
+            
+        }, to: URLs.uploadAgreement, headers: headers).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                complition(json["success"].boolValue)
+            case .failure(let error):
+                debugPrint(error)
+                complition(false)
+            }
+        }
+    }
     
     static let main = AgreementService()
     

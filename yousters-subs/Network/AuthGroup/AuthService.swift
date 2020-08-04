@@ -36,10 +36,10 @@ class AuthService: YoustersNetwork {
         }
     }
     
-    func sendCode(verificationCode:String, complition: @escaping (Bool, Bool)->Void) {
+    func sendCode(verificationCode:String, complition: @escaping (Bool, Bool, String?)->Void) {
         
         guard let sessionID = sessionID else {
-            complition(false, false)
+            complition(false, false, "noToken")
             return
         }
         
@@ -57,13 +57,13 @@ class AuthService: YoustersNetwork {
                     App.shared.currentUser = user
                     print(token)
                     print(user)
-                    complition(true, user.isValid || user.isOnValidation)
+                    complition(true, user.isValid || user.isOnValidation, nil)
                 } else {
-                    complition(false, false)
+                    complition(false, false, json["message"].stringValue)
                 }
             case .failure(let error):
                 debugPrint(error)
-                complition(false, false)
+                complition(false, false, "noConnection")
             }
             
         }

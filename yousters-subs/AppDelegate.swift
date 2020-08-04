@@ -9,6 +9,7 @@
 import UIKit
 import Siren
 import StoreKit
+import SwiftyJSON
 //import SberbankSDK
 
 @UIApplicationMain
@@ -29,6 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             
             //Siren.shared.wail()
+        }
+        
+        UNUserNotificationCenter.current().delegate = self
+        
+        if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
+          // 2
+          print(JSON(notification))
         }
         
         return true
@@ -75,11 +83,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-      let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-      let token = tokenParts.joined()
-      print("Device Token: \(token)")
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+        PushService.main.addToken(deviceToken: token)
     }
-
+    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
       print("Failed to register: \(error)")
     }
@@ -88,6 +97,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // handle any deeplink
         DeepLinkManager.standart.checkDeepLink(viewController: application.keyWindow?.rootViewController)
     }
+    
+    func application(_ application: UIApplication,
+      didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+      
+        print(JSON(userInfo))
+        print("click push")
+    }
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        print(notification.request.content.body)
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        
+        if let deepLinkRaw = userInfo["deepLink"] as? String, let deepLink = URL(string: deepLinkRaw) {
+            DeepLinkManager.standart.handleDeeplink(url: deepLink)
+            DeepLinkManager.standart.checkDeepLink(viewController: UIApplication.shared.keyWindow?.rootViewController)
+        }
+        
+        completionHandler()
+    }
+}

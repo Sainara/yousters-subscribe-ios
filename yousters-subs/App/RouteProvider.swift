@@ -41,5 +41,23 @@ class RouteProvider {
         
         return vc
     }
+    
+    static func switchRootViewController(rootViewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        guard let window = UIApplication.shared.keyWindow else { return }
+        if animated {
+            UIView.transition(with: window, duration: 0.3, options: .transitionCurlDown, animations: {
+                let oldState: Bool = UIView.areAnimationsEnabled
+                UIView.setAnimationsEnabled(false)
+                window.rootViewController = rootViewController
+                UIView.setAnimationsEnabled(oldState)
+            }, completion: { (finished: Bool) -> () in
+                if (completion != nil) {
+                    completion!()
+                }
+            })
+        } else {
+            window.rootViewController = rootViewController
+        }
+    }
 }
 

@@ -22,7 +22,7 @@ class AgreementPageViewController: YoustersStackViewController {
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .white
-        scrollView.contentInset = .init(top: 30, left: 0, bottom: 0, right: 0)
+        scrollView.contentInset = .init(top: 30, left: 0, bottom: 90, right: 0)
         scrollView.keyboardDismissMode = .onDrag
         stackView.layoutMargins = .init(top: 0, left: 20, bottom: 0, right: 20)
         stackView.isLayoutMarginsRelativeArrangement = true

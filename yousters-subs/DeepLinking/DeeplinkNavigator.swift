@@ -48,7 +48,19 @@ class DeeplinkNavigator {
                 present(uid: uid, viewController: viewController)
                 return
             })
-            
+        case .profileActivation:
+            if let tabBar = viewController as? MainTabBarViewController {
+                tabBar.selectedIndex = 1
+                if let profileViewNavRaw = tabBar.viewControllers?[1],
+                    let profileViewNav = profileViewNavRaw as? UINavigationController {
+                    profileViewNav.popToRootViewController(animated: false)
+                    if let profileViewRaw = profileViewNav.topViewController,
+                        let profileView = profileViewRaw as? ProfileViewController {
+                        profileView.reload()
+                        print("profileView.reload()")
+                    }
+                }
+            }
         }
     }
 }

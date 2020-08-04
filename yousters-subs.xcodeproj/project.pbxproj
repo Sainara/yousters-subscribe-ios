@@ -71,8 +71,7 @@
 		349028BD24C7690A0044D6B2 /* SberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028BC24C7690A0044D6B2 /* SberService.swift */; };
 		349028C024C874DE0044D6B2 /* SubscriptionServive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */; };
 		349028C224C876B40044D6B2 /* YoustersNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028C124C876B40044D6B2 /* YoustersNetwork.swift */; };
-		34AFC0D124D46E5200B8D761 /* SberbankSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AFC0CF24D46CF000B8D761 /* SberbankSDK.framework */; };
-		34AFC0D224D46E5200B8D761 /* SberbankSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 34AFC0CF24D46CF000B8D761 /* SberbankSDK.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		34AFC0D524D49C0D00B8D761 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFC0D424D49C0D00B8D761 /* PushService.swift */; };
 		34C06D9D24BB96C80003157E /* SelectOrgTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */; };
 		34C06DA024BB9D5B0003157E /* SberIDAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */; };
 		34C06DA224BB9D8B0003157E /* SelectPhizAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */; };
@@ -90,7 +89,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				34AFC0D224D46E5200B8D761 /* SberbankSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,7 +163,7 @@
 		349028BC24C7690A0044D6B2 /* SberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberService.swift; sourceTree = "<group>"; };
 		349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionServive.swift; sourceTree = "<group>"; };
 		349028C124C876B40044D6B2 /* YoustersNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersNetwork.swift; sourceTree = "<group>"; };
-		34AFC0CF24D46CF000B8D761 /* SberbankSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SberbankSDK.framework; sourceTree = "<group>"; };
+		34AFC0D424D49C0D00B8D761 /* PushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
 		34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgTypeViewController.swift; sourceTree = "<group>"; };
 		34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberIDAuthViewController.swift; sourceTree = "<group>"; };
 		34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhizAuthViewController.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEE4BC7730BFBD8DDCA5A326 /* Pods_yousters_subs.framework in Frameworks */,
-				34AFC0D124D46E5200B8D761 /* SberbankSDK.framework in Frameworks */,
 				3481322B24D18CA000349DA0 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,7 +228,6 @@
 		3465CF0F248D70AC00374739 = {
 			isa = PBXGroup;
 			children = (
-				34AFC0CF24D46CF000B8D761 /* SberbankSDK.framework */,
 				3465CF1A248D70AD00374739 /* yousters-subs */,
 				3465CF19248D70AD00374739 /* Products */,
 				12913685B9524886931D1FF7 /* Pods */,
@@ -303,6 +299,7 @@
 				349028BB24C768E20044D6B2 /* AuthGroup */,
 				3489829924966C1000BB55E8 /* ValidateDocsService.swift */,
 				34F2D97324BDCD8B0008DC2A /* PaymentService.swift */,
+				34AFC0D424D49C0D00B8D761 /* PushService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -714,6 +711,7 @@
 				345D150E249795CF00228CF4 /* ProfileViewController.swift in Sources */,
 				345D15142497D68A00228CF4 /* Agreement.swift in Sources */,
 				348982982495831E00BB55E8 /* Validations.swift in Sources */,
+				34AFC0D524D49C0D00B8D761 /* PushService.swift in Sources */,
 				3465D00F2493AECF00374739 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,7 +864,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommysirenko.yousterssubsapp;
 				PRODUCT_NAME = Scribe;
 				SWIFT_VERSION = 5.0;
@@ -894,7 +892,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommysirenko.yousterssubsapp;
 				PRODUCT_NAME = Scribe;
 				SWIFT_VERSION = 5.0;

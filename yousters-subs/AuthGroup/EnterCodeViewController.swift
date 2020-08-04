@@ -104,16 +104,13 @@ class EnterCodeViewController: YoustersViewController {
     @objc private func tapped() {
         let alert = UIAlertController(style: .loading)
         self.present(alert, animated: true, completion: nil)
-        AuthService.main.sendCode(verificationCode: phoneField.text!) { (result, isValidOrOnIt) in
+        AuthService.main.sendCode(verificationCode: phoneField.text!) { (result, isValidOrOnIt, error) in
             alert.dismiss(animated: false) {
                 if result {
                     let vc = RouteProvider.shared.enteredCode(isValidOrOnIt: isValidOrOnIt)
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true, completion: nil)
+                    RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
                 } else {
-                    print("error")
-                    let alert = UIAlertController(style: .errorMessage, message: "Неверный код")
-                    self.present(alert, animated: true, completion: nil)
+                    PrimaryError.showAlertWithError(vc: self, error: error)
                 }
             }
         }
