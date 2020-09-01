@@ -20,6 +20,8 @@ class SaveRestoreProvider {
     private static let userEmailKey = "\(baseUserKey)Email"
     private static let userIzPhizKey = "\(baseUserKey)IsPhiz"
     
+    private static let codeKey = "appCode"
+    
     private init() {}
     
     static let shared = SaveRestoreProvider()
@@ -54,5 +56,14 @@ class SaveRestoreProvider {
         let isPhiz = UserDefaults.standard.bool(forKey: Self.userIzPhizKey)
         
         return AbstractUser(phone: phone, isValid: isValid, isOnValidation: isOnValidation, name: name, inn: inn, email: email, isPhiz: isPhiz)
+    }
+    
+    func restoreCode() -> String? {
+        print(UserDefaults.standard.string(forKey: Self.codeKey))
+        return UserDefaults.standard.string(forKey: Self.codeKey)
+    }
+    
+    func saveCode() {
+        UserDefaults.standard.set(CodeEntity.shared.code, forKey: Self.codeKey)
     }
 }

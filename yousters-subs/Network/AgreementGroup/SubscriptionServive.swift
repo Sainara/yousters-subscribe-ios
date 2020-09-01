@@ -36,7 +36,7 @@ class SubscriptionServive: YoustersNetwork {
         }
     }
     
-    func validateSubscribe(code:String, complition: @escaping (Bool)->Void) {
+    func validateSubscribe(code:String, videoURL:URL, complition: @escaping (Bool)->Void) {
         
         guard let headers = getHTTPHeaders(rawHeaders: basicHeaders) else {
             complition(false)
@@ -47,10 +47,15 @@ class SubscriptionServive: YoustersNetwork {
             complition(false)
             return
         }
-        
-        let parameters = ["sessionid" : sessionID, "code" : code]
-        
-        AF.request(URLs.validateSubscribe, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+                
+        AF.upload(multipartFormData: { (multi) in
+            
+            multi.append(videoURL, withName: "video")
+            multi.append(sessionID.data(using: .utf8, allowLossyConversion: false)!, withName: "sessionid")
+            multi.append(code.data(using: .utf8, allowLossyConversion: false)!, withName: "code")
+
+
+        }, to: URLs.validateSubscribe, headers: headers).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

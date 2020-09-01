@@ -45,6 +45,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Для получения фото паспорта.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Для входа в приложение</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Для записи вашего голоса.</string>
 	<key>UIAppFonts</key>

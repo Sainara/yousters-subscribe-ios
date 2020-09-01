@@ -69,10 +69,10 @@ class AuthService: YoustersNetwork {
         }
     }
     
-    func me(complition: @escaping (AbstractUser?)->Void) {
+    func me(complition: @escaping (AbstractUser?, Bool)->Void) {
         
         guard let headers = getHTTPHeaders(rawHeaders: basicHeaders) else {
-            complition(nil)
+            complition(nil, false)
             return
         }
        
@@ -84,16 +84,16 @@ class AuthService: YoustersNetwork {
                 if json["success"].boolValue {
                     let user = AbstractUser(data: json["data"])
                     App.shared.currentUser = user
-                    complition(user)
+                    complition(user, false)
                 } else {
-//                    if json["message"] == "userNotFound" {
-//                        App.shared.logOut()
-//                    }
-                    complition(nil)
+                    if json["message"] == "userNotFound" {
+                        complition(nil, true)
+                    }
+                    complition(nil, false)
                 }
             case .failure(let error):
                 debugPrint(error)
-                complition(nil)
+                complition(nil, false)
             }
             
         }

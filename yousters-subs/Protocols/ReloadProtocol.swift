@@ -6,6 +6,6 @@
 //  Copyright © 2020 molidl. All rights reserved.
 //
 
-protocol ReloadProtocol {
+protocol ReloadProtocol: class {
     func reload()
 }

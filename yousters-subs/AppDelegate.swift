@@ -94,16 +94,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-       // handle any deeplink
+        CodeEntity.shared.isNeedEnterCodeAndPresent()
         DeepLinkManager.standart.checkDeepLink(viewController: application.keyWindow?.rootViewController)
     }
     
-    func application(_ application: UIApplication,
-      didReceiveRemoteNotification userInfo: [AnyHashable : Any],
-      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-      
-        print(JSON(userInfo))
-        print("click push")
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        CodeEntity.shared.setEnterBackgroundTime()
     }
 
 }
@@ -112,6 +108,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
         print(notification.request.content.body)
+        let userInfo = notification.request.content.userInfo
+        
+        if let actionRaw = userInfo["action"] as? String {
+            print(actionRaw)
+            ActionManager.standart.handleDeeplink(action: actionRaw)
+            ActionManager.standart.checkAction(viewController: UIApplication.shared.keyWindow?.rootViewController)
+        }
         completionHandler([.alert, .badge, .sound])
     }
     
@@ -119,6 +122,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let userInfo = response.notification.request.content.userInfo
         
         if let deepLinkRaw = userInfo["deepLink"] as? String, let deepLink = URL(string: deepLinkRaw) {
+            print("i am tut deepLinkRaw")
             DeepLinkManager.standart.handleDeeplink(url: deepLink)
             DeepLinkManager.standart.checkDeepLink(viewController: UIApplication.shared.keyWindow?.rootViewController)
         }

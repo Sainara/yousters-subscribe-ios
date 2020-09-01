@@ -25,7 +25,7 @@ class YoustersButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup(text:String, size:CGFloat, height:CGFloat, style:YoustersButtonStyle) {
+    internal func setup(text:String, size:CGFloat, height:CGFloat, style:YoustersButtonStyle) {
         
         setTitle(text, for: .normal)
         

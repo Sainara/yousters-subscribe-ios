@@ -22,9 +22,11 @@ class DeepLinkManager {
             return
         }
         
-        DeeplinkNavigator.shared.proceedToDeeplink(deeplinkType, viewController: viewController)
+        if DeeplinkNavigator.shared.proceedToDeeplink(deeplinkType, viewController: viewController) {
+            self.deeplinkType = nil
+        }
         // reset deeplink after handling
-        self.deeplinkType = nil // (1)
+         // (1)
     }
     
     @discardableResult

@@ -33,8 +33,12 @@ class MainTabBarViewController: UITabBarController {
         guard let cuser = App.shared.currentUser else {
             return
         }
-        AuthService.main.me { (user) in
+        AuthService.main.me { (user, isNeedLogOut) in
             print("in me from tab")
+            if isNeedLogOut {
+                App.shared.logOut(topController: self)
+                return
+            }
             guard let user = user else {return}
             if !cuser.isSimilar(a: user) {
                 self.buildTabs()
@@ -44,7 +48,7 @@ class MainTabBarViewController: UITabBarController {
         registerForPushNotifications()
     }
     
-    private func buildTabs() {
+    func buildTabs() {
         let vc = ProfileViewController()
         vc.tabBarItem = .init(title: nil, image: UIImage(imageLiteralResourceName: "profile"), tag: 1)
         vc.tabBarItem.imageInsets = .init(top: 6, left: 0, bottom: -6, right: 0)

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension NSRegularExpression {
     func matches(_ string: String) -> Bool {
@@ -65,4 +66,12 @@ extension URL {
         }
         return nil
     }
+}
+
+extension UIImageView {
+  func setImageColor(color: UIColor) {
+    let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+    self.image = templateImage
+    self.tintColor = color
+  }
 }

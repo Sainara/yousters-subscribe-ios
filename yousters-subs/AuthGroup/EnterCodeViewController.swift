@@ -88,8 +88,17 @@ class EnterCodeViewController: YoustersViewController {
 //            make.leading.equalToSuperview().offset(20)
 //            make.trailing.equalToSuperview().offset(-20)
 //        }
-        
         button.isEnabled = false
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            if let code = App.shared.savedCode {
+//                self.phoneField.text = code
+//                self.button.isEnabled = true
+//                App.shared.savedCode = nil
+//                self.tapped()
+//            }
+//        }
+        //App.shared.codeField = phoneField
+        
         
         button.addTarget(self, action: #selector(tapped), for: .touchUpInside)
     }
@@ -107,7 +116,8 @@ class EnterCodeViewController: YoustersViewController {
         AuthService.main.sendCode(verificationCode: phoneField.text!) { (result, isValidOrOnIt, error) in
             alert.dismiss(animated: false) {
                 if result {
-                    let vc = RouteProvider.shared.enteredCode(isValidOrOnIt: isValidOrOnIt)
+                    let vc = MainTabBarViewController()
+                    //let vc = RouteProvider.shared.enteredCode(isValidOrOnIt: isValidOrOnIt)
                     RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
                 } else {
                     PrimaryError.showAlertWithError(vc: self, error: error)

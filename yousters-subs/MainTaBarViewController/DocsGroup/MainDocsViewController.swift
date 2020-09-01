@@ -17,6 +17,8 @@ class MainDocsViewController: YoustersViewController {
     
     let cellID = "agreementCell"
     
+    let emptyLabel = EmptyDocsListLabelView(opacity: 0.7)
+    
     var agreements:[Agreement] = []
 
     init() {
@@ -53,9 +55,14 @@ class MainDocsViewController: YoustersViewController {
     
     func getData() {
         AgreementService.main.getAgreements { (result) in
+            self.emptyLabel.removeFromSuperview()
             self.agreements = result
             self.tableView.reloadData()
             self.refresher.endRefreshing()
+            if self.agreements.isEmpty {
+                self.tableView.addSubview(self.emptyLabel)
+                self.emptyLabel.centered()
+            }
         }
     }
     

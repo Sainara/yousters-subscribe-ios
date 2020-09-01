@@ -52,6 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         //windowScene.windows.first?.rootViewController
+        CodeEntity.shared.isNeedEnterCodeAndPresent()
         DeepLinkManager.standart.checkDeepLink(viewController: windowScene.windows.first?.rootViewController)
     }
 
@@ -69,6 +70,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        print("func sceneDidEnterBackground(_ scene: UIScene) {")
+        CodeEntity.shared.setEnterBackgroundTime()
     }
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {

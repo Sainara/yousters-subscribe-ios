@@ -48,6 +48,7 @@ class PushService: YoustersNetwork {
                 if json["success"].boolValue {
                     print("token deleted")
                 } else {
+                    print(json["message"].stringValue)
                     print("token not deleted")
                 }
             case .failure(let error):

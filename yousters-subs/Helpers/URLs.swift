@@ -36,6 +36,8 @@ struct URLs {
         return "\(baseAPI)checkout/\(uid)"
     }
     
+    static let reportSubscribe = "\(baseAPI)report/subscribtion"
+    
     static let tokenInteract = "\(baseAPI)token"
     
     static let getPakets = "\(baseAPI)pakets"

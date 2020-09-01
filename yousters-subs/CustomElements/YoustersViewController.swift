@@ -52,7 +52,21 @@ class YoustersViewController: UIViewController, AddCloseItemProtocol {
         }
     }
     
-    func addCloseItem(addFromSuper:Bool = false) {
+    func addCloseItem(addFromSuper:Bool = false, color:UIColor = .bgColor) {
+        let close = UIButton(title: "Закрыть", titleColor: color)
+        close.titleLabel?.font = Fonts.standart.gilroyMedium(ofSize: 15)
+        close.contentHorizontalAlignment = .trailing
+        close.addTarget(self, action: #selector(closeMe), for: .touchUpInside)
+        view.addSubview(close)
+        close.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.width.equalTo(100)
+            make.height.equalTo(30)
+        }
+    }
+    
+    func addCloseItem(addFromSuper: Bool) {
         let close = UIButton(title: "Закрыть", titleColor: .bgColor)
         close.titleLabel?.font = Fonts.standart.gilroyMedium(ofSize: 15)
         close.contentHorizontalAlignment = .trailing

@@ -7,33 +7,50 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class NonPhizValidationViewController: YoustersStackViewController {
 
     let innField = YoustersTextField(placehldr: "ИНН", fontSize: 20)
     let mailField = YoustersTextField(placehldr: "Email", fontSize: 20)
+    let addVideoButton = YoustersButton(text: "Записать", fontSize: 18)
+    
+    let picker = UIImagePickerController()
+
     
     let sendButton = YoustersButton(text: "Оплатил", fontSize: 18)
     let linkToPDF = YoustersButton(text: "Счет на оплату", fontSize: 18, style: .secondary)
+        
+    var videoURL:URL?
 
     init() {
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .white
         
-        //bottomOffset = -210
-        //bottomPaddinng = 15
-        
         scrollView.contentInset = .init(top: 20, left: 0, bottom: 90, right: 0)
-        //scrollView.keyboardDismissMode = .onDrag
+        scrollView.keyboardDismissMode = .onDrag
         stackView.spacing = 20.0
         
+        setupPicker()
         addCloseItem()
         setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupPicker() {
+        picker.delegate = self
+        picker.modalPresentationStyle = .popover
+        picker.isModalInPopover = true
+        picker.sourceType = .camera
+        picker.mediaTypes = [kUTTypeMovie as String]
+        picker.cameraCaptureMode = .video
+        picker.cameraDevice = .front
+        picker.videoQuality = .typeHigh
+        picker.videoMaximumDuration = TimeInterval(integerLiteral: 9)
     }
     
     private func setupView() {
@@ -58,10 +75,16 @@ class NonPhizValidationViewController: YoustersStackViewController {
         mailField.textContentType = .emailAddress
         mailField.autocapitalizationType = .none
         
-        let info = UILabel(text: "Для идентификации необходимо перевести 1₽ с вашего расчетного счета, ссылка на счет на оплату появится, после ввода ИНН и Email, так же ссылка будет доступна на экране профиля после нажатия кнопки \"Оплатил\"", font: Fonts.standart.gilroyRegular(ofSize: 15), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
+        let addVideoLabel = UILabel(text: "Запишите селфи-видео в котором вы произносите ваш номер телефона.", font: Fonts.standart.gilroyMedium(ofSize: 17), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
+        addWidthArrangedSubView(view: addVideoLabel, spacing: 5)
         
+        addWidthArrangedSubView(view: addVideoButton)
+        addVideoButton.addTarget(self, action: #selector(captureVideo), for: .touchUpInside)
+        
+        
+        let info = UILabel(text: "Для идентификации необходимо перевести 1₽ с вашего расчетного счета, ссылка на счет на оплату появится, после ввода ИНН, Email и селфи-видео, так же ссылка будет доступна на экране профиля после нажатия кнопки \"Оплатил\"", font: Fonts.standart.gilroyRegular(ofSize: 15), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
         addWidthArrangedSubView(view: info)
-                
+        
         linkToPDF.isEnabled = false
         linkToPDF.layer.opacity = 0.6
         addWidthArrangedSubView(view: linkToPDF)
@@ -78,6 +101,9 @@ class NonPhizValidationViewController: YoustersStackViewController {
        
     }
     
+    @objc private func captureVideo() {
+        self.present(picker, animated: true, completion: nil)
+    }
 
     @objc private func innFieldDidChange(textField: UITextField){
         checkAllData()
@@ -89,7 +115,8 @@ class NonPhizValidationViewController: YoustersStackViewController {
     
     private func checkAllData() {
         if Validations.checkEmail(email: mailField.text!),
-            Validations.checkINN(inn: innField.text!)
+            Validations.checkINN(inn: innField.text!),
+            videoURL != nil
         {
             linkToPDF.layer.opacity = 1
             linkToPDF.isEnabled = true
@@ -117,15 +144,19 @@ class NonPhizValidationViewController: YoustersStackViewController {
     }
     
     @objc private func send() {
-        let data = NonPhizData(inn: innField.text!, email: mailField.text!)
+        let data = NonPhizData(inn: innField.text!, email: mailField.text!, video: videoURL!)
         let alert = UIAlertController(style: .loading)
         self.present(alert, animated: true, completion: nil)
         ValidateDocsService.main.sendNonPhizToValidation(data: data) { (result) in
             alert.dismiss(animated: false) {
                 if result {
-                    print(result)
-                    let vc = MainTabBarViewController()
-                    RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
+                    if let selectVC = self.presentingViewController as? SelectOrgTypeViewController {
+                        selectVC.dismiss(animated: true, completion: nil)
+                    }
+//                    print(result)
+//                    let vc = EnterCodeOrFaceID(target: .createCode)
+//                    RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
                 } else {
                     print("error")
                     let alert = UIAlertController(style: .errorMessage)
@@ -141,5 +172,19 @@ extension NonPhizValidationViewController: UITextFieldDelegate {
         guard let text = textField.text else { return true }
         let newLength = text.count + string.count - range.length
         return newLength <= 12
+    }
+}
+
+extension NonPhizValidationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+                
+        if let video = info[.mediaURL] as? URL {
+            videoURL = video
+            addVideoButton.setTitle("Готово", for: .normal)
+        } else {
+            videoURL = nil
+        }
+        checkAllData()
+        picker.dismiss(animated: true, completion: nil)
     }
 }

@@ -36,7 +36,7 @@ class EnterValidateDataViewController: YoustersStackViewController {
         //bottomPaddinng = 15
         
         scrollView.contentInset = .init(top: 20, left: 0, bottom: 90, right: 0)
-        //scrollView.keyboardDismissMode = .onDrag
+        scrollView.keyboardDismissMode = .onDrag
         stackView.spacing = 20.0
         
         addCloseItem()
@@ -125,9 +125,10 @@ class EnterValidateDataViewController: YoustersStackViewController {
         ValidateDocsService.main.sendDocs(data: data) { (result) in
             alert.dismiss(animated: false) {
                 if result {
-                    print(result)
-                    let vc = MainTabBarViewController()
-                    RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
+                    if let selectVC = self.presentingViewController as? SelectOrgTypeViewController {
+                        selectVC.dismiss(animated: true, completion: nil)
+                    }
                 } else {
                     print("error")
                     let alert = UIAlertController(style: .errorMessage)

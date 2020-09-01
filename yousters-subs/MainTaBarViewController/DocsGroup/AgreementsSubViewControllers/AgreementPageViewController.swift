@@ -15,6 +15,9 @@ class AgreementPageViewController: YoustersStackViewController {
     var agreemant:Agreement
     
     let loading = UIAlertController(style: .loading)
+    let payButton = YoustersButton(text: "")
+    
+    var tappedSub:Subscriber?
 
     init(agreemant:Agreement, type:InitType = .internal_) {
         self.agreemant = agreemant
@@ -85,13 +88,18 @@ class AgreementPageViewController: YoustersStackViewController {
             }
             
         case .paid, .waitKontrAgent, .active:
-            addSubTitle(title: "Подписали")
+            if agreemant.status != .paid {
+                addSubTitle(title: "Подписали")
+            }
             AgreementService.main.getAgreementSubs(uid: agreemant.uid) { (result) in
                 print(result)
                 var currentUserSubs = false
                 for item in result {
-                    self.addTitle(title: item.getFormatedString())
-                    if item.inn == user.inn {
+                    self.addTitle(title: item.getFormatedString(), spacing: 7)
+                    if item.videoUrl != "" {
+                        self.addToVideoBut(sub: item)
+                    }
+                    if item.name == user.name {
                         currentUserSubs = true
                     }
                 }
@@ -109,8 +117,12 @@ class AgreementPageViewController: YoustersStackViewController {
         }
     }
     
+    private func addToVideoBut(sub:Subscriber) {
+        let button = ToVideoButton(sub: sub, agr: agreemant, vc: self)
+        stackView.addArrangedSubview(button)
+    }
+    
     private func addPayOrPaketButton(havePaket:Bool) {
-        let payButton = YoustersButton(text: "")
         if havePaket {
             payButton.setTitle("Использовать пакет", for: .normal)
             payButton.addTarget(self, action: #selector(usePaket), for: .touchUpInside)
@@ -168,9 +180,14 @@ class AgreementPageViewController: YoustersStackViewController {
         }
     }
     
-    private func addTitle(title:String) {
+    private func addTitle(title:String, spacing:CGFloat? = nil) {
         let label = UILabel(text: title, font: Fonts.standart.gilroyMedium(ofSize: 18), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
-        addWidthArrangedSubView(view: label)
+        if let spacing = spacing {
+            addWidthArrangedSubView(view: label, spacing: spacing)
+        } else {
+            addWidthArrangedSubView(view: label)
+        }
+        
     }
     
     private func addSubTitle(title:String) {
@@ -185,9 +202,11 @@ class AgreementPageViewController: YoustersStackViewController {
             alert.dismiss(animated: false) {
                 print(result)
                 if result {
-                    let vc = EnterDocsCodeViewController(delegate: self)
+                    let vc = EnterDocsCodeViewController(delegate: self, code: self.agreemant.number)
                     vc.modalPresentationStyle = .popover
-                    self.present(vc, animated: true, completion: nil)
+                    self.present(vc, animated: false) {
+                        vc.present(vc.picker, animated: true, completion: nil)
+                    }
                 }
             }
         }
@@ -239,10 +258,16 @@ class AgreementPageViewController: YoustersStackViewController {
 
 extension AgreementPageViewController: ReloadProtocol {
     func reload() {
-        stackView.arrangedSubviews.forEach({$0.removeFromSuperview()})
-        setup()
-        Haptic.play([.wait(0.3), .haptic(.notification(.success))])
-        App.shared.isNeedUpdateDocs = true
+        AgreementService.main.getAgreement(uid: agreemant.uid) { (rawAgreement) in
+            if let newAgreement = rawAgreement {
+                self.agreemant = newAgreement
+                self.stackView.arrangedSubviews.forEach({$0.removeFromSuperview()})
+                self.payButton.removeFromSuperview()
+                self.setup()
+                Haptic.play([.wait(0.3), .haptic(.notification(.success))])
+                App.shared.isNeedUpdateDocs = true
+            }
+        }
     }
 }
 

@@ -35,10 +35,15 @@ class App {
         token = nil
         currentUser = nil
         
+        CodeEntity.shared.code = nil
+        
         let vc = RouteProvider.shared.firstEnterView()
         RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
         
     }
+    
+    weak var codeField:UITextField?
+    var savedCode:String?
     
     var isNeedUpdateDocs = false
     var isNeedUpdateProfile = false

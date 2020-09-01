@@ -21,10 +21,15 @@ class RouteProvider {
         guard let user = SaveRestoreProvider.shared.restoreUser() else {
             return EnterPhoneViewController()
         }
-        if user.isValid || user.isOnValidation {
-            return MainTabBarViewController()
-        }
-        return SelectOrgTypeViewController() // EnterVal...
+        return EnterCodeOrFaceID(target: .enterCode)
+//        if user.isValid || user.isOnValidation {
+//            if CodeEntity.shared.isSet {
+//
+//            } else {
+//                return EnterCodeOrFaceID(target: .createCode)
+//            }
+//        }
+//        return SelectOrgTypeViewController() // EnterVal...
         //EnterPhoneViewController()
     }
     
@@ -45,7 +50,7 @@ class RouteProvider {
     static func switchRootViewController(rootViewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
         guard let window = UIApplication.shared.keyWindow else { return }
         if animated {
-            UIView.transition(with: window, duration: 0.3, options: .transitionCurlDown, animations: {
+            UIView.transition(with: window, duration: 0.3, options: .curveEaseIn, animations: {
                 let oldState: Bool = UIView.areAnimationsEnabled
                 UIView.setAnimationsEnabled(false)
                 window.rootViewController = rootViewController

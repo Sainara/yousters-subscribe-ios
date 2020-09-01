@@ -44,10 +44,15 @@ class ValidateDocsService: YoustersNetwork {
             complition(false)
             return
         }
-        
-        let parameters = ["inn" : data.inn, "email": data.email]
-        
-        AF.request(URLs.uploadNonPhizData, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+                
+        AF.upload(multipartFormData: { (multi) in
+            
+            multi.append(data.video, withName: "video")
+
+            multi.append(data.email.data(using: .utf8, allowLossyConversion: false)!, withName: "email")
+            multi.append(data.inn.data(using: .utf8, allowLossyConversion: false)!, withName: "inn")
+
+        }, to: URLs.uploadNonPhizData, headers: headers).responseJSON { response in
             //print(response.request?.url)
             switch response.result {
             case .success(let value):
@@ -66,7 +71,7 @@ class ValidateDocsService: YoustersNetwork {
 }
 
 struct NonPhizData {
-    var inn:String, email:String
+    var inn:String, email:String, video:URL
 }
 
 struct DocsToValidateData {

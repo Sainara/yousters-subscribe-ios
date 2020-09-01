@@ -6,18 +6,36 @@
 //  Copyright © 2020 molidl. All rights reserved.
 //
 
+import MobileCoreServices
 import UIKit
 
 class EnterDocsCodeViewController: YoustersViewController {
     
     let phoneField = YoustersTextField(placehldr: "Код", fontSize: 22)
-    let button = YoustersButton(text: "Подвердить", fontSize: 18)
+    let button = YoustersButton(text: "Подтвердить", fontSize: 18)
     
-    var delegate:ReloadProtocol
+    let picker = UIImagePickerController()
     
-    init(delegate:ReloadProtocol) {
+    unowned var delegate:ReloadProtocol
+    
+    var videoURL:URL?
+    
+    init(delegate:ReloadProtocol, code:String) {
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
+        print("Added")
+        button.isEnabled = false
+
+        App.shared.codeField = phoneField
+        
+        if let code = App.shared.savedCode {
+            phoneField.text = code
+            button.isEnabled = true
+            App.shared.codeField = nil
+            App.shared.savedCode = nil
+        }
+       
+        //App.shared.codeField = phoneField
         
         view.backgroundColor = .white
         
@@ -25,6 +43,30 @@ class EnterDocsCodeViewController: YoustersViewController {
         bottomPaddinng = 15
         
         setupView()
+        
+        picker.delegate = self
+        picker.modalPresentationStyle = .popover
+        picker.isModalInPopover = true
+        picker.sourceType = .camera
+        picker.mediaTypes = [kUTTypeMovie as String]
+        picker.cameraCaptureMode = .video
+        picker.cameraDevice = .front
+        picker.videoQuality = .typeHigh
+        picker.videoMaximumDuration = TimeInterval(integerLiteral: 9)
+        
+        
+        let emj = UILabel(text: "Скажите:\n\"Я согласен с заключением\nдоговора номер \(code)\"", font: Fonts.standart.gilroyMedium(ofSize: 20), textColor: .white, textAlignment: .center, numberOfLines: 0)
+        emj.frame = (picker.cameraOverlayView?.frame)!
+
+        picker.cameraOverlayView = emj
+
+        self.present(picker, animated: true, completion: nil)
+    }
+    
+    deinit {
+        print("deininted")
+        App.shared.codeField = nil
+        App.shared.savedCode = nil
     }
     
     required init?(coder: NSCoder) {
@@ -87,23 +129,19 @@ class EnterDocsCodeViewController: YoustersViewController {
 //            make.leading.equalToSuperview().offset(20)
 //            make.trailing.equalToSuperview().offset(-20)
 //        }
-        
-        button.isEnabled = false
-        
+                
         button.addTarget(self, action: #selector(tapped), for: .touchUpInside)
     }
     
     @objc private func textFieldDidChange(textField: UITextField){
-        if textField.text!.count == 6 {
-            button.isEnabled = true
-            tapped()
-        }
+        button.isEnabled = textField.text!.count == 6
     }
     
     @objc private func tapped() {
         let alert = UIAlertController(style: .loading)
         self.present(alert, animated: true, completion: nil)
-        SubscriptionServive.main.validateSubscribe(code: phoneField.text!) { (result) in
+        guard let videoURL = videoURL else {return}
+        SubscriptionServive.main.validateSubscribe(code: phoneField.text!, videoURL: videoURL) { (result) in
             alert.dismiss(animated: false) {
                 if result {
                     self.dismiss(animated: true) {
@@ -117,16 +155,6 @@ class EnterDocsCodeViewController: YoustersViewController {
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -135,6 +163,25 @@ extension EnterDocsCodeViewController: UITextFieldDelegate {
         guard let text = textField.text else { return true }
         let newLength = text.count + string.count - range.length
         return newLength <= 6
+    }
+}
+
+
+extension EnterDocsCodeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let video = info[.mediaURL] as? URL {
+            videoURL = video
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: {
+            self.dismiss(animated: false, completion: nil)
+        })
     }
 }
 

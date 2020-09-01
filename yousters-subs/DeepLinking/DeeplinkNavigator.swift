@@ -12,7 +12,7 @@ class DeeplinkNavigator {
     static let shared = DeeplinkNavigator()
     private init() { }
     
-    func proceedToDeeplink(_ type: DeeplinkType, viewController:UIViewController?) {
+    func proceedToDeeplink(_ type: DeeplinkType, viewController:UIViewController?) -> Bool {
         
         func addToAddedIfNeed(agreement:Agreement) {
             AgreementService.main.addAgreementToAdded(uid: agreement.uid) { (res) in
@@ -39,28 +39,26 @@ class DeeplinkNavigator {
         
         switch type {
         case .agreement(uid: let uid):
-            guard let vc = viewController,
-                let agrPage = vc.presentedViewController as? AgreementPageViewController else {
-                    present(uid: uid, viewController: viewController)
-                    return
-            }
-            agrPage.dismiss(animated: false, completion: {
+            if let tabBar = viewController as? MainTabBarViewController {
+                if let agrPage = tabBar.presentedViewController as? AgreementPageViewController {
+                    agrPage.dismiss(animated: false, completion: {
+                        present(uid: uid, viewController: viewController)
+                        
+                    })
+                    return true
+                }
                 present(uid: uid, viewController: viewController)
-                return
-            })
+                return true
+   
+            }
+            return false
         case .profileActivation:
             if let tabBar = viewController as? MainTabBarViewController {
                 tabBar.selectedIndex = 1
-                if let profileViewNavRaw = tabBar.viewControllers?[1],
-                    let profileViewNav = profileViewNavRaw as? UINavigationController {
-                    profileViewNav.popToRootViewController(animated: false)
-                    if let profileViewRaw = profileViewNav.topViewController,
-                        let profileView = profileViewRaw as? ProfileViewController {
-                        profileView.reload()
-                        print("profileView.reload()")
-                    }
-                }
+                return true
             }
+            return false
         }
+        
     }
 }

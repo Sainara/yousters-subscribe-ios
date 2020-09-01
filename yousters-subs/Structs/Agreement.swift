@@ -11,7 +11,7 @@ import SwiftyJSON
 import SwiftDate
 
 struct Agreement {
-    var id:Int, title:String, serverHash:String, date:String, location:String, creatorID:Int, uid:String, status:AgreementStatus
+    var id:Int, title:String, serverHash:String, date:String, location:String, creatorID:Int, uid:String, status:AgreementStatus, number:String
     
     init(data:JSON) {
         id = data["id"].intValue
@@ -22,6 +22,7 @@ struct Agreement {
         creatorID = data["creator_id"].intValue
         uid = data["uid"].stringValue
         status = AgreementStatus.init(rawValue: data["status_id"].intValue) ?? .unknown
+        number = data["unumber"].stringValue
     }
     
     func getFormatedTime() -> String {
@@ -43,7 +44,7 @@ enum AgreementStatus: Int {
         case .paid:
             return "Оплачен"
         case .waitKontrAgent:
-            return "Ожидает подписания"
+            return "Ожидает подписания контрагента"
         case .active:
             return "Активно"
         }

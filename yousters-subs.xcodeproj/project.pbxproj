@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3408CA4A24E1E0450010E6A6 /* EmptyDocsListLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408CA4924E1E0450010E6A6 /* EmptyDocsListLabelView.swift */; };
+		343B752924EAEC86004CAB06 /* EnterCodeOrFaceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343B752824EAEC85004CAB06 /* EnterCodeOrFaceID.swift */; };
+		343B752B24EB052B004CAB06 /* EnterCodePadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343B752A24EB052B004CAB06 /* EnterCodePadDelegate.swift */; };
+		343B752E24EB0588004CAB06 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343B752D24EB0588004CAB06 /* CodeView.swift */; };
+		343B753024EB05CB004CAB06 /* CodePadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343B752F24EB05CB004CAB06 /* CodePadView.swift */; };
+		343B753224EB40DA004CAB06 /* CodeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343B753124EB40DA004CAB06 /* CodeEntity.swift */; };
+		34460E7724D9F99B003E7D90 /* ActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34460E7624D9F99B003E7D90 /* ActionType.swift */; };
+		34460E7924D9FA0D003E7D90 /* ActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34460E7824D9FA0D003E7D90 /* ActionManager.swift */; };
+		34460E7B24D9FA4A003E7D90 /* ActionParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34460E7A24D9FA4A003E7D90 /* ActionParser.swift */; };
+		34460E7D24D9FD23003E7D90 /* ActionExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34460E7C24D9FD23003E7D90 /* ActionExecutor.swift */; };
 		345D150B24978ECB00228CF4 /* YoustersNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D150A24978ECB00228CF4 /* YoustersNavigationController.swift */; };
 		345D150E249795CF00228CF4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D150D249795CF00228CF4 /* ProfileViewController.swift */; };
 		345D151224979D5600228CF4 /* MainDocsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D151124979D5600228CF4 /* MainDocsViewController.swift */; };
@@ -68,6 +78,9 @@
 		348982942494EF7900BB55E8 /* YoustersStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348982932494EF7900BB55E8 /* YoustersStackViewController.swift */; };
 		348982982495831E00BB55E8 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348982972495831E00BB55E8 /* Validations.swift */; };
 		3489829A24966C1000BB55E8 /* ValidateDocsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489829924966C1000BB55E8 /* ValidateDocsService.swift */; };
+		348CC0D424FC612700E96399 /* ToVideoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348CC0D324FC612700E96399 /* ToVideoButton.swift */; };
+		348CC0D624FC641700E96399 /* SubscriptionVideoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348CC0D524FC641700E96399 /* SubscriptionVideoPageViewController.swift */; };
+		348CC0D824FD10E000E96399 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348CC0D724FD10E000E96399 /* ReportService.swift */; };
 		349028BD24C7690A0044D6B2 /* SberService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028BC24C7690A0044D6B2 /* SberService.swift */; };
 		349028C024C874DE0044D6B2 /* SubscriptionServive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */; };
 		349028C224C876B40044D6B2 /* YoustersNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028C124C876B40044D6B2 /* YoustersNetwork.swift */; };
@@ -96,6 +109,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3408CA4924E1E0450010E6A6 /* EmptyDocsListLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDocsListLabelView.swift; sourceTree = "<group>"; };
+		343B752824EAEC85004CAB06 /* EnterCodeOrFaceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeOrFaceID.swift; sourceTree = "<group>"; };
+		343B752A24EB052B004CAB06 /* EnterCodePadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodePadDelegate.swift; sourceTree = "<group>"; };
+		343B752D24EB0588004CAB06 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		343B752F24EB05CB004CAB06 /* CodePadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePadView.swift; sourceTree = "<group>"; };
+		343B753124EB40DA004CAB06 /* CodeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEntity.swift; sourceTree = "<group>"; };
+		34460E7624D9F99B003E7D90 /* ActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionType.swift; sourceTree = "<group>"; };
+		34460E7824D9FA0D003E7D90 /* ActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionManager.swift; sourceTree = "<group>"; };
+		34460E7A24D9FA4A003E7D90 /* ActionParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionParser.swift; sourceTree = "<group>"; };
+		34460E7C24D9FD23003E7D90 /* ActionExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionExecutor.swift; sourceTree = "<group>"; };
 		345D150A24978ECB00228CF4 /* YoustersNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersNavigationController.swift; sourceTree = "<group>"; };
 		345D150D249795CF00228CF4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		345D151124979D5600228CF4 /* MainDocsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDocsViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +183,9 @@
 		348982932494EF7900BB55E8 /* YoustersStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersStackViewController.swift; sourceTree = "<group>"; };
 		348982972495831E00BB55E8 /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		3489829924966C1000BB55E8 /* ValidateDocsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateDocsService.swift; sourceTree = "<group>"; };
+		348CC0D324FC612700E96399 /* ToVideoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToVideoButton.swift; sourceTree = "<group>"; };
+		348CC0D524FC641700E96399 /* SubscriptionVideoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionVideoPageViewController.swift; sourceTree = "<group>"; };
+		348CC0D724FD10E000E96399 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		349028BC24C7690A0044D6B2 /* SberService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberService.swift; sourceTree = "<group>"; };
 		349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionServive.swift; sourceTree = "<group>"; };
 		349028C124C876B40044D6B2 /* YoustersNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersNetwork.swift; sourceTree = "<group>"; };
@@ -198,6 +224,35 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		343B752724EAEC54004CAB06 /* LoginGroup */ = {
+			isa = PBXGroup;
+			children = (
+				343B752C24EB0570004CAB06 /* SubViews */,
+				343B752824EAEC85004CAB06 /* EnterCodeOrFaceID.swift */,
+			);
+			path = LoginGroup;
+			sourceTree = "<group>";
+		};
+		343B752C24EB0570004CAB06 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				343B752D24EB0588004CAB06 /* CodeView.swift */,
+				343B752F24EB05CB004CAB06 /* CodePadView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		34460E7524D9F71D003E7D90 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				34460E7624D9F99B003E7D90 /* ActionType.swift */,
+				34460E7824D9FA0D003E7D90 /* ActionManager.swift */,
+				34460E7A24D9FA4A003E7D90 /* ActionParser.swift */,
+				34460E7C24D9FD23003E7D90 /* ActionExecutor.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
 		345D150C2497959100228CF4 /* ProfileGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				345D15162497D75600228CF4 /* AgreementCell.swift */,
+				3408CA4924E1E0450010E6A6 /* EmptyDocsListLabelView.swift */,
 			);
 			path = DocsSubViewsGroup;
 			sourceTree = "<group>";
@@ -246,6 +302,8 @@
 		3465CF1A248D70AD00374739 /* yousters-subs */ = {
 			isa = PBXGroup;
 			children = (
+				343B752724EAEC54004CAB06 /* LoginGroup */,
+				34460E7524D9F71D003E7D90 /* Actions */,
 				346BCFA324CDD12C0047C24B /* ErrorGroup */,
 				346BCF9924CD99490047C24B /* PaymentGroup */,
 				346C1FB324A4CAF40097772A /* DeepLinking */,
@@ -300,6 +358,7 @@
 				3489829924966C1000BB55E8 /* ValidateDocsService.swift */,
 				34F2D97324BDCD8B0008DC2A /* PaymentService.swift */,
 				34AFC0D424D49C0D00B8D761 /* PushService.swift */,
+				348CC0D724FD10E000E96399 /* ReportService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -346,6 +405,7 @@
 		3465D0102494111600374739 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				343B753124EB40DA004CAB06 /* CodeEntity.swift */,
 				3465D0112494112B00374739 /* App.swift */,
 				3465D0212494DE6200374739 /* SaveRestoreProvider.swift */,
 				348982912494E22F00BB55E8 /* RouteProvider.swift */,
@@ -442,6 +502,7 @@
 		34789D54249A37410020FAD5 /* AgreementsSubViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				348CC0D224FC611000E96399 /* SubViews */,
 				34F2D97024BD03A60008DC2A /* AgreementSubGroup */,
 				34789D55249A377C0020FAD5 /* AgreementPageViewController.swift */,
 			);
@@ -455,8 +516,17 @@
 				3463D09624AA43E10052DB93 /* AddCloseItemProtocol.swift */,
 				346BCF9F24CDA12E0047C24B /* CellDelegate.swift */,
 				346BCFA124CDA2740047C24B /* ParentViewControllerProtocol.swift */,
+				343B752A24EB052B004CAB06 /* EnterCodePadDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		348CC0D224FC611000E96399 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				348CC0D324FC612700E96399 /* ToVideoButton.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 		349028BB24C768E20044D6B2 /* AuthGroup */ = {
@@ -516,6 +586,7 @@
 			children = (
 				34789D50249A20170020FAD5 /* CreateAgreementViewController.swift */,
 				34789D5E249BA3350020FAD5 /* EnterDocsCodeViewController.swift */,
+				348CC0D524FC641700E96399 /* SubscriptionVideoPageViewController.swift */,
 			);
 			path = AgreementSubGroup;
 			sourceTree = "<group>";
@@ -648,8 +719,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				343B752924EAEC86004CAB06 /* EnterCodeOrFaceID.swift in Sources */,
 				348982942494EF7900BB55E8 /* YoustersStackViewController.swift in Sources */,
 				346BCFA724CDFE2A0047C24B /* AgreementPaketService.swift in Sources */,
+				348CC0D824FD10E000E96399 /* ReportService.swift in Sources */,
 				34789D4F24991FCA0020FAD5 /* YoustersPhoneNumberTextField.swift in Sources */,
 				3481322D24D2F12D00349DA0 /* StoreObserver.swift in Sources */,
 				348982922494E22F00BB55E8 /* RouteProvider.swift in Sources */,
@@ -662,6 +735,7 @@
 				346BCF9E24CDA0200047C24B /* PaketPaymentViewController.swift in Sources */,
 				3465CF41248D8CC100374739 /* EnterCodeViewController.swift in Sources */,
 				34789D5F249BA3350020FAD5 /* EnterDocsCodeViewController.swift in Sources */,
+				3408CA4A24E1E0450010E6A6 /* EmptyDocsListLabelView.swift in Sources */,
 				3465CFFD24938B8700374739 /* URLs.swift in Sources */,
 				34F2D97424BDCD8B0008DC2A /* PaymentService.swift in Sources */,
 				34C06DAE24BBB4390003157E /* NonPhizValidationViewController.swift in Sources */,
@@ -677,7 +751,10 @@
 				3465D0122494112C00374739 /* App.swift in Sources */,
 				34C06DA024BB9D5B0003157E /* SberIDAuthViewController.swift in Sources */,
 				34789D62249C2EFF0020FAD5 /* ReloadProtocol.swift in Sources */,
+				34460E7924D9FA0D003E7D90 /* ActionManager.swift in Sources */,
 				346BCFA524CDD14E0047C24B /* PrimaryError.swift in Sources */,
+				34460E7D24D9FD23003E7D90 /* ActionExecutor.swift in Sources */,
+				343B752E24EB0588004CAB06 /* CodeView.swift in Sources */,
 				3465D01A2494247D00374739 /* YoustersAlert.swift in Sources */,
 				3465CF39248D83A000374739 /* EnterPhoneViewController.swift in Sources */,
 				346BCF8D24CCBDC40047C24B /* YoustersWKWebViewController.swift in Sources */,
@@ -690,16 +767,21 @@
 				346C1FB924A4CC8E0097772A /* DeeplinkNavigator.swift in Sources */,
 				3465CF3F248D860100374739 /* Colors.swift in Sources */,
 				345D15172497D75600228CF4 /* AgreementCell.swift in Sources */,
+				343B752B24EB052B004CAB06 /* EnterCodePadDelegate.swift in Sources */,
 				349028C024C874DE0044D6B2 /* SubscriptionServive.swift in Sources */,
 				34C06DA224BB9D8B0003157E /* SelectPhizAuthViewController.swift in Sources */,
 				346BCF9B24CD9BCA0047C24B /* PaymentController.swift in Sources */,
+				343B753224EB40DA004CAB06 /* CodeEntity.swift in Sources */,
+				348CC0D624FC641700E96399 /* SubscriptionVideoPageViewController.swift in Sources */,
 				3465D00624938F2600374739 /* Fonts.swift in Sources */,
 				346BCF9524CCC9C30047C24B /* PaketCell.swift in Sources */,
 				3465CF3C248D83CF00374739 /* AuthService.swift in Sources */,
 				34789D53249A20590020FAD5 /* AgreementService.swift in Sources */,
+				34460E7724D9F99B003E7D90 /* ActionType.swift in Sources */,
 				345D150B24978ECB00228CF4 /* YoustersNavigationController.swift in Sources */,
 				346BCF9824CCEC7C0047C24B /* UserPaketService.swift in Sources */,
 				346BCF9224CCC89A0047C24B /* PaketsCollectionView.swift in Sources */,
+				348CC0D424FC612700E96399 /* ToVideoButton.swift in Sources */,
 				346C1FB524A4CBFA0097772A /* DeepLinkType.swift in Sources */,
 				346C1FB724A4CC380097772A /* DeepLinkManager.swift in Sources */,
 				3465CF1C248D70AD00374739 /* AppDelegate.swift in Sources */,
@@ -710,9 +792,11 @@
 				346BCF8F24CCC0E50047C24B /* Paket.swift in Sources */,
 				345D150E249795CF00228CF4 /* ProfileViewController.swift in Sources */,
 				345D15142497D68A00228CF4 /* Agreement.swift in Sources */,
+				34460E7B24D9FA4A003E7D90 /* ActionParser.swift in Sources */,
 				348982982495831E00BB55E8 /* Validations.swift in Sources */,
 				34AFC0D524D49C0D00B8D761 /* PushService.swift in Sources */,
 				3465D00F2493AECF00374739 /* Extensions.swift in Sources */,
+				343B753024EB05CB004CAB06 /* CodePadView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,7 +948,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommysirenko.yousterssubsapp;
 				PRODUCT_NAME = Scribe;
 				SWIFT_VERSION = 5.0;
@@ -892,7 +976,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommysirenko.yousterssubsapp;
 				PRODUCT_NAME = Scribe;
 				SWIFT_VERSION = 5.0;

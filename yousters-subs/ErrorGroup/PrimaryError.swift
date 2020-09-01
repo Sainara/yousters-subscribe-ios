@@ -28,6 +28,8 @@ class PrimaryError {
             return "Слишком много попыток"
         case .inValidName:
             return "Некоректное имя"
+        case .reportAlreadyExist:
+            return "Жалоба уже подана"
         case .unknown:
             return "Неизвестная ошибка"
         default:
@@ -50,6 +52,7 @@ class PrimaryError {
         sessionExpired = "sessionExpired",
         wrongCode = "wrongCode",
         inValidName = "inValidName",
+        reportAlreadyExist = "reportAlreadyExist",
         unknown
     }
     

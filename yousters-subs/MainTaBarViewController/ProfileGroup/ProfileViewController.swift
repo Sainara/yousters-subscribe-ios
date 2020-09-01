@@ -13,6 +13,7 @@ import Haptica
 class ProfileViewController: YoustersStackViewController {
     
     let collectionView = PaketsCollectionView(pakets: [])
+    let but = YoustersButton(text: "Выйти")
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,10 +44,14 @@ class ProfileViewController: YoustersStackViewController {
         }
         if user.isOnValidation {
             setupViewWithState(state: .onValidation)
+            return
         }
         if user.isValid {
             setupViewWithState(state: .active)
+            return
         }
+        setupViewWithState(state: .notOnValidation)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -55,6 +60,9 @@ class ProfileViewController: YoustersStackViewController {
     
     func setupViewWithState(state:ProfileState) {
         switch state {
+        case .notOnValidation:
+            setupNotOnValidation()
+            scrollView.contentInset = .init(top: 20, left: 0, bottom: 100, right: 0)
         case .onValidation:
             setupOnValidation()
             scrollView.contentInset = .init(top: 20, left: 0, bottom: 100, right: 0)
@@ -118,11 +126,28 @@ class ProfileViewController: YoustersStackViewController {
         let nameLabel = UILabel(text: user.name, font: Fonts.standart.gilroySemiBoldName(ofSize: 35), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
         addWidthArrangedSubView(view: nameLabel)
         
-        addTitle(title: user.inn, subTitle: "ИНН")
+        if !(user.isPhiz ?? true) {
+            addTitle(title: user.inn, subTitle: "ИНН")
+        }
         addTitle(title: user.email, subTitle: "Email")
         
         setUpUserPaketInfo()
         //addTitle(title: "Отсутсвует", subTitle: "Пакет")
+        
+    }
+    
+    private func setupNotOnValidation() {
+        guard let user = App.shared.currentUser else {return}
+        
+        let phoneLabel = UILabel(text: user.phone, font: Fonts.standart.gilroySemiBoldName(ofSize: 40), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
+        stackView.addArrangedSubview(phoneLabel)
+        
+        let support = YoustersButton(text: "Пройти верификацию")
+        addWidthArrangedSubView(view: support)
+        support.addTarget(self, action: #selector(goToVerificatino), for: .touchUpInside)
+        
+        let infoLabel = UILabel(text: "Вы можете пройти верификацию, чтобы иметь возможность подписывать договоры", font: Fonts.standart.gilroyRegular(ofSize: 17), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
+        stackView.addArrangedSubview(infoLabel)
         
     }
     
@@ -144,9 +169,15 @@ class ProfileViewController: YoustersStackViewController {
     }
     
     private func addLogOut(state:ProfileState) {
-        let but = YoustersButton(text: "Выйти")
         
         switch state {
+        case .notOnValidation:
+            view.addSubview(but)
+            but.snp.makeConstraints { (make) in
+                make.leading.equalToSuperview().offset(20)
+                make.trailing.equalToSuperview().offset(-20)
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            }
         case .active:
             addWidthArrangedSubView(view: but)
         case .onValidation:
@@ -169,6 +200,14 @@ class ProfileViewController: YoustersStackViewController {
     private func addSubTitle(subTitle:String) {
         let label = UILabel(text: subTitle, font: Fonts.standart.gilroyMedium(ofSize: 16), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
         addWidthArrangedSubView(view: label, spacing: 0)
+    }
+    
+    @objc private func goToVerificatino() {
+        let vc = SelectOrgTypeViewController()
+        vc.reloadProtocol = self
+        vc.addCloseItem(addFromSuper: true)
+        vc.modalPresentationStyle = .popover
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc private func logOut() {
@@ -227,15 +266,22 @@ class ProfileViewController: YoustersStackViewController {
     }
     
     enum ProfileState {
-        case onValidation, active
+        case notOnValidation, onValidation, active
     }
 }
 
 extension ProfileViewController: ReloadProtocol {
     func reload() {
-        stackView.arrangedSubviews.forEach({$0.removeFromSuperview()})
-        initView()
-        Haptic.play([.wait(0.1), .haptic(.notification(.success))])
+        AuthService.main.me { (user, isNeedLogOut) in
+            if isNeedLogOut {
+                App.shared.logOut()
+                return
+            }
+            self.but.removeFromSuperview()
+            self.stackView.arrangedSubviews.forEach({$0.removeFromSuperview()})
+            self.initView()
+            Haptic.play([.wait(0.1), .haptic(.notification(.success))])
+        }
     }
 }
 
