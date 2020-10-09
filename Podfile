@@ -19,5 +19,9 @@ target 'yousters-subs' do
   pod 'SwiftDate'
   pod "Haptica"
   pod 'Siren'
+  pod 'MessageKit'
+  pod 'Starscream'
+  pod 'YandexMobileMetrica', '3.11.1'
+  pod "Recorder"
   
 end

@@ -204,14 +204,14 @@ extension EnterValidateDataViewController: UIImagePickerControllerDelegate, UINa
         switch picking {
         case .main:
             if let pickedImage = info[.originalImage] as? UIImage {
-                getImageURL(image: pickedImage) { (url) in
+                pickedImage.getImageURL { (url) in
                     self.mainPassportPageURL = url
                     self.addMainPassportPageButton.setTitle("Готово", for: .normal)
                 }
             }
         case .secondary:
             if let pickedImage = info[.originalImage] as? UIImage {
-                getImageURL(image: pickedImage) { (url) in
+                pickedImage.getImageURL { (url) in
                     self.secondPassportPageURL = url
                     self.addSecondPassportPageButton.setTitle("Готово", for: .normal)
                 }
@@ -228,23 +228,7 @@ extension EnterValidateDataViewController: UIImagePickerControllerDelegate, UINa
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func getImageURL(image:UIImage, complition: @escaping (URL)->Void) {
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            let imgName = UUID().uuidString
-            let documentDirectory = NSTemporaryDirectory()
-            let localPath = documentDirectory.appending(imgName + ".jpg")
-            
-            let data = image.jpegData(compressionQuality: 0.8)! as NSData
-            data.write(toFile: localPath, atomically: true)
-            let photoURL = URL(fileURLWithPath: localPath)
-            print(photoURL)
-            
-            DispatchQueue.main.async {
-                complition(photoURL)
-            }
-        }
-    }
+    
 }
 
 extension EnterValidateDataViewController: UITextFieldDelegate {

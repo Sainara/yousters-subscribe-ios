@@ -54,7 +54,7 @@ class DeeplinkNavigator {
             return false
         case .profileActivation:
             if let tabBar = viewController as? MainTabBarViewController {
-                tabBar.selectedIndex = 1
+                tabBar.selectedIndex = 2
                 return true
             }
             return false

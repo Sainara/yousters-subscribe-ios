@@ -18,8 +18,8 @@ class RouteProvider {
         guard SaveRestoreProvider.shared.restoreToken() != nil else {
             return EnterPhoneViewController()
         }
-        guard let user = SaveRestoreProvider.shared.restoreUser() else {
-            return EnterPhoneViewController()
+        if CodeEntity.shared.code == nil {
+            return EnterCodeOrFaceID(target: .createCode)
         }
         return EnterCodeOrFaceID(target: .enterCode)
 //        if user.isValid || user.isOnValidation {

@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		3408CA4A24E1E0450010E6A6 /* EmptyDocsListLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3408CA4924E1E0450010E6A6 /* EmptyDocsListLabelView.swift */; };
+		3418C1762524F90000A0F992 /* MainDialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3418C1752524F90000A0F992 /* MainDialogsViewController.swift */; };
+		3418C1782524F99D00A0F992 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3418C1772524F99D00A0F992 /* Dialog.swift */; };
+		3418C17B2524FA5D00A0F992 /* DialogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3418C17A2524FA5D00A0F992 /* DialogCell.swift */; };
+		3418C17E2525ED0800A0F992 /* DialogPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3418C17D2525ED0800A0F992 /* DialogPageViewController.swift */; };
+		342C078F252CD30200C76FA1 /* DialogSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C078E252CD30200C76FA1 /* DialogSocket.swift */; };
+		342C0792252DDAF400C76FA1 /* DialogWrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C0791252DDAF400C76FA1 /* DialogWrap.swift */; };
+		342C0794252DE16200C76FA1 /* DialogWrapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C0793252DE16100C76FA1 /* DialogWrapDelegate.swift */; };
+		342C079C252F471000C76FA1 /* ScribeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C079B252F470F00C76FA1 /* ScribeInputView.swift */; };
+		342C079E253074D300C76FA1 /* CustomMessageKitDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C079D253074D200C76FA1 /* CustomMessageKitDate.swift */; };
+		342C07A02530E16900C76FA1 /* ScribeAttachementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C079F2530E16900C76FA1 /* ScribeAttachementManager.swift */; };
+		342C07A32530F5B200C76FA1 /* DialogViewControllerMessageKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C07A22530F5B200C76FA1 /* DialogViewControllerMessageKit.swift */; };
+		342C07A52530F61800C76FA1 /* DialogViewControllerAttachmentManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C07A42530F61800C76FA1 /* DialogViewControllerAttachmentManagerDelegate.swift */; };
+		342C07A72530F68200C76FA1 /* DialogViewControllerInputBarAccessoryViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C07A62530F68200C76FA1 /* DialogViewControllerInputBarAccessoryViewDelegate.swift */; };
+		342C07A925310C8300C76FA1 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C07A825310C8300C76FA1 /* BasicAudioController.swift */; };
 		343B752924EAEC86004CAB06 /* EnterCodeOrFaceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343B752824EAEC85004CAB06 /* EnterCodeOrFaceID.swift */; };
 		343B752B24EB052B004CAB06 /* EnterCodePadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343B752A24EB052B004CAB06 /* EnterCodePadDelegate.swift */; };
 		343B752E24EB0588004CAB06 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343B752D24EB0588004CAB06 /* CodeView.swift */; };
@@ -78,6 +92,7 @@
 		348982942494EF7900BB55E8 /* YoustersStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348982932494EF7900BB55E8 /* YoustersStackViewController.swift */; };
 		348982982495831E00BB55E8 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348982972495831E00BB55E8 /* Validations.swift */; };
 		3489829A24966C1000BB55E8 /* ValidateDocsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3489829924966C1000BB55E8 /* ValidateDocsService.swift */; };
+		348A86C3252B7D2300FD6317 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348A86C2252B7D2300FD6317 /* MessageService.swift */; };
 		348CC0D424FC612700E96399 /* ToVideoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348CC0D324FC612700E96399 /* ToVideoButton.swift */; };
 		348CC0D624FC641700E96399 /* SubscriptionVideoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348CC0D524FC641700E96399 /* SubscriptionVideoPageViewController.swift */; };
 		348CC0D824FD10E000E96399 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348CC0D724FD10E000E96399 /* ReportService.swift */; };
@@ -85,6 +100,10 @@
 		349028C024C874DE0044D6B2 /* SubscriptionServive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */; };
 		349028C224C876B40044D6B2 /* YoustersNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349028C124C876B40044D6B2 /* YoustersNetwork.swift */; };
 		34AFC0D524D49C0D00B8D761 /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFC0D424D49C0D00B8D761 /* PushService.swift */; };
+		34BBF3772528AC7A00D1B1E7 /* DialogsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BBF3762528AC7A00D1B1E7 /* DialogsService.swift */; };
+		34BBF37A2528B43C00D1B1E7 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BBF3792528B43C00D1B1E7 /* Sender.swift */; };
+		34BBF37C2528B44800D1B1E7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BBF37B2528B44800D1B1E7 /* Message.swift */; };
+		34BBF37E2528BE0300D1B1E7 /* CreateDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BBF37D2528BE0300D1B1E7 /* CreateDialogViewController.swift */; };
 		34C06D9D24BB96C80003157E /* SelectOrgTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */; };
 		34C06DA024BB9D5B0003157E /* SberIDAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */; };
 		34C06DA224BB9D8B0003157E /* SelectPhizAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */; };
@@ -110,6 +129,20 @@
 
 /* Begin PBXFileReference section */
 		3408CA4924E1E0450010E6A6 /* EmptyDocsListLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDocsListLabelView.swift; sourceTree = "<group>"; };
+		3418C1752524F90000A0F992 /* MainDialogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDialogsViewController.swift; sourceTree = "<group>"; };
+		3418C1772524F99D00A0F992 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
+		3418C17A2524FA5D00A0F992 /* DialogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogCell.swift; sourceTree = "<group>"; };
+		3418C17D2525ED0800A0F992 /* DialogPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPageViewController.swift; sourceTree = "<group>"; };
+		342C078E252CD30200C76FA1 /* DialogSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogSocket.swift; sourceTree = "<group>"; };
+		342C0791252DDAF400C76FA1 /* DialogWrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogWrap.swift; sourceTree = "<group>"; };
+		342C0793252DE16100C76FA1 /* DialogWrapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogWrapDelegate.swift; sourceTree = "<group>"; };
+		342C079B252F470F00C76FA1 /* ScribeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScribeInputView.swift; sourceTree = "<group>"; };
+		342C079D253074D200C76FA1 /* CustomMessageKitDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageKitDate.swift; sourceTree = "<group>"; };
+		342C079F2530E16900C76FA1 /* ScribeAttachementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScribeAttachementManager.swift; sourceTree = "<group>"; };
+		342C07A22530F5B200C76FA1 /* DialogViewControllerMessageKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewControllerMessageKit.swift; sourceTree = "<group>"; };
+		342C07A42530F61800C76FA1 /* DialogViewControllerAttachmentManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewControllerAttachmentManagerDelegate.swift; sourceTree = "<group>"; };
+		342C07A62530F68200C76FA1 /* DialogViewControllerInputBarAccessoryViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewControllerInputBarAccessoryViewDelegate.swift; sourceTree = "<group>"; };
+		342C07A825310C8300C76FA1 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
 		343B752824EAEC85004CAB06 /* EnterCodeOrFaceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeOrFaceID.swift; sourceTree = "<group>"; };
 		343B752A24EB052B004CAB06 /* EnterCodePadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodePadDelegate.swift; sourceTree = "<group>"; };
 		343B752D24EB0588004CAB06 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
@@ -183,6 +216,7 @@
 		348982932494EF7900BB55E8 /* YoustersStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersStackViewController.swift; sourceTree = "<group>"; };
 		348982972495831E00BB55E8 /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		3489829924966C1000BB55E8 /* ValidateDocsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateDocsService.swift; sourceTree = "<group>"; };
+		348A86C2252B7D2300FD6317 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		348CC0D324FC612700E96399 /* ToVideoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToVideoButton.swift; sourceTree = "<group>"; };
 		348CC0D524FC641700E96399 /* SubscriptionVideoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionVideoPageViewController.swift; sourceTree = "<group>"; };
 		348CC0D724FD10E000E96399 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
@@ -190,6 +224,10 @@
 		349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionServive.swift; sourceTree = "<group>"; };
 		349028C124C876B40044D6B2 /* YoustersNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoustersNetwork.swift; sourceTree = "<group>"; };
 		34AFC0D424D49C0D00B8D761 /* PushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
+		34BBF3762528AC7A00D1B1E7 /* DialogsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsService.swift; sourceTree = "<group>"; };
+		34BBF3792528B43C00D1B1E7 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		34BBF37B2528B44800D1B1E7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		34BBF37D2528BE0300D1B1E7 /* CreateDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDialogViewController.swift; sourceTree = "<group>"; };
 		34C06D9C24BB96C80003157E /* SelectOrgTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgTypeViewController.swift; sourceTree = "<group>"; };
 		34C06D9F24BB9D5B0003157E /* SberIDAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SberIDAuthViewController.swift; sourceTree = "<group>"; };
 		34C06DA124BB9D8B0003157E /* SelectPhizAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhizAuthViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +260,65 @@
 				F117CE8E0376F3562EC12806 /* Pods-yousters-subs.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		3418C1742524F76700A0F992 /* DialogsGroup */ = {
+			isa = PBXGroup;
+			children = (
+				342C0790252DDAE000C76FA1 /* Components */,
+				3418C17C2525EC8700A0F992 /* DialogSubViewControllersroup */,
+				3418C1792524FA3E00A0F992 /* DialogsSubViewsGroup */,
+				3418C1752524F90000A0F992 /* MainDialogsViewController.swift */,
+			);
+			path = DialogsGroup;
+			sourceTree = "<group>";
+		};
+		3418C1792524FA3E00A0F992 /* DialogsSubViewsGroup */ = {
+			isa = PBXGroup;
+			children = (
+				3418C17A2524FA5D00A0F992 /* DialogCell.swift */,
+			);
+			path = DialogsSubViewsGroup;
+			sourceTree = "<group>";
+		};
+		3418C17C2525EC8700A0F992 /* DialogSubViewControllersroup */ = {
+			isa = PBXGroup;
+			children = (
+				342C07A12530F57D00C76FA1 /* DialogViewControllerExtensions */,
+				34BBF37225288A9200D1B1E7 /* CustomElements */,
+				3418C17D2525ED0800A0F992 /* DialogPageViewController.swift */,
+				34BBF37D2528BE0300D1B1E7 /* CreateDialogViewController.swift */,
+			);
+			path = DialogSubViewControllersroup;
+			sourceTree = "<group>";
+		};
+		342C078D252CD2E600C76FA1 /* SocketGroup */ = {
+			isa = PBXGroup;
+			children = (
+				342C078E252CD30200C76FA1 /* DialogSocket.swift */,
+			);
+			path = SocketGroup;
+			sourceTree = "<group>";
+		};
+		342C0790252DDAE000C76FA1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				342C0791252DDAF400C76FA1 /* DialogWrap.swift */,
+				342C079D253074D200C76FA1 /* CustomMessageKitDate.swift */,
+				342C079F2530E16900C76FA1 /* ScribeAttachementManager.swift */,
+				342C07A825310C8300C76FA1 /* BasicAudioController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		342C07A12530F57D00C76FA1 /* DialogViewControllerExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				342C07A22530F5B200C76FA1 /* DialogViewControllerMessageKit.swift */,
+				342C07A42530F61800C76FA1 /* DialogViewControllerAttachmentManagerDelegate.swift */,
+				342C07A62530F68200C76FA1 /* DialogViewControllerInputBarAccessoryViewDelegate.swift */,
+			);
+			path = DialogViewControllerExtensions;
 			sourceTree = "<group>";
 		};
 		343B752724EAEC54004CAB06 /* LoginGroup */ = {
@@ -332,6 +429,7 @@
 		3465CF33248D7A6100374739 /* MainTaBarViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3418C1742524F76700A0F992 /* DialogsGroup */,
 				345D151024979D2900228CF4 /* DocsGroup */,
 				345D150C2497959100228CF4 /* ProfileGroup */,
 				3465CF34248D7A9900374739 /* MainTabBarViewController.swift */,
@@ -351,6 +449,8 @@
 		3465CF3A248D83B600374739 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				342C078D252CD2E600C76FA1 /* SocketGroup */,
+				34BBF3752528AC4700D1B1E7 /* CommunicationGroup */,
 				346BCF9624CCEC300047C24B /* PaketGroup */,
 				349028C124C876B40044D6B2 /* YoustersNetwork.swift */,
 				349028BE24C874A90044D6B2 /* AgreementGroup */,
@@ -426,6 +526,7 @@
 		3465D01C2494D8FE00374739 /* Structs */ = {
 			isa = PBXGroup;
 			children = (
+				34BBF3782528B41700D1B1E7 /* CommunicationGroup */,
 				3465D01D2494D94300374739 /* AbstractUser.swift */,
 				345D15132497D68A00228CF4 /* Agreement.swift */,
 				34789D5C249AC3A50020FAD5 /* Subscriber.swift */,
@@ -517,6 +618,7 @@
 				346BCF9F24CDA12E0047C24B /* CellDelegate.swift */,
 				346BCFA124CDA2740047C24B /* ParentViewControllerProtocol.swift */,
 				343B752A24EB052B004CAB06 /* EnterCodePadDelegate.swift */,
+				342C0793252DE16100C76FA1 /* DialogWrapDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -545,6 +647,33 @@
 				349028BF24C874DE0044D6B2 /* SubscriptionServive.swift */,
 			);
 			path = AgreementGroup;
+			sourceTree = "<group>";
+		};
+		34BBF37225288A9200D1B1E7 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				342C079B252F470F00C76FA1 /* ScribeInputView.swift */,
+			);
+			path = CustomElements;
+			sourceTree = "<group>";
+		};
+		34BBF3752528AC4700D1B1E7 /* CommunicationGroup */ = {
+			isa = PBXGroup;
+			children = (
+				34BBF3762528AC7A00D1B1E7 /* DialogsService.swift */,
+				348A86C2252B7D2300FD6317 /* MessageService.swift */,
+			);
+			path = CommunicationGroup;
+			sourceTree = "<group>";
+		};
+		34BBF3782528B41700D1B1E7 /* CommunicationGroup */ = {
+			isa = PBXGroup;
+			children = (
+				3418C1772524F99D00A0F992 /* Dialog.swift */,
+				34BBF3792528B43C00D1B1E7 /* Sender.swift */,
+				34BBF37B2528B44800D1B1E7 /* Message.swift */,
+			);
+			path = CommunicationGroup;
 			sourceTree = "<group>";
 		};
 		34C06D9E24BB9D1F0003157E /* PhizValidationGroup */ = {
@@ -722,10 +851,14 @@
 				343B752924EAEC86004CAB06 /* EnterCodeOrFaceID.swift in Sources */,
 				348982942494EF7900BB55E8 /* YoustersStackViewController.swift in Sources */,
 				346BCFA724CDFE2A0047C24B /* AgreementPaketService.swift in Sources */,
+				342C07A52530F61800C76FA1 /* DialogViewControllerAttachmentManagerDelegate.swift in Sources */,
+				342C07A925310C8300C76FA1 /* BasicAudioController.swift in Sources */,
 				348CC0D824FD10E000E96399 /* ReportService.swift in Sources */,
 				34789D4F24991FCA0020FAD5 /* YoustersPhoneNumberTextField.swift in Sources */,
 				3481322D24D2F12D00349DA0 /* StoreObserver.swift in Sources */,
 				348982922494E22F00BB55E8 /* RouteProvider.swift in Sources */,
+				342C079E253074D300C76FA1 /* CustomMessageKitDate.swift in Sources */,
+				3418C17B2524FA5D00A0F992 /* DialogCell.swift in Sources */,
 				345D151224979D5600228CF4 /* MainDocsViewController.swift in Sources */,
 				3465D01E2494D94400374739 /* AbstractUser.swift in Sources */,
 				34864CFD24A34A44008277B6 /* AgreementPaymentViewController.swift in Sources */,
@@ -753,10 +886,16 @@
 				34789D62249C2EFF0020FAD5 /* ReloadProtocol.swift in Sources */,
 				34460E7924D9FA0D003E7D90 /* ActionManager.swift in Sources */,
 				346BCFA524CDD14E0047C24B /* PrimaryError.swift in Sources */,
+				34BBF3772528AC7A00D1B1E7 /* DialogsService.swift in Sources */,
 				34460E7D24D9FD23003E7D90 /* ActionExecutor.swift in Sources */,
+				34BBF37C2528B44800D1B1E7 /* Message.swift in Sources */,
+				342C07A72530F68200C76FA1 /* DialogViewControllerInputBarAccessoryViewDelegate.swift in Sources */,
+				342C078F252CD30200C76FA1 /* DialogSocket.swift in Sources */,
 				343B752E24EB0588004CAB06 /* CodeView.swift in Sources */,
 				3465D01A2494247D00374739 /* YoustersAlert.swift in Sources */,
 				3465CF39248D83A000374739 /* EnterPhoneViewController.swift in Sources */,
+				3418C17E2525ED0800A0F992 /* DialogPageViewController.swift in Sources */,
+				342C079C252F471000C76FA1 /* ScribeInputView.swift in Sources */,
 				346BCF8D24CCBDC40047C24B /* YoustersWKWebViewController.swift in Sources */,
 				3465CF35248D7A9900374739 /* MainTabBarViewController.swift in Sources */,
 				34789D56249A377C0020FAD5 /* AgreementPageViewController.swift in Sources */,
@@ -771,14 +910,20 @@
 				349028C024C874DE0044D6B2 /* SubscriptionServive.swift in Sources */,
 				34C06DA224BB9D8B0003157E /* SelectPhizAuthViewController.swift in Sources */,
 				346BCF9B24CD9BCA0047C24B /* PaymentController.swift in Sources */,
+				3418C1762524F90000A0F992 /* MainDialogsViewController.swift in Sources */,
 				343B753224EB40DA004CAB06 /* CodeEntity.swift in Sources */,
+				348A86C3252B7D2300FD6317 /* MessageService.swift in Sources */,
 				348CC0D624FC641700E96399 /* SubscriptionVideoPageViewController.swift in Sources */,
 				3465D00624938F2600374739 /* Fonts.swift in Sources */,
 				346BCF9524CCC9C30047C24B /* PaketCell.swift in Sources */,
+				342C0792252DDAF400C76FA1 /* DialogWrap.swift in Sources */,
 				3465CF3C248D83CF00374739 /* AuthService.swift in Sources */,
 				34789D53249A20590020FAD5 /* AgreementService.swift in Sources */,
 				34460E7724D9F99B003E7D90 /* ActionType.swift in Sources */,
 				345D150B24978ECB00228CF4 /* YoustersNavigationController.swift in Sources */,
+				34BBF37A2528B43C00D1B1E7 /* Sender.swift in Sources */,
+				34BBF37E2528BE0300D1B1E7 /* CreateDialogViewController.swift in Sources */,
+				342C0794252DE16200C76FA1 /* DialogWrapDelegate.swift in Sources */,
 				346BCF9824CCEC7C0047C24B /* UserPaketService.swift in Sources */,
 				346BCF9224CCC89A0047C24B /* PaketsCollectionView.swift in Sources */,
 				348CC0D424FC612700E96399 /* ToVideoButton.swift in Sources */,
@@ -789,11 +934,14 @@
 				3463D09724AA43E20052DB93 /* AddCloseItemProtocol.swift in Sources */,
 				34C06DAA24BBA5020003157E /* SberButton.swift in Sources */,
 				349028BD24C7690A0044D6B2 /* SberService.swift in Sources */,
+				3418C1782524F99D00A0F992 /* Dialog.swift in Sources */,
 				346BCF8F24CCC0E50047C24B /* Paket.swift in Sources */,
 				345D150E249795CF00228CF4 /* ProfileViewController.swift in Sources */,
 				345D15142497D68A00228CF4 /* Agreement.swift in Sources */,
+				342C07A32530F5B200C76FA1 /* DialogViewControllerMessageKit.swift in Sources */,
 				34460E7B24D9FA4A003E7D90 /* ActionParser.swift in Sources */,
 				348982982495831E00BB55E8 /* Validations.swift in Sources */,
+				342C07A02530E16900C76FA1 /* ScribeAttachementManager.swift in Sources */,
 				34AFC0D524D49C0D00B8D761 /* PushService.swift in Sources */,
 				3465D00F2493AECF00374739 /* Extensions.swift in Sources */,
 				343B753024EB05CB004CAB06 /* CodePadView.swift in Sources */,
@@ -948,7 +1096,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommysirenko.yousterssubsapp;
 				PRODUCT_NAME = Scribe;
 				SWIFT_VERSION = 5.0;
@@ -976,7 +1124,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tommysirenko.yousterssubsapp;
 				PRODUCT_NAME = Scribe;
 				SWIFT_VERSION = 5.0;

@@ -33,6 +33,11 @@ class CodeEntity {
         SaveRestoreProvider.shared.saveCode()
     }
     
+    func resetCode() {
+        code = nil
+        setCode()
+    }
+    
     func setEnterBackgroundTime() {
         enterBackgroundTime = Date()
         print(enterBackgroundTime)

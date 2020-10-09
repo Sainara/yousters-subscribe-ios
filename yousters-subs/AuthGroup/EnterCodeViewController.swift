@@ -116,7 +116,7 @@ class EnterCodeViewController: YoustersViewController {
         AuthService.main.sendCode(verificationCode: phoneField.text!) { (result, isValidOrOnIt, error) in
             alert.dismiss(animated: false) {
                 if result {
-                    let vc = MainTabBarViewController()
+                    let vc = EnterCodeOrFaceID(target: .createCode)
                     //let vc = RouteProvider.shared.enteredCode(isValidOrOnIt: isValidOrOnIt)
                     RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
                 } else {

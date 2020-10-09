@@ -10,6 +10,7 @@ import UIKit
 import Siren
 import StoreKit
 import SwiftyJSON
+import YandexMobileMetrica
 //import SberbankSDK
 
 @UIApplicationMain
@@ -21,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         //FirebaseApp.configure()
+        
+        let configuration = YMMYandexMetricaConfiguration(apiKey: "d4cc77ac-94d9-4a09-8b0c-8ed85602f0df")
+        YMMYandexMetrica.activate(with: configuration!)
                 
         if #available(iOS 13.0, *) {} else {
             window = UIWindow(frame: UIScreen.main.bounds)

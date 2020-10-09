@@ -1,10 +1,15 @@
 PODS:
   - Alamofire (5.1.0)
   - Haptica (3.0.2)
+  - InputBarAccessoryView (5.1.0):
+    - InputBarAccessoryView/Core (= 5.1.0)
+  - InputBarAccessoryView/Core (5.1.0)
   - Kingfisher (5.13.3):
     - Kingfisher/Core (= 5.13.3)
   - Kingfisher/Core (5.13.3)
   - LBTATools (1.0.12)
+  - MessageKit (3.3.0):
+    - InputBarAccessoryView (~> 5.1.0)
   - NVActivityIndicatorView (4.8.0):
     - NVActivityIndicatorView/Presenter (= 4.8.0)
   - NVActivityIndicatorView/Presenter (4.8.0)
@@ -14,48 +19,72 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.2.0)
   - PhoneNumberKit/UIKit (3.2.0):
     - PhoneNumberKit/PhoneNumberKitCore
+  - Recorder (0.2.0)
   - Siren (5.4.5)
   - SnapKit (5.0.1)
+  - Starscream (4.0.4)
   - SwiftDate (6.1.0)
   - SwiftyJSON (5.0.0)
+  - YandexMobileMetrica (3.11.1):
+    - YandexMobileMetrica/Static (= 3.11.1)
+  - YandexMobileMetrica/Static (3.11.1):
+    - YandexMobileMetrica/Static/Core (= 3.11.1)
+    - YandexMobileMetrica/Static/Crashes (= 3.11.1)
+  - YandexMobileMetrica/Static/Core (3.11.1)
+  - YandexMobileMetrica/Static/Crashes (3.11.1):
+    - YandexMobileMetrica/Static/Core
 
 DEPENDENCIES:
   - Alamofire
   - Haptica
   - Kingfisher
   - LBTATools
+  - MessageKit
   - NVActivityIndicatorView
   - PhoneNumberKit
+  - Recorder
   - Siren
   - SnapKit
+  - Starscream
   - SwiftDate
   - SwiftyJSON
+  - YandexMobileMetrica (= 3.11.1)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Haptica
+    - InputBarAccessoryView
     - Kingfisher
     - LBTATools
+    - MessageKit
     - NVActivityIndicatorView
     - PhoneNumberKit
+    - Recorder
     - Siren
     - SnapKit
+    - Starscream
     - SwiftDate
     - SwiftyJSON
+    - YandexMobileMetrica
 
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   Haptica: dc206651beeca25ab4744c633fbf0ae4d1e86baf
+  InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
   Kingfisher: d2b3d6a7200c93b34de9afcdf25c8dd9282ec277
   LBTATools: 389a901a01b9a56bea5682c40cd6e23530f40015
+  MessageKit: 1f07618183be6d92b648ba7a384aafa097362a00
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   PhoneNumberKit: df411d46177d1492da84e10b6c093846dd861452
+  Recorder: 3137f2a340ac626732caec17625043bdb7f8e299
   Siren: 4c6f4863ea5b7f2d0e58b576663fefd8f6ef417f
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  YandexMobileMetrica: e985e1f77e405390a2d13f11741d86ff2f00c4ce
 
-PODFILE CHECKSUM: 7d6b823ec4f2c137cabef2c6c85e304c657b4397
+PODFILE CHECKSUM: 36ba88301d37f13cd7550ff07e69b7579a939d5d
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3

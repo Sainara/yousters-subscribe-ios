@@ -9,8 +9,16 @@
 import Foundation
 
 struct URLs {
-    static let base = "https://you-scribe.ru/"
+    static let host = "you-scribe.ru/"
+    static let base = "https://\(host)"
     static let baseAPI = "\(base)api/v1/"
+    
+    static let baseWS = "wss://\(host)"
+    static let baseWSAPI = "\(baseWS)api/v1/"
+    
+    static func dialogWS(uid:String) -> String {
+        "\(baseWSAPI)dialog/\(uid)"
+    }
     
     static let auth = "\(baseAPI)auth"
     static let validate = "\(baseAPI)validate"
@@ -35,6 +43,9 @@ struct URLs {
     static func getCheckout(uid:String) -> String {
         return "\(baseAPI)checkout/\(uid)"
     }
+    
+    static let dialogsBase = "\(baseAPI)dialog"
+    static let messagesBase = "\(baseAPI)message"
     
     static let reportSubscribe = "\(baseAPI)report/subscribtion"
     

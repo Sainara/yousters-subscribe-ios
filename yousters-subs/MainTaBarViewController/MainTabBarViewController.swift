@@ -49,18 +49,20 @@ class MainTabBarViewController: UITabBarController {
     }
     
     func buildTabs() {
-        let vc = ProfileViewController()
-        vc.tabBarItem = .init(title: nil, image: UIImage(imageLiteralResourceName: "profile"), tag: 1)
-        vc.tabBarItem.imageInsets = .init(top: 6, left: 0, bottom: -6, right: 0)
-        
-        let vc2 = MainDocsViewController()
-        vc2.tabBarItem = .init(title: nil, image: UIImage(imageLiteralResourceName: "docs"), tag: 0)
-        vc2.tabBarItem.imageInsets = .init(top: 6, left: 0, bottom: -6, right: 0)
         
         viewControllers = [
-            YoustersNavigationController(rootViewController: vc2),
-            YoustersNavigationController(rootViewController: vc)
+            createTab(vc: MainDocsViewController(), imageName: "docs", tag: 0),
+            createTab(vc: MainDialogsViewController(), imageName: "stack", tag: 1),
+            createTab(vc: ProfileViewController(), imageName: "profile", tag: 2)
         ]
+        
+    }
+    
+    func createTab(vc:UIViewController, imageName:String, tag:Int) -> UIViewController {
+        vc.tabBarItem = .init(title: nil, image: UIImage(imageLiteralResourceName: imageName), tag: tag)
+        vc.tabBarItem.imageInsets = .init(top: 6, left: 0, bottom: -6, right: 0)
+        
+        return YoustersNavigationController(rootViewController: vc)
     }
     
     required init?(coder: NSCoder) {

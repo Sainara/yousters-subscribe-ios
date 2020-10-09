@@ -35,7 +35,7 @@ class App {
         token = nil
         currentUser = nil
         
-        CodeEntity.shared.code = nil
+        CodeEntity.shared.resetCode()
         
         let vc = RouteProvider.shared.firstEnterView()
         RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
@@ -47,4 +47,5 @@ class App {
     
     var isNeedUpdateDocs = false
     var isNeedUpdateProfile = false
+    var isNeedUpdateDialogs = false
 }

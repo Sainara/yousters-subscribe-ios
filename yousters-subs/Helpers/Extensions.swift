@@ -75,3 +75,23 @@ extension UIImageView {
     self.tintColor = color
   }
 }
+
+extension UIImage {
+    func getImageURL(complition: @escaping (URL)->Void) {
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let imgName = UUID().uuidString
+            let documentDirectory = NSTemporaryDirectory()
+            let localPath = documentDirectory.appending(imgName + ".jpg")
+            
+            let data = self.jpegData(compressionQuality: 0.8)! as NSData
+            data.write(toFile: localPath, atomically: true)
+            let photoURL = URL(fileURLWithPath: localPath)
+            print(photoURL)
+            
+            DispatchQueue.main.async {
+                complition(photoURL)
+            }
+        }
+    }
+}

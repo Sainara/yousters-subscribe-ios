@@ -25,7 +25,7 @@ class ActionExecutor {
             }
         case .reloadMe:
             if let tabBar = viewController as? MainTabBarViewController {
-                if let profileViewNavRaw = tabBar.viewControllers?[1],
+                if let profileViewNavRaw = tabBar.viewControllers?[2],
                     let profileViewNav = profileViewNavRaw as? UINavigationController {
                     profileViewNav.popToRootViewController(animated: false)
                     if let profileViewRaw = profileViewNav.topViewController,
