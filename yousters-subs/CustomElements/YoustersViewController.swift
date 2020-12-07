@@ -18,6 +18,8 @@ class YoustersViewController: UIViewController, AddCloseItemProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -50,6 +52,7 @@ class YoustersViewController: UIViewController, AddCloseItemProtocol {
         }) { (completed) in
             
         }
+        print(self)
     }
     
     func addCloseItem(addFromSuper:Bool = false, color:UIColor = .bgColor) {

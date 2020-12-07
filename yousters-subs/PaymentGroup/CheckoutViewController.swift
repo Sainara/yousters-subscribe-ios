@@ -43,10 +43,13 @@ extension CheckoutViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let url = navigationAction.request.url, url.absoluteStringByTrimmingQuery() == "https://you-scribe.ru/api/v1/checkout/success" {
             self.dismiss(animated: true) {
-                self.parentVC.navigationController?.popViewController(animated: true)
                 self.parentVC.reload()
             }
         }
+        if let url = navigationAction.request.url, url.absoluteStringByTrimmingQuery() == "https://you-scribe.ru/general" {
+            self.dismiss(animated: true) {}
+        }
+        
         decisionHandler(.allow)
     }
 }

@@ -27,10 +27,14 @@ class DeeplinkParser {
         switch case_ {
         case "case":
             if let agreementUID = pathComponents.last {
-                return DeeplinkType.agreement(uid: agreementUID)
+                return .agreement(uid: agreementUID)
             }
         case "profileactivation":
-            return DeeplinkType.profileActivation
+            return .profileActivation
+        case "dialog":
+            if let dialogUID = pathComponents.last {
+                return .dialog(uid: dialogUID)
+            }
         default:
             break
         }

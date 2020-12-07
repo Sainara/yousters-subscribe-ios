@@ -20,8 +20,8 @@ target 'yousters-subs' do
   pod "Haptica"
   pod 'Siren'
   pod 'MessageKit'
-  pod 'Starscream'
+  pod 'Starscream', '~> 3.1.1'
   pod 'YandexMobileMetrica', '3.11.1'
-  pod "Recorder"
+  pod 'FDSoundActivatedRecorder'
   
 end

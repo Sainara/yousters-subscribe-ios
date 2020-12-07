@@ -89,4 +89,30 @@ class YoustersStackViewController: YoustersViewController {
         }
     }
     
+    func addInfo(title:String, sub:String, isLink:Bool = false) {
+        addSubTitle(title: sub)
+        if isLink {
+            let linkBut = YoustersButtonLink(link: title, fontSize: 18, isUnderLined: true)
+            linkBut.contentHorizontalAlignment = .leading
+            addWidthArrangedSubView(view: linkBut)
+        } else {
+           addTitle(title: title)
+        }
+    }
+    
+    func addTitle(title:String, spacing:CGFloat? = nil) {
+        let label = UILabel(text: title, font: Fonts.standart.gilroyMedium(ofSize: 18), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
+        if let spacing = spacing {
+            addWidthArrangedSubView(view: label, spacing: spacing)
+        } else {
+            addWidthArrangedSubView(view: label)
+        }
+        
+    }
+    
+    func addSubTitle(title:String) {
+        let label = UILabel(text: title, font: Fonts.standart.gilroyRegular(ofSize: 15), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
+        addWidthArrangedSubView(view: label, spacing: 5)
+    }
+    
 }

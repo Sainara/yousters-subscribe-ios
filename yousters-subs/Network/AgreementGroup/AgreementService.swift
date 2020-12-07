@@ -35,10 +35,10 @@ class AgreementService: YoustersNetwork {
         }
     }
     
-    func getAgreements(complition: @escaping ([Agreement])->Void) {
+    func getAgreements(complition: @escaping (Result<[Agreement], Error>)->Void) {
         
         guard let headers = getHTTPHeaders(rawHeaders: basicHeaders) else {
-            complition([])
+            complition(.failure(ResponseError(error: .noTokenProvided)))
             return
         }
         
@@ -51,13 +51,13 @@ class AgreementService: YoustersNetwork {
                     for item in json["data"].arrayValue {
                         result.append(Agreement(data: item))
                     }
-                    complition(result)
+                    complition(.success(result))
                 } else {
-                    complition([])
+                    complition(.failure(ResponseError(error: json["message"].stringValue)))
                 }
             case .failure(let error):
                 debugPrint(error)
-                complition([])
+                complition(.failure(error))
             }
         }
     }

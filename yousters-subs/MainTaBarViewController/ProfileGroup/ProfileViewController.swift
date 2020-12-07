@@ -6,15 +6,16 @@
 //  Copyright © 2020 molidl. All rights reserved.
 //
 
+import Haptica
 import UIKit
 import StoreKit
-import Haptica
+import InputBarAccessoryView
 
 class ProfileViewController: YoustersStackViewController {
     
     let collectionView = PaketsCollectionView(pakets: [])
     let but = YoustersButton(text: "Выйти")
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if App.shared.isNeedUpdateProfile {
@@ -34,7 +35,6 @@ class ProfileViewController: YoustersStackViewController {
         navigationItem.largeTitleDisplayMode = .always
         
         initView()
-        
     }
     
     func initView() {
@@ -229,6 +229,9 @@ class ProfileViewController: YoustersStackViewController {
         }
     }
     
+    override func keyBoardWillShow(notification: NSNotification) {}
+    override func keyBoardWillHide(notification: NSNotification) {}
+    
     private func setUpUserPaketInfo() {
         let wrap = UIView()
         wrap.backgroundColor = .secondaryButtonColor
@@ -265,6 +268,12 @@ class ProfileViewController: YoustersStackViewController {
         }
     }
     
+    func rebuildView() {
+        but.removeFromSuperview()
+        stackView.arrangedSubviews.forEach({$0.removeFromSuperview()})
+        initView()
+    }
+    
     enum ProfileState {
         case notOnValidation, onValidation, active
     }
@@ -277,9 +286,7 @@ extension ProfileViewController: ReloadProtocol {
                 App.shared.logOut()
                 return
             }
-            self.but.removeFromSuperview()
-            self.stackView.arrangedSubviews.forEach({$0.removeFromSuperview()})
-            self.initView()
+            self.rebuildView()
             Haptic.play([.wait(0.1), .haptic(.notification(.success))])
         }
     }

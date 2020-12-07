@@ -9,11 +9,20 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController {
+class ViewController: YoustersViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+//        print(stackView.layoutMargins)
+//        print(scrollView.contentInset)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        print(stackView.layoutMargins)
+//        print(scrollView.contentInset)
     }
 
     init() {
@@ -24,13 +33,7 @@ class ViewController: UIViewController {
         let but = YoustersButton(text: "AAAAAAAAAAAAAAAA")
         view.addSubview(but)
         but.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview()
-        }
-        
-        let but2 = YoustersButton(text: "AAAAAAAAAAAAAAAA")
-        view.addSubview(but2)
-        but2.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.center.equalToSuperview()
         }
         
         navigationItem.title = "Главная"

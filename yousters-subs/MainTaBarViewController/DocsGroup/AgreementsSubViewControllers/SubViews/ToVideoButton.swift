@@ -12,7 +12,7 @@ class ToVideoButton: YoustersButton {
     
     let sub:Subscriber
     let agr:Agreement
-    let vc:UIViewController
+    unowned let vc:UIViewController
     
     init(sub:Subscriber, agr:Agreement, vc:UIViewController) {
         self.vc = vc

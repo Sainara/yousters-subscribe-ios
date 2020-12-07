@@ -6,6 +6,7 @@
 //  Copyright © 2020 molidl. All rights reserved.
 //
 
+import AVFoundation
 import UIKit
 import Siren
 import StoreKit
@@ -21,25 +22,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Override point for customization after application launch.
-        //FirebaseApp.configure()
         
-        let configuration = YMMYandexMetricaConfiguration(apiKey: "d4cc77ac-94d9-4a09-8b0c-8ed85602f0df")
-        YMMYandexMetrica.activate(with: configuration!)
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord)
+        } catch {
+            assertionFailure("Failed to configure `AVAAudioSession`: \(error.localizedDescription)")
+        }
+        
+//        let configuration = YMMYandexMetricaConfiguration(apiKey: "d4cc77ac-94d9-4a09-8b0c-8ed85602f0df")
+//        YMMYandexMetrica.activate(with: configuration!)
                 
         if #available(iOS 13.0, *) {} else {
             window = UIWindow(frame: UIScreen.main.bounds)
             let homeViewController = RouteProvider.shared.initViewController()
             window!.rootViewController = homeViewController
             window!.makeKeyAndVisible()
-            
-            
-            //Siren.shared.wail()
         }
         
         UNUserNotificationCenter.current().delegate = self
         
         if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
-          // 2
           print(JSON(notification))
         }
         
@@ -103,7 +105,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        CodeEntity.shared.setEnterBackgroundTime()
+        print(application.keyWindow?.rootViewController)
+        CodeEntity.shared.setEnterBackgroundTime(uiVC: application.keyWindow?.rootViewController)
     }
 
 }

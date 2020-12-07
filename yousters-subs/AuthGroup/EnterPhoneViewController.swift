@@ -94,7 +94,7 @@ class EnterPhoneViewController: YoustersViewController {
                     self.present(vc, animated: true, completion: nil)
                 } else {
                     print(error!)
-                    PrimaryError.showAlertWithError(vc: self, error: error)
+                    ResponseError.showAlertWithError(vc: self, error: error)
                 }
             }
         }

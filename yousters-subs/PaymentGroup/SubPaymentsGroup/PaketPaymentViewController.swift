@@ -18,10 +18,5 @@ class PaketPaymentViewController: PaymentController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func reload() {
-        navigationController?.popViewController(animated: true)
-        reload_page.reload()
-    }
 }
 

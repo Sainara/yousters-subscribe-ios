@@ -11,7 +11,11 @@ import MessageKit
 import SwiftyJSON
 import UIKit
 
-public struct Message: MessageType {
+public struct Message: MessageType, Equatable {
+    public static func == (lhs: Message, rhs: Message) -> Bool {
+        lhs.messageId == rhs.messageId
+    }
+    
     public var sender: SenderType
     
     public var messageId: String
@@ -34,14 +38,11 @@ public struct Message: MessageType {
         
         switch data["m_type"].stringValue {
         case "text":
-            //let attributedString = NSAttributedString(string: data["m_content"].stringValue, attributes: [NSAttributedString.Key.font: Fonts.standart.gilroyRegular(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
             kind = .text(data["m_content"].stringValue)
         case "image", "document":
             kind = .photo(MessageMedia(url: data["m_content"].url, image: UIImage(), placeholderImage: UIImage(), size: .init(width: 200, height: 200)))
-        //case "document":
-          //  kind = .
-//        case "voice":
-//            kind = .audio(<#T##AudioItem#>)
+        case "voice":
+            kind = .audio(MessageVoice(url: URL(string: data["m_content"].stringValue)!, duration: 0.0, size: .init(width: 200, height: 35)))
         default:
             kind = .text(data["m_content"].stringValue)
         }

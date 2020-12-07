@@ -39,6 +39,9 @@ class AgreementPageViewController: YoustersStackViewController {
             setupTitle()
             App.shared.isNeedUpdateDocs = true
             Haptic.notification(.success).generate()
+            AgreementService.main.addAgreementToAdded(uid: agreemant.uid) { (res) in
+                print("is added \(agreemant.uid) to added - \(res)")
+            }
         }
         
         setup()
@@ -169,32 +172,6 @@ class AgreementPageViewController: YoustersStackViewController {
         }
     }
     
-    private func addInfo(title:String, sub:String, isLink:Bool = false) {
-        addSubTitle(title: sub)
-        if isLink {
-            let linkBut = YoustersButtonLink(link: title, fontSize: 18, isUnderLined: true)
-            linkBut.contentHorizontalAlignment = .leading
-            addWidthArrangedSubView(view: linkBut)
-        } else {
-           addTitle(title: title)
-        }
-    }
-    
-    private func addTitle(title:String, spacing:CGFloat? = nil) {
-        let label = UILabel(text: title, font: Fonts.standart.gilroyMedium(ofSize: 18), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
-        if let spacing = spacing {
-            addWidthArrangedSubView(view: label, spacing: spacing)
-        } else {
-            addWidthArrangedSubView(view: label)
-        }
-        
-    }
-    
-    private func addSubTitle(title:String) {
-        let label = UILabel(text: title, font: Fonts.standart.gilroyRegular(ofSize: 15), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
-        addWidthArrangedSubView(view: label, spacing: 5)
-    }
-    
     @objc private func subs() {
         let alert = UIAlertController(style: .loading)
         present(alert, animated: true, completion: nil)
@@ -245,7 +222,7 @@ class AgreementPageViewController: YoustersStackViewController {
                     App.shared.isNeedUpdateProfile = true
                 } else {
                     print(error!)
-                    PrimaryError.showAlertWithError(vc: self, error: error)
+                    ResponseError.showAlertWithError(vc: self, error: error)
                 }
             }
         }

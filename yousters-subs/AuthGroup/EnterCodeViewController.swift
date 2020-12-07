@@ -120,7 +120,7 @@ class EnterCodeViewController: YoustersViewController {
                     //let vc = RouteProvider.shared.enteredCode(isValidOrOnIt: isValidOrOnIt)
                     RouteProvider.switchRootViewController(rootViewController: vc, animated: true, completion: nil)
                 } else {
-                    PrimaryError.showAlertWithError(vc: self, error: error)
+                    ResponseError.showAlertWithError(vc: self, error: error)
                 }
             }
         }

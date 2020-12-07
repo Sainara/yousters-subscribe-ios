@@ -14,12 +14,6 @@ class DeeplinkNavigator {
     
     func proceedToDeeplink(_ type: DeeplinkType, viewController:UIViewController?) -> Bool {
         
-        func addToAddedIfNeed(agreement:Agreement) {
-            AgreementService.main.addAgreementToAdded(uid: agreement.uid) { (res) in
-                print("is added \(agreement.uid) to added - \(res)")
-            }
-        }
-        
         func present(uid:String, viewController:UIViewController?) {
             let alert = UIAlertController(style: .loading)
             viewController?.present(alert, animated: true, completion: nil)
@@ -30,8 +24,6 @@ class DeeplinkNavigator {
                         agreementPage.modalPresentationStyle = .popover
                         
                         viewController?.present(agreementPage, animated: true, completion: nil)
-                        
-                        addToAddedIfNeed(agreement: agreement)
                     }
                 }
             }
@@ -56,6 +48,20 @@ class DeeplinkNavigator {
             if let tabBar = viewController as? MainTabBarViewController {
                 tabBar.selectedIndex = 2
                 return true
+            }
+            return false
+        case .dialog(uid: let uid):
+            if let tabBar = viewController as? MainTabBarViewController {
+                tabBar.selectedIndex = 1
+                if let dialogsNC = tabBar.selectedViewController as? YoustersNavigationController {
+                    dialogsNC.popToRootViewController(animated: false)
+                    if let dialogsVC = dialogsNC.topViewController as? MainDialogsViewController {
+                        if !dialogsVC.showDialog(with: uid) {
+                            dialogsVC.setNeedShow(with: uid)
+                        }
+                        return true
+                    }
+                }
             }
             return false
         }

@@ -9,7 +9,7 @@
 import MessageKit
 import SwiftyJSON
 
-public struct Sender: SenderType {
+public struct Sender: SenderType, Equatable {
     public let senderId: String
 
     public let displayName: String
@@ -34,4 +34,5 @@ public struct Sender: SenderType {
         
         return nil
     }
+    
 }

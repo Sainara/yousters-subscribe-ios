@@ -11,14 +11,17 @@ import SnapKit
 import Haptica
 
 class YoustersButton: UIButton {
+    
+    private var onTapAction:(()->Void)?
 
     init() {
         super.init(frame: .zero)
     }
     
-    convenience init(text:String, fontSize: CGFloat = 17, height:CGFloat = 55, style:YoustersButtonStyle = .basic) {
+    convenience init(text:String, fontSize: CGFloat = 17, height:CGFloat = 55, style:YoustersButtonStyle = .basic, onTap:(()->Void)? = nil) {
         self.init()
         setup(text: text, size: fontSize, height: height, style: style)
+        addOnTapTarget(onTapAction: onTap)
     }
     
     required init?(coder: NSCoder) {
@@ -50,6 +53,22 @@ class YoustersButton: UIButton {
         layer.cornerRadius = 6
         clipsToBounds = true
         titleLabel?.font = Fonts.standart.gilroyMedium(ofSize: size)
+    }
+    
+    func setOnTapAction(onTapAction:(()->Void)?) {
+        self.onTapAction = onTapAction
+    }
+    
+    internal func addOnTapTarget(onTapAction:(()->Void)?) {
+        self.onTapAction = onTapAction
+        
+        addTarget(self, action: #selector(onTap), for: .touchUpInside)
+    }
+    
+    @objc private func onTap() {
+        if let onTapAction = onTapAction {
+            onTapAction()
+        }
     }
     
     enum YoustersButtonStyle {

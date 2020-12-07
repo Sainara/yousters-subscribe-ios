@@ -34,7 +34,7 @@ class EnterCodeOrFaceID: YoustersViewController {
         
         switch target {
         case .enterCode:
-            if context.biometryType != .LABiometryNone {
+            if context.biometryType != .none {
                 callBiometry()
             }
         case .createCode:
@@ -66,20 +66,20 @@ class EnterCodeOrFaceID: YoustersViewController {
             title = "Повторите код"
         }
         
-        let userName = UILabel(text: title.uppercased(), font: Fonts.standart.gilroySemiBoldName(ofSize: 17), textColor: .bgColor, textAlignment: .center, numberOfLines: 1)
+        let userName = UILabel(text: title.uppercased(), font: Fonts.standart.gilroySemiBoldName(ofSize: 17), textColor: .bgColor, textAlignment: .center, numberOfLines: 0)
         userName.minimumScaleFactor = 0.5
         view.addSubview(userName)
         userName.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(180)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(45)
+            //make.height.equalTo(45)
         }
         
         
         view.addSubview(codeView)
         codeView.snp.makeConstraints { (make) in
-            make.top.equalTo(userName.snp.bottom)
+            make.top.equalTo(userName.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(35)
@@ -135,30 +135,39 @@ extension EnterCodeOrFaceID: EnterCodePadDelegate {
         if enteredCode.count == 4 && !isInProcess {
             let seconds = 0.7
             isInProcess = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                switch self.target {
-                case .enterCode:
-                    if self.enteredCode == CodeEntity.shared.code! {
-                        let mainTabBar = MainTabBarViewController()
-                        RouteProvider.switchRootViewController(rootViewController: mainTabBar, animated: true) {
-                            DeepLinkManager.standart.checkDeepLink(viewController: mainTabBar)
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) { [weak self] in
+                if self != nil {
+                    switch self!.target {
+                    case .enterCode:
+                        if self!.enteredCode == CodeEntity.shared.code! {
+                            var mainTabBar:UIViewController!
+                            
+                            if let savedVC = CodeEntity.shared.savedViewController {
+                                mainTabBar = savedVC
+                            } else {
+                                mainTabBar = MainTabBarViewController()
+                            }
+                            
+                            RouteProvider.switchRootViewController(rootViewController: mainTabBar, animated: true) {
+                                DeepLinkManager.standart.checkDeepLink(viewController: mainTabBar)
+                            }
+                        }  else {
+                            self!.isInProcess = false
+                            self!.resetCode()
                         }
-                    }  else {
-                        self.isInProcess = false
-                        self.resetCode()
-                    }
-                case .createCode:
-                    CodeEntity.shared.code = self.enteredCode
-                    let repeatView = EnterCodeOrFaceID(target: .repeatCode)
-                    
-                    self.present(repeatView, animated: true, completion: nil)
-                case .repeatCode:
-                    if self.enteredCode == CodeEntity.shared.code! {
-                        CodeEntity.shared.setCode()
-                        RouteProvider.switchRootViewController(rootViewController: MainTabBarViewController(), animated: true, completion: nil)
-                    } else {
-                        self.isInProcess = false
-                        self.resetCode()
+                    case .createCode:
+                        CodeEntity.shared.code = self!.enteredCode
+                        let repeatView = EnterCodeOrFaceID(target: .repeatCode)
+                        
+                        self!.present(repeatView, animated: true, completion: nil)
+                    case .repeatCode:
+                        if self!.enteredCode == CodeEntity.shared.code! {
+                            CodeEntity.shared.setCode()
+                            RouteProvider.switchRootViewController(rootViewController: MainTabBarViewController(), animated: true, completion: nil)
+                        } else {
+                            self!.isInProcess = false
+                            self!.resetCode()
+                        }
                     }
                 }
             }

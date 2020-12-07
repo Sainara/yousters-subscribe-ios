@@ -95,3 +95,40 @@ extension UIImage {
         }
     }
 }
+
+extension String {
+
+    func widthOfString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSAttributedString.Key.font: font]
+        let size = self.size(withAttributes: fontAttributes)
+        return size.width
+    }
+
+    func heightOfString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSAttributedString.Key.font: font]
+        let size = self.size(withAttributes: fontAttributes)
+        return size.height
+    }
+
+    func sizeOfString(usingFont font: UIFont) -> CGSize {
+        let fontAttributes = [NSAttributedString.Key.font: font]
+        return self.size(withAttributes: fontAttributes)
+    }
+}
+
+extension NSMutableAttributedString {
+    
+    @discardableResult
+    public func setAsLink(textToFind:String) -> Bool {
+
+        let foundRange = self.mutableString.range(of: textToFind)
+        if foundRange.location != NSNotFound {
+            
+            //self.addAttribute(.link, value: linkURL, range: foundRange)
+            self.addAttribute(.underlineStyle, value: 1, range: foundRange)
+            self.addAttribute(.foregroundColor, value: UIColor.bgColor, range: foundRange)
+            return true
+        }
+        return false
+    }
+}

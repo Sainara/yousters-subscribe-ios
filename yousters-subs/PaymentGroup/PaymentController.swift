@@ -14,21 +14,23 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
     let payButton = YoustersButton(text: "Оплатить")
     
     let product:SKProduct
-    let reload_page:ReloadProtocol
+    let reload_page:ReloadProtocol?
     
     var paymentID:String!
     var agreementID:String?
     
     var items:[Item] = []
     var type:PaymentService.PaymentType
+    
+    var promoCodeValue = ""
         
     let promoField = YoustersTextField(placehldr: "Промокод", fontSize: 19)
-    let resultOfPromo = UILabel(text: "", font: Fonts.standart.gilroyRegular(ofSize: 15), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
+    let resultOfPromo = UILabel(text: "", font: Fonts.standart.gilroyMedium(ofSize: 15), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
     
     let summaryView = UIView()
     let loading = UIAlertController(style: .loading)
 
-    init(product:SKProduct, page:ReloadProtocol, items:[Item], type:PaymentService.PaymentType) {
+    init(product:SKProduct = SKProduct(), page:ReloadProtocol?, items:[Item], type:PaymentService.PaymentType) {
         reload_page = page
         self.items = items
         self.type = type
@@ -36,7 +38,7 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
         super.init(nibName: nil, bundle: nil)
         
         view.backgroundColor = .white
-        scrollView.contentInset = .init(top: 30, left: 0, bottom: 0, right: 0)
+        scrollView.contentInset = .init(top: 30, left: 0, bottom: 200, right: 0)
         stackView.layoutMargins = .init(top: 0, left: 20, bottom: 0, right: 20)
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.spacing = 15
@@ -57,7 +59,7 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
     internal func setup() {
         
         addItems()
-        //addPromoCode()
+        addPromoCode()
         setupAgreement()
         addApplePay()
         makeSummary()
@@ -72,10 +74,12 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
         let container = UIView()
         addWidthArrangedSubView(view: container, spacing: 30)
         
-        let priceLabel = UILabel(text: item.title, font: Fonts.standart.gilroyMedium(ofSize: 19), textColor: .bgColor, textAlignment: .left, numberOfLines: 1)
+        let priceLabel = UILabel(text: item.title, font: Fonts.standart.gilroyMedium(ofSize: 19), textColor: .bgColor, textAlignment: .left, numberOfLines: 0)
+        priceLabel.minimumScaleFactor = 0.5
         
         let priceText = "\(item.amount) x \(item.price).00₽"
         let price = UILabel(text: priceText, font: Fonts.standart.gilroyMedium(ofSize: 22), textColor: .bgColor, textAlignment: .right, numberOfLines: 1)
+        price.minimumScaleFactor = 0.5
         
         container.addSubview(priceLabel)
         container.addSubview(price)
@@ -85,13 +89,14 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
             make.top.equalToSuperview().offset(5)
             make.bottom.equalToSuperview().offset(5)
             make.leading.equalToSuperview()
-            make.width.equalTo(200)
+            
         }
         price.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)
             make.bottom.equalToSuperview().offset(5)
             make.trailing.equalToSuperview()
             make.leading.equalTo(priceLabel.snp.trailing)
+            make.width.equalTo(150)
         }
     }
     
@@ -148,7 +153,6 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
     @objc internal func pay() {
     
         SKPaymentQueue.default().add(self)
-        print(product.productIdentifier)
         
         let payment = SKMutablePayment(product: product)
         payment.quantity = 1
@@ -162,9 +166,11 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
             someID = agreementID ?? ""
         case .paket:
             someID = product.productIdentifier
+        case .documentService:
+            break
         }
         
-        PaymentService.main.initPayment(type: type, uid: someID) { (result) in
+        PaymentService.main.initPayment(type: type, uid: someID, promoCode: promoCodeValue) { (result) in
             
             guard let uid = result else {
                 self.loading.dismiss(animated: false, completion: nil)
@@ -175,12 +181,11 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
             
             self.paymentID = uid
             print(uid)
-//            let checkout = CheckoutViewController(url: URLs.getCheckout(uid: uid), parentVC: self)
-//            checkout.modalPresentationStyle = .popover
-//            self.present(checkout, animated: true, completion: nil)
+            //            let checkout = CheckoutViewController(url: URLs.getCheckout(uid: uid), parentVC: self)
+            //            checkout.modalPresentationStyle = .popover
+            //            self.present(checkout, animated: true, completion: nil)
             
             SKPaymentQueue.default().add(payment)
-            
         }
     }
     
@@ -193,10 +198,10 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
         
         let apply = YoustersButton(text: "Применить", height: 35)
         
-        addWidthArrangedSubView(view: container)
+        addWidthArrangedSubView(view: container, spacing: 7)
         container.addSubview(promoField)
         container.addSubview(apply)
-        container.addSubview(resultOfPromo)
+        //container.addSubview(resultOfPromo)
         
         promoField.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(15)
@@ -210,12 +215,15 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
             make.trailing.equalToSuperview().offset(-10)
             make.leading.equalTo(promoField.snp.trailing).offset(10)
         }
-//        resultOfPromo.snp.makeConstraints { (make) in
-//            make.top.equalTo(promoField.snp.bottom).offset(10)
-//            make.leading.equalToSuperview()
-//            make.trailing.equalTo(apply.snp.leading).offset(10)
-//            make.bottom.equalToSuperview().offset(-10)
-//        }
+        resultOfPromo.snp.makeConstraints { (make) in
+            //make.top.equalTo(container.snp.bottom).offset(10)
+            //make.leading.equalToSuperview()
+            make.height.equalTo(0)
+            //make.trailing.equalTo(apply.snp.leading).offset(10)
+            //make.bottom.equalToSuperview().offset(-10)
+        }
+        promoField.addTarget(self, action: #selector(resetPromoCode), for: .editingChanged)
+        addWidthArrangedSubView(view: resultOfPromo, offsets: 30)
         
         apply.addTarget(self, action: #selector(checkPromo), for: .touchUpInside)
     }
@@ -228,7 +236,16 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
     internal func setupAgreement() {
         let container = UIView()
         
-        let text = UILabel(text: "Я согласен с условиями пользования", font: Fonts.standart.gilroyMedium(ofSize: 15), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
+        
+        let text = UILabel(text: nil, font: Fonts.standart.gilroyMedium(ofSize: 15), textColor: .blackTransp, textAlignment: .left, numberOfLines: 0)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showLegal))
+        
+        let attributedString = NSMutableAttributedString(string:"Я согласен с условиями использования")
+        attributedString.setAsLink(textToFind: "условиями использования")
+        text.isUserInteractionEnabled = true
+        text.attributedText = attributedString
+        text.addGestureRecognizer(tap)
         
         let checkmark = UISwitch()
         checkmark.onTintColor = .bgColor
@@ -249,8 +266,12 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
             make.trailing.equalToSuperview().offset(-10)
             make.leading.equalTo(text.snp.trailing).offset(10)
         }
-        
-        
+    }
+    
+    @objc func showLegal() {
+        let webVC = YoustersWKWebViewController(url: URLs.getLegal(page: "termsofuse"))
+        webVC.modalPresentationStyle = .popover
+        self.present(webVC, animated: true, completion: nil)
     }
     
     @objc func switchValueDidChange(sender:UISwitch!) {
@@ -269,22 +290,34 @@ class PaymentController: YoustersStackViewController, ReloadProtocol {
     }
     
     @objc func checkPromo() {
-        resultOfPromo.text = "Success"
-        resultOfPromo.textColor = .green
+        
+        PaymentService.main.checkPromoCode(promoCode: promoField.text!) { [self] (result) in
+            if result {
+                resultOfPromo.text = "Промокод применён"
+                resultOfPromo.textColor = .greenColor
+                promoCodeValue = promoField.text ?? ""
+            } else {
+                resultOfPromo.text = "Некорректный промокод"
+                resultOfPromo.textColor = .redColor
+                promoCodeValue = ""
+            }
+            resultOfPromo.snp.updateConstraints { (make) in
+                make.height.equalTo(25)
+            }
+        }
+    }
+    
+    @objc func resetPromoCode() {
+        resultOfPromo.text = ""
+        promoCodeValue = ""
+        resultOfPromo.snp.updateConstraints { (make) in
+            make.height.equalTo(0)
+        }
     }
     
     func reload() {
-        
-    }
-    
-    struct Item {
-        var title:String, price:Int, amount:Int
-        
-        init(product:SKProduct, amount:Int) {
-            title = product.localizedTitle
-            price = Int(product.price.description(withLocale: Locale(identifier: "ru_RU"))) ?? 0
-            self.amount = amount
-        }
+        self.navigationController?.popViewController(animated: true)
+        reload_page?.reload()
     }
 }
 

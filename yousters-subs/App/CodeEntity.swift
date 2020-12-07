@@ -29,6 +29,8 @@ class CodeEntity {
     
     var enterBackgroundTime:Date?
     
+    var savedViewController:UIViewController?
+    
     func setCode() {
         SaveRestoreProvider.shared.saveCode()
     }
@@ -38,9 +40,10 @@ class CodeEntity {
         setCode()
     }
     
-    func setEnterBackgroundTime() {
+    func setEnterBackgroundTime(uiVC:UIViewController? = nil) {
         enterBackgroundTime = Date()
-        print(enterBackgroundTime)
+        print(enterBackgroundTime?.debugDescription)
+        savedViewController = uiVC
     }
     
     func isNeedEnterCodeAndPresent() {

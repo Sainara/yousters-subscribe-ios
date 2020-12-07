@@ -8,12 +8,16 @@
 
 import UIKit
 
-class PrimaryError {
+class ResponseError: Error {
     
     var error:ErrorType
     
     init(error:String) {
         self.error = ErrorType(rawValue: error) ?? .unknown
+    }
+    
+    init(error:ErrorType) {
+        self.error = error
     }
     
     func getPrettyString() -> String {
@@ -38,7 +42,7 @@ class PrimaryError {
     }
     
     static func showAlertWithError(vc:UIViewController, error:String?) {
-        let message = PrimaryError(error: error ?? "").getPrettyString()
+        let message = ResponseError(error: error ?? "").getPrettyString()
         let alert = UIAlertController(style: .errorMessage, message: message)
         vc.present(alert, animated: true, completion: nil)
     }
@@ -53,6 +57,7 @@ class PrimaryError {
         wrongCode = "wrongCode",
         inValidName = "inValidName",
         reportAlreadyExist = "reportAlreadyExist",
+        noTokenProvided,
         unknown
     }
     

@@ -25,8 +25,13 @@ extension UIColor {
     static let secondaryButtonDisabled = UIColor(hex: "#fbfbfb")
     static let secondaryButtonHighlited = UIColor(hex: "#e7e9ec")
     
-//    static let redColor = UIColor(hex: "#DE4B31")
-//    static let greenColor = UIColor(hex: "#60B841")
+    static let redColor = UIColor(hex: "#DE4B31")
+    
+    static let bronzeColor = UIColor(hex: "#cd7f32")
+    static let silverColor = UIColor(hex: "#c0c0c0")
+    static let goldColor = UIColor(hex: "#ffd700")
+    
+    static let greenColor = UIColor(hex: "#60B841")
 }
 
 

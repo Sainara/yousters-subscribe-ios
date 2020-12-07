@@ -15,11 +15,27 @@ class DialogSocket: YoustersNetwork {
     var socket:WebSocket?
     
     var delegates:[WebSocketDelegate] = []
+    
+    var isNeedReconnect = false
+    
+    private var observer: NSObjectProtocol?
 
     init(url:String) {
         request = URLRequest(url: URL(string: url)!)
         socket = WebSocket(request: request)
         
+        super.init()
+        
+        observer = NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [unowned self] notification in
+            reconnect()
+        }
+    }
+    
+    deinit {
+        if let observer = observer {
+            NotificationCenter.default.removeObserver(observer)
+        }
+        print("DialogSocket deinit")
     }
     
     func connect(withHeaders:[HTTPHeaderType] = []) {
@@ -32,10 +48,21 @@ class DialogSocket: YoustersNetwork {
         }
         
         socket?.delegate = self
+        
         socket?.request = request
         socket?.disableSSLCertValidation = true
+        isNeedReconnect = true
         socket?.connect()
         
+    }
+    
+    func reconnect() {
+        socket?.disconnect()
+    }
+    
+    func disconnect() {
+        isNeedReconnect = false
+        socket?.disconnect()
     }
     
     func writeMessage(content:String = "", url:URL! = nil, type:MessageService.Types) {
@@ -46,16 +73,13 @@ class DialogSocket: YoustersNetwork {
         switch type {
         case .text:
             multipartdata.append(content.data(using: .utf8, allowLossyConversion: false)!, withName: "content")
-        case .image, .document:
+        case .image, .document, .voice:
             multipartdata.append(url, withName: "content")
-        default:
-            return
         }
         
         var data = "\(multipartdata.contentType)\n".data(using: .utf8)
     
         do {
-            //try print(String(data: multipartdata.encode(), encoding: .utf8))
             try data?.append(multipartdata.encode())
             socket?.write(data: data!)
         } catch {
@@ -90,8 +114,10 @@ extension DialogSocket: WebSocketDelegate {
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) {
-            socket.connect()
+        if isNeedReconnect {
+            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1) {
+                socket.connect()
+            }
         }
         delegates.forEach({$0.websocketDidDisconnect(socket: socket, error: error)})
     }

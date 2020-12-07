@@ -24,6 +24,7 @@ extension PaymentController: SKPaymentTransactionObserver {
                 fail(transaction: transaction)
                 break
             case .restored:
+                loading.dismiss(animated: false, completion: nil)
                 restore(transaction: transaction)
                 break
             case .deferred:

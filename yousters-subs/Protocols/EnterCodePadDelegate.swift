@@ -6,7 +6,7 @@
 //  Copyright © 2020 molidl. All rights reserved.
 //
 
-protocol EnterCodePadDelegate {
+protocol EnterCodePadDelegate: class {
     func digitClicked(digit:Int)
     func removeCliced()
     func biometryClicked()

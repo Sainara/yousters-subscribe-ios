@@ -8,7 +8,7 @@
 
 import UIKit
 import Siren
-import StoreKit
+//import StoreKit
 //import SberbankSDK
 
 @available(iOS 13.0, *)
@@ -71,7 +71,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
         print("func sceneDidEnterBackground(_ scene: UIScene) {")
-        CodeEntity.shared.setEnterBackgroundTime()
+        CodeEntity.shared.setEnterBackgroundTime(uiVC: UIApplication.shared.keyWindow?.rootViewController)
     }
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {

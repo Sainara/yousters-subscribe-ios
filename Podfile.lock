@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.1.0)
+  - FDSoundActivatedRecorder (3.1.0)
   - Haptica (3.0.2)
   - InputBarAccessoryView (5.1.0):
     - InputBarAccessoryView/Core (= 5.1.0)
@@ -19,10 +20,9 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.2.0)
   - PhoneNumberKit/UIKit (3.2.0):
     - PhoneNumberKit/PhoneNumberKitCore
-  - Recorder (0.2.0)
   - Siren (5.4.5)
   - SnapKit (5.0.1)
-  - Starscream (4.0.4)
+  - Starscream (3.1.1)
   - SwiftDate (6.1.0)
   - SwiftyJSON (5.0.0)
   - YandexMobileMetrica (3.11.1):
@@ -36,16 +36,16 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - FDSoundActivatedRecorder
   - Haptica
   - Kingfisher
   - LBTATools
   - MessageKit
   - NVActivityIndicatorView
   - PhoneNumberKit
-  - Recorder
   - Siren
   - SnapKit
-  - Starscream
+  - Starscream (~> 3.1.1)
   - SwiftDate
   - SwiftyJSON
   - YandexMobileMetrica (= 3.11.1)
@@ -53,6 +53,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FDSoundActivatedRecorder
     - Haptica
     - InputBarAccessoryView
     - Kingfisher
@@ -60,7 +61,6 @@ SPEC REPOS:
     - MessageKit
     - NVActivityIndicatorView
     - PhoneNumberKit
-    - Recorder
     - Siren
     - SnapKit
     - Starscream
@@ -70,6 +70,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  FDSoundActivatedRecorder: f08e5114767d843a7d781488cb3ed209a3ffe546
   Haptica: dc206651beeca25ab4744c633fbf0ae4d1e86baf
   InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
   Kingfisher: d2b3d6a7200c93b34de9afcdf25c8dd9282ec277
@@ -77,14 +78,13 @@ SPEC CHECKSUMS:
   MessageKit: 1f07618183be6d92b648ba7a384aafa097362a00
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   PhoneNumberKit: df411d46177d1492da84e10b6c093846dd861452
-  Recorder: 3137f2a340ac626732caec17625043bdb7f8e299
   Siren: 4c6f4863ea5b7f2d0e58b576663fefd8f6ef417f
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YandexMobileMetrica: e985e1f77e405390a2d13f11741d86ff2f00c4ce
 
-PODFILE CHECKSUM: 36ba88301d37f13cd7550ff07e69b7579a939d5d
+PODFILE CHECKSUM: e8246524b461ce6af95b4b2f68028daf0bfe3cbb
 
 COCOAPODS: 1.9.3

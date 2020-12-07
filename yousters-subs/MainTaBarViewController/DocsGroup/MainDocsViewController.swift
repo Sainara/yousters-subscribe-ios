@@ -18,6 +18,7 @@ class MainDocsViewController: YoustersViewController {
     let cellID = "agreementCell"
     
     let emptyLabel = EmptyDocsListLabelView(opacity: 0.7)
+    let loadingView = LoadingView()
     
     var agreements:[Agreement] = []
 
@@ -36,10 +37,13 @@ class MainDocsViewController: YoustersViewController {
         setup()
         getData()
         
-        navigationItem.title = "Главная"
+        navigationItem.title = "Сервис ЭЦП"
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .add, target: self, action: #selector(add))
         navigationItem.rightBarButtonItem?.tintColor = .bgColor
+        
+        view.addSubview(loadingView)
+        loadingView.centered()
     }
     
     required init?(coder: NSCoder) {
@@ -55,13 +59,19 @@ class MainDocsViewController: YoustersViewController {
     
     func getData() {
         AgreementService.main.getAgreements { (result) in
-            self.emptyLabel.removeFromSuperview()
-            self.agreements = result
-            self.tableView.reloadData()
-            self.refresher.endRefreshing()
-            if self.agreements.isEmpty {
-                self.tableView.addSubview(self.emptyLabel)
-                self.emptyLabel.centered()
+            switch result {
+            case .success(let agreements):
+                self.emptyLabel.removeFromSuperview()
+                self.loadingView.removeFromSuperview()
+                self.agreements = agreements
+                self.tableView.reloadData()
+                self.refresher.endRefreshing()
+                if self.agreements.isEmpty {
+                    self.tableView.addSubview(self.emptyLabel)
+                    self.emptyLabel.centered()
+                }
+            case .failure( _):
+                break
             }
         }
     }

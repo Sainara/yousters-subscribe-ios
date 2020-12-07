@@ -11,10 +11,10 @@ import SwiftyJSON
 
 class DialogsService: YoustersNetwork {
     
-    func getDialogs(complition: @escaping ([Dialog])->Void) {
+    func getDialogs(complition: @escaping (Result<[Dialog], Error>)->Void) {
         
         guard let headers = getHTTPHeaders(rawHeaders: basicHeaders) else {
-            complition([])
+            complition(.failure(ResponseError.init(error: .noTokenProvided)))
             return
         }
         
@@ -31,25 +31,25 @@ class DialogsService: YoustersNetwork {
                         dialogs.append(dialog)
                     }
                     
-                    complition(dialogs)
+                    complition(.success(dialogs))
                 } else {
-                    complition([])
+                    complition(.failure(ResponseError(error: json["message"].stringValue)))
                 }
             case .failure(let error):
                 debugPrint(error)
-                complition([])
+                complition(.failure(error))
             }
         }
     }
     
-    func createDialog(title:String, complition: @escaping (Bool, String?)->Void) {
+    func createDialog(title:String, type:String, complition: @escaping (Bool, String?)->Void) {
         
         guard let headers = getHTTPHeaders(rawHeaders: basicHeaders) else {
             complition(false, "noToken")
             return
         }
         
-        let parameters = ["title" : title]
+        let parameters = ["title" : title, "type": type]
         
         AF.request(URLs.dialogsBase, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             

@@ -39,6 +39,7 @@ struct URLs {
     static let addAgreementToAdded = "\(baseAPI)addagreement"
     
     static let initPayment = "\(baseAPI)payment"
+    static let checkPromoCode = "\(baseAPI)promocode"
     static let checkPayment = "\(baseAPI)payment/iap"
     static func getCheckout(uid:String) -> String {
         return "\(baseAPI)checkout/\(uid)"

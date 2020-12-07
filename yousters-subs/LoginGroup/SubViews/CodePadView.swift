@@ -12,7 +12,7 @@ import LocalAuthentication
 
 class CodePadView: UIView {
     
-    let delegate:EnterCodePadDelegate
+    unowned var delegate:EnterCodePadDelegate
     
     let rowsStackView = UIStackView()
     
@@ -91,7 +91,7 @@ class PadButton: UIView {
     
     let context = LAContext()
     
-    let delegate:EnterCodePadDelegate
+    unowned let delegate:EnterCodePadDelegate
     
     let type:ButtonType
     var digit:Int = 0

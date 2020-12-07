@@ -122,7 +122,7 @@ class SubscriptionVideoPageViewController: YoustersViewController {
                         let successAlert = UIAlertController(style: .message, title: "Успех", message: "Жалоба была отправлена, мы рассмотрим её в ближайщее время")
                         self.present(successAlert, animated: true, completion: nil)
                     } else {
-                        PrimaryError.showAlertWithError(vc: self, error: error)
+                        ResponseError.showAlertWithError(vc: self, error: error)
                     }
                 }
             }
